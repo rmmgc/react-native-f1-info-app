@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 
-import { theme } from '../constants'
+import { HeaderTitle } from './AppText'
+import { AppColors, AppLayout } from '../constants'
 
 /**
  * <AppHeader />
@@ -19,7 +20,7 @@ class AppHeader extends React.Component {
               source={require('../assets/f1_logo_contrast.png')}
               resizeMode='contain'
             />
-            <Text style={styles.screenTitle}>Homepage</Text>
+            <HeaderTitle style={styles.screenTitle}>Homepage</HeaderTitle>
           </View>
         </View>
       </View>
@@ -37,14 +38,14 @@ const styles = StyleSheet.create({
   header: {
     height: 80,
     flexDirection: 'row',
-    backgroundColor: theme.colors.redCandy,
+    backgroundColor: AppColors.redCandy,
   },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    marginHorizontal: theme.layoutSizes.baseMargin,
-    paddingTop: theme.layoutSizes.headerTopPadding
+    marginHorizontal: AppLayout.screenMargin,
+    paddingTop: AppLayout.heraderTopPadding
   },
   headerInfo: {
     flex: 1,
@@ -55,9 +56,7 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   screenTitle: {
-    color: theme.colors.whiteFlash,
-    fontSize: 14,
-    fontFamily: 'f1-display-font'
+    
   }
 })
 

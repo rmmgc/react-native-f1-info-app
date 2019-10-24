@@ -1,5 +1,9 @@
-import * as theme from './theme'
+import AppColors from './colors'
+import AppFonts from './fonts'
+import AppLayout from './layout'
 
 export {
-  theme
+  AppColors, 
+  AppFonts, 
+  AppLayout
 }

@@ -1,4 +1,4 @@
-const teamColors = {
+const TEAM_COLORS = {
   ferrari: '#DC1B00',
   mercedes: '#57D2BE',
   redBull: '#1E40FF',
@@ -11,33 +11,15 @@ const teamColors = {
   williams: '#FFFFFF'
 }
 
-const colors = {
+const THEME_COLORS = {
   gunmetal: '#1D2329',
   grayBlue: '#2C343A',
   whiteFlash: '#EDF2F4',
   redPhantone: '#EF233C',
   redCandy: '#D90429',
-  ...teamColors
+  ...TEAM_COLORS
 }
 
-const fontSizes = {
-  h1: 26,
-  h2: 20,
-  h3: 18,
-  title: 18,
-  header: 16,
-  body: 14,
-  cpation: 12
-}
-
-const layoutSizes = {
-  baseMargin: 14,
-  headerTopPadding: 30,
-  cardPadding: 14
-}
-
-export { 
-  colors, 
-  fontSizes, 
-  layoutSizes 
+export default {
+  ...THEME_COLORS
 }

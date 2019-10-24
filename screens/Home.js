@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
-import { theme } from '../constants'
 import AppHeader from '../components/AppHeader'
+import { Text } from '../components/AppText'
 import Card from '../components/Card'
 
+import { AppLayout } from '../constants'
 
 /**
  * <Home />
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   mainContent: {
-    margin: theme.layoutSizes.baseMargin
+    margin: AppLayout.screenMargin
   }
 })
 
