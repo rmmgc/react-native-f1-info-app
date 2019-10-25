@@ -1,11 +1,9 @@
-import { Platform } from "react-native";
-
-const DEFAULT_FONT = 'helvetica'
+const DEFAULT_FONT = 'open-sans'
 const DISPLAY_FONT = 'f1-display-font'
-const SECONDARY_FONT = Platform.OS === 'android' ? 'basis' : 'helvetica';
+const DEFAULT_FONT_SEMIBOLD = 'open-sans-semibold'
 
 export default {
   default: DEFAULT_FONT,
-  basis: SECONDARY_FONT,
+  defaultSemiBold: DEFAULT_FONT_SEMIBOLD,
   display: DISPLAY_FONT
 }

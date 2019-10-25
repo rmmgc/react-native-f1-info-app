@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import * as Font from 'expo-font'
 
 import AppContainer from './navigator'
-import { theme } from './constants'
+import { AppColors } from './constants'
 
 export default class App extends React.Component {
 
@@ -13,7 +13,9 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'f1-display-font': require('./assets/fonts/f1_display_font.ttf')
+      'f1-display-font': require('./assets/fonts/f1_display_font.ttf'),
+      'open-sans': require('./assets/fonts/opensans/OpenSans-Regular.ttf'),
+      'open-sans-semibold': require('./assets/fonts/opensans/OpenSans-SemiBold.ttf')
     });
 
     this.setState({ fontLoaded: true });
@@ -32,6 +34,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: theme.colors.gunmetal
+    backgroundColor: AppColors.gunmetal
   }
 })

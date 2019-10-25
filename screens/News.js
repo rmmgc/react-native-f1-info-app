@@ -9,7 +9,6 @@ import { View, StyleSheet, Text } from 'react-native'
 class News extends React.Component {
 
   render() {
-    console.log("RENDER POKRENUT!")
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Hello from NEWS screen!</Text>

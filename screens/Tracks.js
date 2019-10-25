@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 
 
 /**
@@ -7,6 +7,14 @@ import { View, StyleSheet } from 'react-native'
  */
 
 class Tracks extends React.Component {
+
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Hello from TRACKS screen!</Text>
+      </View>
+    )
+  }
 
 }
 

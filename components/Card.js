@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 
-import { theme } from '../constants'
+import { CardTitle } from './AppText'
+import { AppColors, AppLayout } from '../constants'
 
 /**
  * <Card />
@@ -9,19 +10,27 @@ import { theme } from '../constants'
 
 class Card extends React.Component {
 
+  renderCardHeader() {
+    return (    
+      <View style={styles.cardHeader}>
+        <CardTitle>
+          {this.props.title}
+        </CardTitle>
+      </View>
+    )
+  }
+
   render() {
+    const { title } = this.props
+
     return (
       <View style={styles.card}>
-        <View style={styles.cardTitle}>
-          <Text style={styles.titleText}>
-            {this.props.title}
-          </Text>
-        </View>
-        <View style={styles.content}>
+        {title && this.renderCardHeader()}
+        <View style={{ ...styles.content, ...this.props.style }}>
           {this.props.children}
         </View>
       </View>
-    )
+    ) 
   }
 
 }
@@ -33,21 +42,18 @@ class Card extends React.Component {
 
 const styles = StyleSheet.create({
   card: {
-    padding: theme.layoutSizes.cardPadding,
-    backgroundColor: theme.colors.grayBlue,
-    borderRadius: 12
+    flex: 1,
+    padding: AppLayout.cardPadding,
+    backgroundColor: AppColors.grayBlue,
+    borderRadius: 12,
   },
-  cardTitle: {
+  cardHeader: {
     flexDirection: 'row',
-    alignItems: 'center'
-  },
-  titleText: {
-    fontSize: 14,
-    fontFamily: 'f1-display-font',
-    color: theme.colors.whiteFlash
+    alignItems: 'center',
+    marginBottom: 14
   },
   content: {
-    marginTop: 14
+    flex: 1
   }
 })
 

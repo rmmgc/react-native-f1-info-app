@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native'
 
-import { HeaderTitle } from './AppText'
+import { DisplayText } from './AppText'
 import { AppColors, AppLayout } from '../constants'
 
 /**
@@ -20,7 +20,7 @@ class AppHeader extends React.Component {
               source={require('../assets/f1_logo_contrast.png')}
               resizeMode='contain'
             />
-            <HeaderTitle style={styles.screenTitle}>Homepage</HeaderTitle>
+            <DisplayText>Home</DisplayText>
           </View>
         </View>
       </View>
@@ -49,14 +49,12 @@ const styles = StyleSheet.create({
   },
   headerInfo: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   appLogo: {
     width: 62,
     marginRight: 10
-  },
-  screenTitle: {
-    
   }
 })
 
