@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 
-import { DisplayText, BaseText } from './AppText'
+import { DisplayBold, DisplayText } from './AppText'
 import { AppColors } from '../constants'
 
 /**
@@ -14,16 +14,16 @@ class Countdown extends React.Component {
     return (
       <View style={styles.countdown}>
         <View style={styles.counter}>
-          <DisplayText style={styles.counterNumber}>{this.props.days}</DisplayText>
-          <BaseText style={styles.counterLabel}>days</BaseText>
+          <DisplayBold style={styles.counterNumber}>{this.props.days}</DisplayBold>
+          <DisplayText style={styles.counterLabel}>days</DisplayText>
         </View>
         <View style={styles.counter}>
-          <DisplayText style={styles.counterNumber}>{this.props.hours}</DisplayText>
-          <BaseText style={styles.counterLabel}>hours</BaseText>
+          <DisplayBold style={styles.counterNumber}>{this.props.hours}</DisplayBold>
+          <DisplayText style={styles.counterLabel}>hours</DisplayText>
         </View>
         <View style={styles.counter}>
-          <DisplayText style={styles.counterNumber}>{this.props.minutes}</DisplayText>
-          <BaseText style={styles.counterLabel}>minutes</BaseText>
+          <DisplayBold style={styles.counterNumber}>{this.props.minutes}</DisplayBold>
+          <DisplayText style={styles.counterLabel}>minutes</DisplayText>
         </View>
       </View>
     )

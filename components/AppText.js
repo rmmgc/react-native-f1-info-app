@@ -18,17 +18,17 @@ export function DisplayText({ style, ...props }) {
   )
 }
 
-export function Heading1({ style, ...props }) {
+export function DisplayBold({ style, ...props }) {
   return (
-    <Text style={[styles.h1, style]} {...props}>
+    <Text style={[styles.displayBold, style]} {...props}>
       {props.children}
     </Text>
   )
 }
 
-export function CardTitle({ style, ...props }) {
+export function Heading1({ style, ...props }) {
   return (
-    <Text style={[styles.cardTitle, style]} {...props}>
+    <Text style={[styles.h1, style]} {...props}>
       {props.children}
     </Text>
   )
@@ -45,15 +45,14 @@ const styles = StyleSheet.create({
     color: AppColors.whiteFlash,
     fontSize: 14
   },
+  displayBold: {
+    fontFamily: AppFonts.displayBold,
+    color: AppColors.whiteFlash,
+    fontSize: 14
+  },
   h1: {
     fontFamily: AppFonts.display,
     color: AppColors.whiteFlash,
     fontSize: 26
-  },
-  cardTitle: {
-    fontFamily: AppFonts.display,
-    color: AppColors.whiteFlash,
-    fontSize: 13,
-    textTransform: 'uppercase'
   }
 })

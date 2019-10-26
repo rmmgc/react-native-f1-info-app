@@ -9,7 +9,7 @@ import News from './screens/News'
 import Liderboard from './screens/Liderboard'
 import Tracks from './screens/Tracks'
 
-import { AppColors } from './constants'
+import { AppColors, AppFonts } from './constants'
 
 
 const AppNavigator = createBottomTabNavigator(

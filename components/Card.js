@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
-import { CardTitle } from './AppText'
+import { DisplayText, DisplayBold } from './AppText'
 import { AppColors, AppLayout } from '../constants'
 
 /**
@@ -13,9 +13,9 @@ class Card extends React.Component {
   renderCardHeader() {
     return (    
       <View style={styles.cardHeader}>
-        <CardTitle>
+        <DisplayBold>
           {this.props.title}
-        </CardTitle>
+        </DisplayBold>
       </View>
     )
   }
@@ -24,9 +24,9 @@ class Card extends React.Component {
     const { title } = this.props
 
     return (
-      <View style={styles.card}>
+      <View style={{ ...styles.card, ...this.props.wrapperStyle }}>
         {title && this.renderCardHeader()}
-        <View style={{ ...styles.content, ...this.props.style }}>
+        <View style={{ ...styles.content, ...this.props.contentStyle }}>
           {this.props.children}
         </View>
       </View>
@@ -46,11 +46,13 @@ const styles = StyleSheet.create({
     padding: AppLayout.cardPadding,
     backgroundColor: AppColors.grayBlue,
     borderRadius: 12,
+    marginTop: AppLayout.screenMargin,
+    overflow: 'hidden'
   },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 14
+    marginBottom: AppLayout.screenMargin
   },
   content: {
     flex: 1

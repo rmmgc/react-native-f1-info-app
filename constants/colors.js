@@ -18,6 +18,7 @@ const THEME_COLORS = {
   redPhantone: '#EF233C',
   redCandy: '#D90429',
   tabNavActiveItem: '#3C454C',
+  white: '#FFFFFF',
   ...TEAM_COLORS
 }
 

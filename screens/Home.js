@@ -4,16 +4,17 @@ import {
   View, 
   StyleSheet, 
   TouchableOpacity, 
-  Image 
+  Image,
+  Dimensions
 } from 'react-native'
-
+import { Ionicons } from '@expo/vector-icons'
 
 /**
  * Custom components
  */
 
 import AppHeader from '../components/AppHeader'
-import { DisplayText, BaseText } from '../components/AppText'
+import { DisplayBold, BaseText, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
 import Countdown from '../components/Countdown'
 import Badge from '../components/Badge'
@@ -25,6 +26,8 @@ import Badge from '../components/Badge'
 
 import { AppLayout, AppColors } from '../constants'
 
+const { width } = Dimensions.get('window')
+const CARUSEL_CARD_WIDTH = width - 56
 
 /**
  * <Home />
@@ -32,15 +35,21 @@ import { AppLayout, AppColors } from '../constants'
 
 class Home extends React.Component {
 
+  componentDidMount() {
+		setTimeout(() => { 
+      this.scrollView.scrollTo({x: -30}) 
+    }, 1)
+	}
+
   render() {
     return (
       <View style={styles.screen}>
         <AppHeader />
         <ScrollView style={styles.mainContent} >
-          <TouchableOpacity style={{ flex: 1 }}>
+          <TouchableOpacity style={styles.baseMargin}>
             <Card 
               title="Mexico GP - 2019"
-              style={{ flexDirection: 'row', alignItems: 'center' }}
+              contentStyle={{ flexDirection: 'row', alignItems: 'center' }}
             >
               <Countdown 
                 days="02"
@@ -51,23 +60,94 @@ class Home extends React.Component {
             </Card>
           </TouchableOpacity>
 
-          <View style={{ flex: 1, marginTop: 14 }}>
-            <View style={{ flex: 1, flexDirection: 'row', marginBottom: 4 }}>
-              <View style={{ flex: 1, height: 50, backgroundColor: AppColors.grayBlue, marginRight: 4}}>
+          <ScrollView 
+            ref={(scrollView) => { this.scrollView = scrollView }}
+            style={styles.carouselContainer}
+            contentContainerStyle={styles.carouselInnerContainer}
+            horizontal
+            decelerationRate={0}
+            snapToInterval={width - (80 - AppLayout.screenMargin)}
+            snapToAlignment={"center"}
+            showsHorizontalScrollIndicator={false}
+          >
+            <Card wrapperStyle={styles.carouselItem}>
+              <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
+                <Image 
+                  style={{width: 300, height: undefined, aspectRatio: 1}}
+                  source={require('../assets/cars/ferrari.png')}
+                  resizeMode='contain'
+                />
+              </View>
+              <View style={{alignItems: 'flex-end'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>1 Ferrari</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+              </View>
+            </Card>
+            <Card wrapperStyle={styles.carouselItem}>
+              <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
+                <Image 
+                  style={{width: 300, height: undefined, aspectRatio: 1}}
+                  source={require('../assets/cars/mercedes.png')}
+                  resizeMode='contain'
+                />
+              </View>
+              <View style={{alignItems: 'flex-end'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>2 Mercedes</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>391 Points</DisplayText>
+              </View>
+            </Card>
+            <Card wrapperStyle={styles.carouselItem}>
+              <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
+                <Image 
+                  style={{width: 300, height: undefined, aspectRatio: 1}}
+                  source={require('../assets/cars/alfaromeo.png')}
+                  resizeMode='contain'
+                />
+              </View>
+              <View style={{alignItems: 'flex-end'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>3 Alfa Romeo</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>354 Points</DisplayText>
+              </View>
+            </Card>
+            <Card wrapperStyle={styles.carouselItem}>
+              <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
+                <Image 
+                  style={{width: 300, height: undefined, aspectRatio: 1}}
+                  source={require('../assets/cars/redbull.png')}
+                  resizeMode='contain'
+                />
+              </View>
+              <View style={{alignItems: 'flex-end'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>4 Red Bull</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>326 Points</DisplayText>
+              </View>
+            </Card>
+            <Card wrapperStyle={styles.carouselItem}>
+              <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
+                <Image 
+                  style={{width: 300, height: undefined, aspectRatio: 1}}
+                  source={require('../assets/cars/mclaren.png')}
+                  resizeMode='contain'
+                />
+              </View>
+              <View style={{alignItems: 'flex-end'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>5 McLaren</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>289 Points</DisplayText>
+              </View>
+            </Card>
+          </ScrollView>
 
-              </View>
-              <View style={{ flex: 1, height: 50, backgroundColor: AppColors.grayBlue}}>
-                
-              </View>
-            </View>
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <View style={{ flex: 1, height: 50, backgroundColor: AppColors.grayBlue, marginRight: 4}}>
+          <View style={styles.baseMargin}>
 
-              </View>
-              <View style={{ flex: 1, height: 50, backgroundColor: AppColors.grayBlue}}>
+            <TouchableOpacity style={{ flex: 1 }}>
+              <Card 
+                title="Drivers"
+              >
                 
-              </View>
-            </View>
+              </Card>
+            </TouchableOpacity>
+
+            <View style={{height: 500}}></View>
           </View>
 
         </ScrollView>
@@ -87,8 +167,23 @@ const styles = StyleSheet.create({
     flex: 1
   },
   mainContent: {
-    margin: AppLayout.screenMargin,
     flex: 1
+  },
+  baseMargin: {
+    flex: 1,
+    marginHorizontal: AppLayout.screenMargin
+  },
+  carouselContainer: {
+    flex: 1,
+  },
+  carouselInnerContainer: {
+    marginHorizontal: AppLayout.screenMargin/2, 
+    paddingRight: AppLayout.screenMargin
+  },
+  carouselItem: {
+    width: width - 80,
+    marginHorizontal: AppLayout.screenMargin/2,
+    height: 120
   }
 })
 

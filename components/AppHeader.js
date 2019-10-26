@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   header: {
     height: 80,
     flexDirection: 'row',
-    backgroundColor: AppColors.redCandy,
+    backgroundColor: AppColors.redCandy
   },
   container: {
     flexDirection: 'row',
