@@ -16,7 +16,7 @@ const THEME_COLORS = {
   grayBlue: '#2C343A',
   whiteFlash: '#EDF2F4',
   redPhantone: '#EF233C',
-  redCandy: '#D90429',
+  redCandy: '#de1c16',
   tabNavActiveItem: '#3C454C',
   white: '#FFFFFF',
   ...TEAM_COLORS

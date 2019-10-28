@@ -66,8 +66,8 @@ const AppNavigator = createBottomTabNavigator(
       return (
         <TabBar
           activeColors={AppColors.whiteFlash}
-          activeTabBackgrounds={AppColors.gunmetal}
-          tabBarBackground={AppColors.grayBlue}
+          activeTabBackgrounds={AppColors.grayBlue}
+          tabBarBackground={AppColors.tabNavActiveItem}
           {...props}
         />
       )
