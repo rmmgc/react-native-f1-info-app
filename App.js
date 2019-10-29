@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 
-import AppContainer from './navigator'
+import AppContainer from './navigation/MainTabNavigator'
 import { AppColors } from './constants'
 
 export default class App extends React.Component {
