@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Image } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { TabBar } from 'react-native-animated-nav-tab-bar'
@@ -28,7 +28,7 @@ const AppNavigator = createBottomTabNavigator(
           return (
             <Image
               style={{ width: 24, height: 24 }}
-              source={require('./assets/icons/toolbar_free_practice.png')}
+              source={require('../assets/icons/toolbar_free_practice.png')}
               resizeMode='contain'
             />
           )
@@ -37,7 +37,7 @@ const AppNavigator = createBottomTabNavigator(
           return (
             <Image
               style={{ width: 22, height: 22 }}
-              source={require('./assets/icons/toolbar_news.png')}
+              source={require('../assets/icons/toolbar_news.png')}
               resizeMode='contain'
             />
           )
@@ -46,7 +46,7 @@ const AppNavigator = createBottomTabNavigator(
           return (
             <Image
               style={{ width: 22, height: 22 }}
-              source={require('./assets/icons/toolbar_leaderboards.png')}
+              source={require('../assets/icons/toolbar_leaderboards.png')}
               resizeMode='contain'
             />
           )
@@ -55,7 +55,7 @@ const AppNavigator = createBottomTabNavigator(
           return (
             <Image
               style={{ width: 22, height: 22 }}
-              source={require('./assets/icons/toolbar_race.png')}
+              source={require('../assets/icons/toolbar_race.png')}
               resizeMode='contain'
             />
           )

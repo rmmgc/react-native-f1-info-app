@@ -74,7 +74,7 @@ class Home extends React.Component {
                 <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
                   <Image 
                     style={{flex: 1, width: undefined, height: undefined}}
-                    source={require('../assets/drivers/vettel/helmet.png')}
+                    source={require('../assets/images/drivers/vettel/helmet.png')}
                     resizeMode='contain'
                   />
                 </View>
@@ -94,7 +94,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
                 <Image 
                   style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/drivers/hamilton/helmet.png')}
+                  source={require('../assets/images/drivers/hamilton/helmet.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -113,7 +113,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
                 <Image 
                   style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/drivers/bottas/helmet.png')}
+                  source={require('../assets/images/drivers/bottas/helmet.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -132,7 +132,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
                 <Image 
                   style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/drivers/leclerc/helmet.png')}
+                  source={require('../assets/images/drivers/leclerc/helmet.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -151,7 +151,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
                 <Image 
                   style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/drivers/verstappen/helmet.png')}
+                  source={require('../assets/images/drivers/verstappen/helmet.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -198,7 +198,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
                   style={{width: 300, height: undefined, aspectRatio: 1}}
-                  source={require('../assets/cars/ferrari.png')}
+                  source={require('../assets/images/cars/ferrari.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -211,7 +211,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
                   style={{width: 300, height: undefined, aspectRatio: 1}}
-                  source={require('../assets/cars/mercedes.png')}
+                  source={require('../assets/images/cars/mercedes.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -224,7 +224,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
                   style={{width: 300, height: undefined, aspectRatio: 1}}
-                  source={require('../assets/cars/alfaromeo.png')}
+                  source={require('../assets/images/cars/alfaromeo.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -237,7 +237,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
                   style={{width: 300, height: undefined, aspectRatio: 1}}
-                  source={require('../assets/cars/redbull.png')}
+                  source={require('../assets/images/cars/redbull.png')}
                   resizeMode='contain'
                 />
               </View>
@@ -250,7 +250,7 @@ class Home extends React.Component {
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
                   style={{width: 300, height: undefined, aspectRatio: 1}}
-                  source={require('../assets/cars/mclaren.png')}
+                  source={require('../assets/images/cars/mclaren.png')}
                   resizeMode='contain'
                 />
               </View>

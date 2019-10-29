@@ -1,35 +1,53 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import * as Font from 'expo-font'
+import { Asset } from 'expo-asset'
 import { Ionicons } from '@expo/vector-icons'
 
 import AppContainer from './navigation/MainTabNavigator'
+import AppActivityIndicator from './components/AppActivityIndicator'
 import { AppColors } from './constants'
+import { fontsImporter } from './utils/importFonts'
+import { imagesImporter } from './utils/importImages'
+
 
 export default class App extends React.Component {
 
-  state = {
-    fontLoaded: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLoadingComplete: false,
+    }
   }
 
   async componentDidMount() {
     await Font.loadAsync({
-      'f1-display': require('./assets/fonts/f1/f1_display_font.ttf'),
-      'f1-display-bold': require('./assets/fonts/f1/f1_display_font_bold.ttf'),
-      'open-sans': require('./assets/fonts/opensans/OpenSans-Regular.ttf'),
-      'open-sans-semibold': require('./assets/fonts/opensans/OpenSans-SemiBold.ttf'),
+      ...fontsImporter,
       ...Ionicons.font
-    });
+    })
 
-    this.setState({ fontLoaded: true });
+    await Asset.loadAsync(imagesImporter)
+
+    setTimeout(() => {
+      this.setState({ isLoadingComplete: true });
+    }, 30000)
   }
   
   render() {
-    return (
-      <View style={styles.screen}>
-        {this.state.fontLoaded ? <AppContainer /> : <Text>Opss, we cant load APP</Text>}
-      </View>
-    )
+
+    if (!this.state.isLoadingComplete) {
+      return (
+        <AppActivityIndicator />
+      )
+    }
+    else {
+      return (
+        <View style={styles.screen}>
+          <AppContainer />
+        </View>
+      )
+    }
   }
 
 }
