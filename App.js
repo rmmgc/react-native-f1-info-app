@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Animated } from 'react-native'
 import * as Font from 'expo-font'
 import { Asset } from 'expo-asset'
 import { Ionicons } from '@expo/vector-icons'
@@ -18,6 +18,9 @@ export default class App extends React.Component {
 
     this.state = {
       isLoadingComplete: false,
+      hideLoadingScreen: false,
+      fadeOut: new Animated.Value(1),
+      fadeIn: new Animated.Value(0)
     }
   }
 
@@ -26,28 +29,41 @@ export default class App extends React.Component {
       ...fontsImporter,
       ...Ionicons.font
     })
-
     await Asset.loadAsync(imagesImporter)
 
-    setTimeout(() => {
-      this.setState({ isLoadingComplete: true });
-    }, 30000)
+    this.setState({ isLoadingComplete: true })
+
+    Animated.parallel([
+      Animated.timing(this.state.fadeOut, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true
+        }
+      ),
+      Animated.timing(this.state.fadeIn, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true
+        }
+      ),
+    ])
+    .start(() => {
+      this.setState({ hideLoadingScreen: true })
+    })
   }
   
   render() {
+    return (
+      <View style={styles.screen}>
+        {!this.state.hideLoadingScreen &&  <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
 
-    if (!this.state.isLoadingComplete) {
-      return (
-        <AppActivityIndicator />
-      )
-    }
-    else {
-      return (
-        <View style={styles.screen}>
-          <AppContainer />
-        </View>
-      )
-    }
+        {this.state.isLoadingComplete && 
+          <Animated.View style={{flex: 1, opacity: this.state.fadeIn}}>
+            <AppContainer />
+          </Animated.View>
+        }
+      </View>
+    )
   }
 
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, Animated } from 'react-native'
 
 import { AppColors } from '../constants'
 
@@ -9,11 +9,31 @@ import { AppColors } from '../constants'
 
 class AppActivityIndicator extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fadeOut: this.props.fadeOut
+    }
+  }
+
   render() {
     return (
-      <View style={styles.activityScreen}>
-        <ActivityIndicator size="large" color={AppColors.redCandy} />
-      </View>
+      <Animated.View
+        style={{
+          ...styles.loadingScrren, 
+          opacity: this.state.fadeOut,
+          transform: [
+            {perspective: 1000},
+            {scale: this.state.fadeOut.interpolate({
+              inputRange: [0, 1],
+              outputRange: [6, 1]
+            })}
+          ]
+        }}
+      >
+        <ActivityIndicator size="large" color={AppColors.whiteFlash} />
+      </Animated.View>
     )
   }
 
@@ -25,11 +45,15 @@ class AppActivityIndicator extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  activityScreen: {
+  loadingScrren: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal,
-    justifyContent: 'center', 
-    alignItems: 'center'
+    backgroundColor: AppColors.redCandy,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 999
   }
 })
 
