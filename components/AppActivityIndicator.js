@@ -21,7 +21,7 @@ class AppActivityIndicator extends React.Component {
     return (
       <Animated.View
         style={{
-          ...styles.loadingScrren, 
+          ...styles.loadingScrren,
           opacity: this.state.fadeOut,
           transform: [
             {perspective: 1000},
@@ -29,7 +29,8 @@ class AppActivityIndicator extends React.Component {
               inputRange: [0, 1],
               outputRange: [6, 1]
             })}
-          ]
+          ],
+          ...this.props.style
         }}
       >
         <ActivityIndicator size="large" color={AppColors.whiteFlash} />
@@ -47,7 +48,7 @@ class AppActivityIndicator extends React.Component {
 const styles = StyleSheet.create({
   loadingScrren: {
     flex: 1,
-    backgroundColor: AppColors.redCandy,
+    backgroundColor: AppColors.gunmetal,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',

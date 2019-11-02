@@ -51,7 +51,7 @@ class Home extends React.Component {
   render() {
     return (
       <View style={styles.screen}>
-        <AppHeader />
+        <AppHeader screenTitle="Home" />
 
         <ScrollView style={styles.mainContent} >
           <TouchableOpacity style={styles.baseMargin}>

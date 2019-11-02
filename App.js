@@ -4,7 +4,7 @@ import * as Font from 'expo-font'
 import { Asset } from 'expo-asset'
 import { Ionicons } from '@expo/vector-icons'
 
-import AppContainer from './navigation/MainTabNavigator'
+import AppContainer from './navigation/TabNavigatorMain'
 import AppActivityIndicator from './components/AppActivityIndicator'
 import { AppColors } from './constants'
 import { fontsImporter } from './utils/importFonts'

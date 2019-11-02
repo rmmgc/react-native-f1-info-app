@@ -20,7 +20,7 @@ class AppHeader extends React.Component {
               source={require('../assets/f1_logo_contrast.png')}
               resizeMode='contain'
             />
-            <DisplayText>Home</DisplayText>
+            <DisplayText>{this.props.screenTitle}</DisplayText>
           </View>
         </View>
       </View>
