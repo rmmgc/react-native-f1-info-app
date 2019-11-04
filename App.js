@@ -19,10 +19,11 @@ export default class App extends React.Component {
     this.state = {
       isLoadingComplete: false,
       hideLoadingScreen: false,
-      fadeOut: new Animated.Value(1),
-      fadeIn: new Animated.Value(0)
     }
   }
+
+  fadeOut = new Animated.Value(1)
+  fadeIn = new Animated.Value(0)
 
   async componentDidMount() {
     await Font.loadAsync({
@@ -34,13 +35,13 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true })
 
     Animated.parallel([
-      Animated.timing(this.state.fadeOut, {
+      Animated.timing(this.fadeOut, {
           toValue: 0,
           duration: 300,
           useNativeDriver: true
         }
       ),
-      Animated.timing(this.state.fadeIn, {
+      Animated.timing(this.fadeIn, {
           toValue: 1,
           duration: 800,
           useNativeDriver: true
@@ -55,10 +56,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.screen}>
-        {!this.state.hideLoadingScreen &&  <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
+        {!this.state.hideLoadingScreen &&  <AppActivityIndicator fadeOut={this.fadeOut} /> }
 
         {this.state.isLoadingComplete && 
-          <Animated.View style={{flex: 1, opacity: this.state.fadeIn}}>
+          <Animated.View style={{flex: 1, opacity: this.fadeIn}}>
             <AppContainer />
           </Animated.View>
         }

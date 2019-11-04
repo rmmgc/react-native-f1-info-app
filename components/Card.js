@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 
 import { DisplayText, DisplayBold } from './AppText'
 import { AppColors, AppLayout } from '../constants'
@@ -13,14 +14,30 @@ class Card extends React.Component {
   renderCardHeader() {
     return (    
       <View style={styles.cardHeader}>
-        <DisplayBold>
+        <DisplayBold style={{lineHeight: 18}}>
           {this.props.title}
         </DisplayBold>
       </View>
     )
   }
 
-  render() {
+  renderCardWithGradient() {
+    const { title, gradientColors } = this.props
+
+    return (
+      <LinearGradient 
+        style={{ ...styles.card, ...this.props.wrapperStyle }}
+        colors={gradientColors}
+      >
+        {title && this.renderCardHeader()}
+        <View style={{ ...styles.content, ...this.props.contentStyle }}>
+          {this.props.children}
+        </View>
+      </LinearGradient>
+    )
+  }
+
+  renderCard() {
     const { title } = this.props
 
     return (
@@ -30,7 +47,13 @@ class Card extends React.Component {
           {this.props.children}
         </View>
       </View>
-    ) 
+    )
+  }
+
+  render() {
+    const { gradientColors } = this.props
+
+    return gradientColors ? this.renderCardWithGradient() : this.renderCard()
   }
 
 }

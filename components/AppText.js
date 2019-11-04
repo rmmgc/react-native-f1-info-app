@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   displayText: {
     fontFamily: AppFonts.display,
     color: AppColors.whiteFlash,
-    fontSize: 14
+    fontSize: 14,
   },
   displayBold: {
     fontFamily: AppFonts.displayBold,

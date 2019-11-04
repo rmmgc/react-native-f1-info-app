@@ -1,8 +1,8 @@
 import React from 'react'
-import { Image } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { TabBar } from 'react-native-animated-nav-tab-bar'
+import { Ionicons } from '@expo/vector-icons'
 
 import Home from '../screens/Home'
 import News from '../screens/News'
@@ -27,34 +27,34 @@ const AppNavigator = createBottomTabNavigator(
         switch (routeName) {
           case 'Home': 
             return (
-              <Image
-                style={{ width: 24, height: 24 }}
-                source={require('../assets/icons/toolbar_free_practice.png')}
-                resizeMode='contain'
+              <Ionicons 
+                name="md-home" 
+                size={24} 
+                color="#FFFFFF" 
               />
             )
           case 'News':
             return (
-              <Image
-                style={{ width: 22, height: 22 }}
-                source={require('../assets/icons/toolbar_news.png')}
-                resizeMode='contain'
+              <Ionicons 
+                name="ios-paper" 
+                size={24} 
+                color="#FFFFFF" 
               />
             )
           case 'Liderboards':
             return (
-              <Image
-                style={{ width: 22, height: 22 }}
-                source={require('../assets/icons/toolbar_leaderboards.png')}
-                resizeMode='contain'
+              <Ionicons 
+                name="md-trophy" 
+                size={24} 
+                color="#FFFFFF" 
               />
             )
           case 'Tracks':
             return (
-              <Image
-                style={{ width: 22, height: 22 }}
-                source={require('../assets/icons/toolbar_race.png')}
-                resizeMode='contain'
+              <Ionicons 
+                name="md-calendar" 
+                size={24} 
+                color="#FFFFFF" 
               />
             )
         }
