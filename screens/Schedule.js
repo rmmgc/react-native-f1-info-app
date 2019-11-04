@@ -4,7 +4,6 @@ import {
   View, 
   StyleSheet, 
   TouchableOpacity, 
-  Image,
   Dimensions,
   Animated
 } from 'react-native'
@@ -17,8 +16,6 @@ import AppActivityIndicator from '../components/AppActivityIndicator'
 import AppHeader from '../components/AppHeader'
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
-import CardTouchable from '../components/CardTouchable'
-import Badge from '../components/Badge'
 import Carousel from '../components/Carousel'
 
 
@@ -56,10 +53,10 @@ const FLAG_GRADIENT = {
 
 
 /**
- * <Tracks />
+ * <Schedule />
  */
 
-class Tracks extends React.Component {
+class Schedule extends React.Component {
 
   state = {
     races: [],
@@ -114,36 +111,57 @@ class Tracks extends React.Component {
     }
   }
 
+  onRacePressHandler(circuitId, circuitName) {
+    this.props.navigation.navigate('Circuit', {
+      circuitId,
+      circuitName
+    })
+  }
+
   renderRacesList() {
     return this.state.races.map((singleChunk, index) => {
+      const firstCircuitId = singleChunk[0].Circuit.circuitId
+      const firstRaceName = singleChunk[0].raceName
+      const secondCircuitId = singleChunk[1] && singleChunk[1].Circuit.circuitId
+      const secondRaceName = singleChunk[1] && singleChunk[1].raceName
+
       return (
         <View 
           key={index}
           style={{ flexDirection: 'row', justifyContent: 'space-between' }}
         >
-          <Card 
-            wrapperStyle={styles.gridItem}
-            gradientColors={FLAG_GRADIENT[singleChunk[0].Circuit.circuitId]}
+          <TouchableOpacity
+            onPress={this.onRacePressHandler.bind(this, firstCircuitId, firstRaceName)}
           >
-            <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <View>
-                <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[0].raceName}</DisplayBold>
-              </View>
-              <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[0].date}</DisplayText>
-            </View>
-          </Card>
-          {singleChunk[1] && 
             <Card 
               wrapperStyle={styles.gridItem}
-              gradientColors={FLAG_GRADIENT[singleChunk[1].Circuit.circuitId]}
+              gradientColors={FLAG_GRADIENT[firstCircuitId]}
             >
               <View style={{flex: 1, justifyContent: 'flex-end'}}>
                 <View>
-                  <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[1].raceName}</DisplayBold>
+                  <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[0].raceName}</DisplayBold>
                 </View>
-                <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[1].date}</DisplayText>
+                <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[0].date}</DisplayText>
               </View>
-            </Card> 
+            </Card>
+          </TouchableOpacity>
+          
+          {singleChunk[1] && 
+            <TouchableOpacity
+              onPress={this.onRacePressHandler.bind(this, secondCircuitId, secondRaceName)}
+            >
+              <Card 
+                wrapperStyle={styles.gridItem}
+                gradientColors={FLAG_GRADIENT[secondCircuitId]}
+              >
+                <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                  <View>
+                    <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[1].raceName}</DisplayBold>
+                  </View>
+                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[1].date}</DisplayText>
+                </View>
+              </Card> 
+            </TouchableOpacity>
           } 
         </View>
       )
@@ -232,7 +250,8 @@ class Tracks extends React.Component {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
+    flex: 1,
+    backgroundColor: AppColors.gunmetal
   },
   mainContent: {
     flex: 1
@@ -297,4 +316,4 @@ const styles = StyleSheet.create({
  * Exports
  */
 
-export default Tracks
+export default Schedule

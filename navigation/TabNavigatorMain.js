@@ -6,15 +6,15 @@ import { Ionicons } from '@expo/vector-icons'
 
 import Home from '../screens/Home'
 import News from '../screens/News'
-import Tracks from '../screens/Tracks'
 import Liderboards from '../screens/Liderboards'
+import ScheduleStack from './ScheduleStackNavigator'
 
 import { AppColors } from '../constants'
 
 const AppNavigator = createBottomTabNavigator(
   {
     Home,
-    Tracks,
+    Schedule: ScheduleStack,
     Liderboards,
     News
   }, 
@@ -49,7 +49,7 @@ const AppNavigator = createBottomTabNavigator(
                 color="#FFFFFF" 
               />
             )
-          case 'Tracks':
+          case 'Schedule':
             return (
               <Ionicons 
                 name="md-calendar" 
