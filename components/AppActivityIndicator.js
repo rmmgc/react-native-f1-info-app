@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator, Animated } from 'react-native'
+import { StyleSheet, ActivityIndicator, Animated } from 'react-native'
 
 import { AppColors } from '../constants'
 
@@ -52,8 +52,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    width: '100%',
-    height: '100%',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     zIndex: 999
   }
 })

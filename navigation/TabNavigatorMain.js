@@ -33,10 +33,10 @@ const AppNavigator = createBottomTabNavigator(
                 color="#FFFFFF" 
               />
             )
-          case 'News':
+          case 'Schedule':
             return (
               <Ionicons 
-                name="ios-paper" 
+                name="md-calendar" 
                 size={24} 
                 color="#FFFFFF" 
               />
@@ -49,10 +49,10 @@ const AppNavigator = createBottomTabNavigator(
                 color="#FFFFFF" 
               />
             )
-          case 'Schedule':
+          case 'News':
             return (
               <Ionicons 
-                name="md-calendar" 
+                name="ios-paper" 
                 size={24} 
                 color="#FFFFFF" 
               />

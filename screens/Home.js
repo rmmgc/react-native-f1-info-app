@@ -70,102 +70,89 @@ class Home extends React.Component {
 
           <Carousel snapToInterval={width - (80 - AppLayout.screenMargin)}>
             <TouchableOpacity onPress={this.onClickHandler}>
-              <Card wrapperStyle={{...styles.carouselItem, ...styles.driverCard }}>
-                <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
+              <Card wrapperStyle={{...styles.carouselItem }}>
+                <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
                   <Image 
                     style={{flex: 1, width: undefined, height: undefined}}
                     source={require('../assets/images/drivers/vettel/helmet.png')}
                     resizeMode='contain'
                   />
                 </View>
-                <View style={{position: 'absolute', width: 46, height: 46, borderRadius: 46, backgroundColor: AppColors.white, justifyContent: 'center', alignItems: 'center', right: 18, top: 18}}>
-                  <DisplayBold style={{fontSize: 22, color: AppColors.redCandy}}>1</DisplayBold>
-                </View>
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                    <View><DisplayBold style={{marginRight: 6}}>Sebastian</DisplayBold></View>
-                    <View><DisplayBold style={{textTransform: 'uppercase'}}>vettel</DisplayBold></View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+                  <View style={{marginBottom: 15}}>
+                    <DisplayBold style={{fontSize: 26,marginTop: 10, marginRight: 14}}>1</DisplayBold>
                   </View>
-                  <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                  <View>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Sebastian</DisplayBold>
+                    <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>vettel</DisplayBold>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                  </View>
                 </View>
               </Card>
             </TouchableOpacity>
-            <Card wrapperStyle={{...styles.carouselItem, ...styles.driverCard }}>
-              <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
-                <Image 
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/images/drivers/hamilton/helmet.png')}
-                  resizeMode='contain'
-                />
-              </View>
-              <View style={{position: 'absolute', width: 46, height: 46, borderRadius: 46, backgroundColor: AppColors.white, justifyContent: 'center', alignItems: 'center', right: 18, top: 18}}>
-                <DisplayBold style={{fontSize: 22, color: AppColors.redCandy}}>2</DisplayBold>
-              </View>
-              <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                  <View><DisplayBold style={{marginRight: 6}}>Lewis</DisplayBold></View>
-                  <View><DisplayBold style={{textTransform: 'uppercase'}}>Hamilton</DisplayBold></View>
+            <TouchableOpacity onPress={this.onClickHandler}>
+              <Card wrapperStyle={{...styles.carouselItem }}>
+                <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
+                  <Image 
+                    style={{flex: 1, width: undefined, height: undefined}}
+                    source={require('../assets/images/drivers/hamilton/helmet.png')}
+                    resizeMode='contain'
+                  />
                 </View>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
-              </View>
-            </Card>
-            <Card wrapperStyle={{...styles.carouselItem, ...styles.driverCard }}>
-              <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
-                <Image 
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/images/drivers/bottas/helmet.png')}
-                  resizeMode='contain'
-                />
-              </View>
-              <View style={{position: 'absolute', width: 46, height: 46, borderRadius: 46, backgroundColor: AppColors.white, justifyContent: 'center', alignItems: 'center', right: 18, top: 18}}>
-                <DisplayBold style={{fontSize: 22, color: AppColors.redCandy}}>3</DisplayBold>
-              </View>
-              <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                  <View><DisplayBold style={{marginRight: 6}}>Valtteri</DisplayBold></View>
-                  <View><DisplayBold style={{textTransform: 'uppercase'}}>Bottas</DisplayBold></View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+                  <View style={{marginBottom: 15}}>
+                    <DisplayBold style={{fontSize: 26,marginTop: 10, marginRight: 14}}>2</DisplayBold>
+                  </View>
+                  <View style={{}}>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Lewis</DisplayBold>
+                    <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>hamilton</DisplayBold>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                  </View>
                 </View>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
-              </View>
-            </Card>
-            <Card wrapperStyle={{...styles.carouselItem, ...styles.driverCard }}>
-              <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
-                <Image 
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/images/drivers/leclerc/helmet.png')}
-                  resizeMode='contain'
-                />
-              </View>
-              <View style={{position: 'absolute', width: 46, height: 46, borderRadius: 46, backgroundColor: AppColors.white, justifyContent: 'center', alignItems: 'center', right: 18, top: 18}}>
-                <DisplayBold style={{fontSize: 22, color: AppColors.redCandy}}>4</DisplayBold>
-              </View>
-              <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                  <View><DisplayBold style={{marginRight: 6}}>Charles</DisplayBold></View>
-                  <View><DisplayBold style={{textTransform: 'uppercase'}}>Leclerc</DisplayBold></View>
+              </Card>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.onClickHandler}>
+              <Card wrapperStyle={{...styles.carouselItem }}>
+                <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
+                  <Image 
+                    style={{flex: 1, width: undefined, height: undefined}}
+                    source={require('../assets/images/drivers/bottas/helmet.png')}
+                    resizeMode='contain'
+                  />
                 </View>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
-              </View>
-            </Card>
-            <Card wrapperStyle={{...styles.carouselItem, ...styles.driverCard }}>
-              <View style={{position: 'absolute', height: 300, width: 300, overflow: 'hidden', top: -120, left: -100}}>
-                <Image 
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  source={require('../assets/images/drivers/verstappen/helmet.png')}
-                  resizeMode='contain'
-                />
-              </View>
-              <View style={{position: 'absolute', width: 46, height: 46, borderRadius: 46, backgroundColor: AppColors.white, justifyContent: 'center', alignItems: 'center', right: 18, top: 18}}>
-                <DisplayBold style={{fontSize: 22, color: AppColors.redCandy}}>5</DisplayBold>
-              </View>
-              <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                  <View><DisplayBold style={{marginRight: 6}}>Max</DisplayBold></View>
-                  <View><DisplayBold style={{textTransform: 'uppercase'}}>Verstappen</DisplayBold></View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+                  <View style={{marginBottom: 15}}> 
+                    <DisplayBold style={{fontSize: 26,marginTop: 10, marginRight: 14}}>3</DisplayBold>
+                  </View>
+                  <View style={{marginBottom: 15}}>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Valtteri</DisplayBold>
+                    <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>bottas</DisplayBold>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                  </View>
                 </View>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
-              </View>
-            </Card>
+              </Card>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.onClickHandler}>
+              <Card wrapperStyle={{...styles.carouselItem }}>
+                <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
+                  <Image 
+                    style={{flex: 1, width: undefined, height: undefined}}
+                    source={require('../assets/images/drivers/leclerc/helmet.png')}
+                    resizeMode='contain'
+                  />
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
+                  <View style={{marginBottom: 15}}>
+                    <DisplayBold style={{fontSize: 26,marginTop: 10, marginRight: 14}}>4</DisplayBold>
+                  </View>
+                  <View style={{}}>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Charles</DisplayBold>
+                    <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>leclerc</DisplayBold>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                  </View>
+                </View>
+              </Card>
+            </TouchableOpacity>
           </Carousel>
 
           <CardTouchable 

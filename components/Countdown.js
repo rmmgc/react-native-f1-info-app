@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     color: AppColors.redCandy
   },
   counterLabel: {
-    fontSize: 8, 
+    fontSize: 10, 
     textTransform: 'uppercase'
   }
 })

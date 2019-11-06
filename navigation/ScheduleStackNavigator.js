@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { DisplayText } from '../components/AppText'
 
 import Schedule from '../screens/Schedule'
-import Circuit from '../screens/Circuit'
+import Race from '../screens/Race'
 
 import { AppColors } from '../constants'
 
@@ -16,15 +16,16 @@ const ScheduleStack = createStackNavigator(
         headerShown: false
       }),
     },
-    Circuit: {
-      screen: Circuit,
+    Race: {
+      screen: Race,
       navigationOptions: ({ navigation }) => ({
-        headerTitle: <DisplayText>{navigation.state.params.circuitName}</DisplayText>
+        headerTitle: <DisplayText>{navigation.state.params.raceName}</DisplayText>
       }),
     },
   },
   {
     initialRouteName: 'Schedule',
+    cardStyle: {backgroundColor: AppColors.gunmetal},
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: AppColors.redCandy

@@ -40,7 +40,7 @@ class CardTouchable extends React.Component {
               />
             </View>
             <View style={styles.headerTitle}>
-              <DisplayBold>{this.props.cardTitle}</DisplayBold>
+              <DisplayBold style={{textTransform: 'uppercase'}}>{this.props.cardTitle}</DisplayBold>
             </View>
           </View>
           <View style={{...styles.description, marginLeft: AppLayout.screenMargin + this.props.iconSize - 4}}>

@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "dayjs": "^1.8.16",
     "expo": "^35.0.0",
     "expo-asset": "~7.0.0",
     "expo-font": "~7.0.0",

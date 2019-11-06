@@ -7,6 +7,7 @@ import {
   Dimensions,
   Animated
 } from 'react-native'
+import dayjs from 'dayjs'
 
 /**
  * Custom components
@@ -27,31 +28,6 @@ import { AppLayout, AppColors } from '../constants'
 
 const { width } = Dimensions.get('window')
 
-const FLAG_GRADIENT = {
-  'spa': ['#000000', '#fae042'],
-  'monza': ['#409247', '#ce2a37'],
-  'marina_bay': ['#ed2939', '#ffffff'],
-  'sochi': ['#ffffff', '#0239a6'],
-  'suzuka': ['#ffffff', '#bd172c'],
-  'hungaroring': ['#ce1926', '#3a8751'],
-  'hockenheimring': ['#000000', '#dd1b00'],
-  'silverstone': ['#00247b', '#d01a2c'],
-  'red_bull_ring': ['#ed2939', '#ffffff'],
-  'ricard': ['#002294', '#ffffff'],
-  'villeneuve': ['#ee1e03', '#ffffff'],
-  'monaco': ['#ce1926', '#ffffff'],
-  'catalunya': ['#c5171e', '#fbc400'],
-  'BAK': ['#3199c4', '#4dae64'],
-  'shanghai': ['#df2911', '#fdd42f'],
-  'bahrain': ['#ce1926', '#ffffff'],
-  'albert_park': ['#05178c', '#fdfeff'],
-  'rodriguez': ['#2a6848', '#ce1926'],
-  'americas': ['#85323e', '#fdf4fa'],
-  'interlagos': ['#469b38', '#ebe731'],
-  'yas_marina': ['#469e4a', '#000000']
-}
-
-
 /**
  * <Schedule />
  */
@@ -59,6 +35,7 @@ const FLAG_GRADIENT = {
 class Schedule extends React.Component {
 
   state = {
+    nextRaces: [],
     races: [],
     isAnimationOver: false,
     fadeOut: new Animated.Value(1),
@@ -72,7 +49,9 @@ class Schedule extends React.Component {
 
       // Extract data from response
       response = response.MRData.RaceTable.Races
+
       let chunkedResponse = []
+      let scheduledRaces = []
       let singleChunk = []
       response.forEach((race, index) => {
         if(singleChunk.length < 2)
@@ -85,9 +64,13 @@ class Schedule extends React.Component {
           if(response.length - 1 === index)
             chunkedResponse.push(singleChunk)
         }
+
+        if(dayjs(race.date).isAfter(dayjs()))
+          scheduledRaces.push(race)
       })
 
       this.setState({ races: chunkedResponse })
+      this.setState({ nextRaces: scheduledRaces })
 
       Animated.parallel([
         Animated.timing(this.state.fadeOut, {
@@ -111,58 +94,67 @@ class Schedule extends React.Component {
     }
   }
 
-  onRacePressHandler(circuitId, circuitName) {
-    this.props.navigation.navigate('Circuit', {
-      circuitId,
-      circuitName
+  onRacePressHandler(circuitData, raceName) {
+    this.props.navigation.navigate('Race', {
+      circuitData,
+      raceName
+    })
+  }
+
+  renderRacesListItem(race, carousel = false) {
+    if(!race)
+      return
+    
+    const circuitData   = race.Circuit
+    const raceName      = race.raceName
+    const eventStartDay = dayjs(race.date).subtract(2, 'days').format('DD')
+    const eventEndDay   = dayjs(race.date).format('DD')
+    const eventMonth    = dayjs(race.date).format('MMM').toUpperCase()
+    const cardStyle     = carousel 
+                          ? styles.carouselItem 
+                          : styles.gridItem
+    const gradient      = carousel 
+                          ? [AppColors.gunmetal, AppColors.redCandy]  
+                          : [AppColors.grayBlue, AppColors.redCandy]
+
+    return (
+      <TouchableOpacity
+        key={circuitData.circuitId}
+        onPress={this.onRacePressHandler.bind(this, circuitData, raceName)}
+      >
+        <Card 
+          wrapperStyle={cardStyle}
+          gradientColors={gradient}
+        >
+          <View style={{flex: 1, justifyContent: 'flex-end'}}>
+            <View>
+              <DisplayBold style={styles.eventTitle}>{raceName}</DisplayBold>
+            </View>
+            <DisplayText style={styles.eventDate}>
+              {`${eventStartDay} - ${eventEndDay} ${eventMonth}`}
+            </DisplayText>
+          </View>
+        </Card>
+      </TouchableOpacity>
+    )
+  }
+
+  renderNextRacesList() {
+    return this.state.nextRaces.map(race => {
+      return this.renderRacesListItem(race, true)
     })
   }
 
   renderRacesList() {
     return this.state.races.map((singleChunk, index) => {
-      const firstCircuitId = singleChunk[0].Circuit.circuitId
-      const firstRaceName = singleChunk[0].raceName
-      const secondCircuitId = singleChunk[1] && singleChunk[1].Circuit.circuitId
-      const secondRaceName = singleChunk[1] && singleChunk[1].raceName
-
       return (
         <View 
           key={index}
           style={{ flexDirection: 'row', justifyContent: 'space-between' }}
         >
-          <TouchableOpacity
-            onPress={this.onRacePressHandler.bind(this, firstCircuitId, firstRaceName)}
-          >
-            <Card 
-              wrapperStyle={styles.gridItem}
-              gradientColors={FLAG_GRADIENT[firstCircuitId]}
-            >
-              <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                <View>
-                  <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[0].raceName}</DisplayBold>
-                </View>
-                <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[0].date}</DisplayText>
-              </View>
-            </Card>
-          </TouchableOpacity>
-          
-          {singleChunk[1] && 
-            <TouchableOpacity
-              onPress={this.onRacePressHandler.bind(this, secondCircuitId, secondRaceName)}
-            >
-              <Card 
-                wrapperStyle={styles.gridItem}
-                gradientColors={FLAG_GRADIENT[secondCircuitId]}
-              >
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View>
-                    <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>{singleChunk[1].raceName}</DisplayBold>
-                  </View>
-                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>{singleChunk[1].date}</DisplayText>
-                </View>
-              </Card> 
-            </TouchableOpacity>
-          } 
+          {singleChunk.map(race => {
+            return this.renderRacesListItem(race)
+          })}
         </View>
       )
     })
@@ -173,69 +165,30 @@ class Schedule extends React.Component {
       <View style={styles.screen}>
         <AppHeader screenTitle="Schedule" />
 
-        {this.state.races.length > 0 && 
-        <ScrollView style={styles.mainContent} >
-          <View style={styles.nextRaces}>
-            <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.screenMargin }}>
-              <DisplayBold style={{fontSize: 16}}>2019 Up coming races</DisplayBold>
-              <DisplayText style={{marginTop: 4, fontSize: 12}}>Don't miss any rasce. Stay up to date</DisplayText>
+        {!this.state.isAnimationOver && <AppActivityIndicator style={{top: 80}} fadeOut={this.state.fadeOut} />}
+
+        {this.state.races.length > 0 &&
+          <Animated.ScrollView style={{...styles.mainContent, opacity: this.state.fadeIn}} >          
+            {this.state.nextRaces.length > 0 && 
+              <View style={{ ...styles.nextRaces }}>
+                <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.screenMargin }}>
+                  <DisplayBold>2019 Up coming races</DisplayBold>
+                  <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Don't miss any rasce. Stay up to date</DisplayText>
+                </View>
+                <Carousel snapToInterval={width/2 - (30 - AppLayout.screenMargin)}>
+                {this.renderNextRacesList()}
+                </Carousel>
+              </View>
+            }
+
+            <View style={{ ...styles.schedule }}>
+              <View style={styles.sectionTitle}>
+                <DisplayBold>2019 Reaces Schedule</DisplayBold>
+                <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Check out season races schedule</DisplayText>
+              </View>
+              {this.renderRacesList()}
             </View>
-            <Carousel snapToInterval={width/2 - (30 - AppLayout.screenMargin)}>
-              <Card 
-                gradientColors={FLAG_GRADIENT.rodriguez} 
-                wrapperStyle={styles.carouselItem}
-              >
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View>
-                    <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>Mexico grand prix 2019</DisplayBold>
-                  </View>
-                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>25 - 27 OCT</DisplayText>
-                </View>
-              </Card>
-              <Card 
-                gradientColors={FLAG_GRADIENT.americas}
-                wrapperStyle={styles.carouselItem}
-              >
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View>
-                    <DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>USA grand prix 2019</DisplayBold>
-                  </View>
-                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>25 - 27 OCT</DisplayText>
-                </View>
-              </Card>
-              <Card 
-                gradientColors={FLAG_GRADIENT.interlagos}
-                wrapperStyle={styles.carouselItem}
-              >
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                    <View><DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>Brazil grand prix 2019</DisplayBold></View>
-                  </View>
-                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>25 - 27 OCT</DisplayText>
-                </View>
-              </Card>
-              <Card 
-                gradientColors={FLAG_GRADIENT.yas_marina}
-                wrapperStyle={styles.carouselItem}
-              >
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                    <View><DisplayBold style={{...styles.eventTitle, ...styles.textHighlight}}>Abu Dabhi grand prix 2019</DisplayBold></View>
-                  </View>
-                  <DisplayText style={{...styles.eventDate, ...styles.textHighlight}}>25 - 27 OCT</DisplayText>
-                </View>
-              </Card>
-            </Carousel>
-          </View>
-          
-          <View style={styles.schedule}>
-            <View style={styles.sectionTitle}>
-              <DisplayBold style={{fontSize: 16}}>2019 Reaces Schedule</DisplayBold>
-              <DisplayText style={{marginTop: 4, fontSize: 12}}>Check out season races schedule</DisplayText>
-            </View>
-            {this.renderRacesList()}
-          </View>
-        </ScrollView>
+          </Animated.ScrollView>
         }
       </View>
     )
@@ -261,7 +214,7 @@ const styles = StyleSheet.create({
     marginHorizontal: AppLayout.screenMargin
   },
   sectionTitle: {
-    marginTop: 20,
+    marginTop: 26,
     marginBottom: 6
   },
   carouselContainer: {
@@ -275,11 +228,10 @@ const styles = StyleSheet.create({
     width: width/2 - 30,
     marginHorizontal: AppLayout.screenMargin/2,
     height: 200,
-    elevation: 3
   },
   schedule: {
     flex: 1,
-    marginTop: 30,
+    marginTop: 32,
     backgroundColor: AppColors.grayBlue,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
@@ -294,20 +246,11 @@ const styles = StyleSheet.create({
     fontSize: 12, 
     textTransform: 'uppercase'
   },
-  textHighlight: {
-    textShadowColor: AppColors.tabNavActiveItem, 
-    textShadowOffset: {
-      width: 1, 
-      height: 1
-    }, 
-    textShadowRadius: 3
-  },
   gridItem: {
     width: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
     maxWidth: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
     marginTop: AppLayout.screenMargin,
-    height: 200,
-    backgroundColor: AppColors.tabNavActiveItem
+    height: 200  
   }
 })
 
