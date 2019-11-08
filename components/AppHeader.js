@@ -1,8 +1,26 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { 
+  View, 
+  StyleSheet, 
+  Image, StatusBar 
+} from 'react-native'
+
+
+/**
+ * Custom Components
+ */
 
 import { DisplayText } from './AppText'
+
+
+/**
+ * Constants
+ */
+
 import { AppColors, AppLayout } from '../constants'
+
+const STATUS_BAR_HEIGHT = StatusBar.currentHeight
+
 
 /**
  * <AppHeader />
@@ -36,7 +54,7 @@ class AppHeader extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    height: 80,
+    height: 56 + STATUS_BAR_HEIGHT,
     flexDirection: 'row',
     backgroundColor: AppColors.backgroundRed
   },
@@ -45,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     marginHorizontal: AppLayout.baseMargin,
-    paddingTop: AppLayout.heraderTopPadding
+    paddingTop: STATUS_BAR_HEIGHT
   },
   headerInfo: {
     flex: 1,

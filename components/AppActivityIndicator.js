@@ -5,6 +5,7 @@ import {
   Animated 
 } from 'react-native'
 
+
 /**
  * Constants
  * 
@@ -12,6 +13,7 @@ import {
  */
 
 import { AppColors } from '../constants'
+
 
 /**
  * <AppActivityIndicator />
