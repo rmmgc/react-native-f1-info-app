@@ -1,3 +1,9 @@
+/**
+ * Font Definitions
+ * 
+ * Every font used in this App
+ */
+
 const DEFAULT_FONT = 'open-sans'
 const DISPLAY_FONT = 'f1-display'
 const DISPLAY_FONT_BOLD = 'f1-display-bold'
