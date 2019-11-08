@@ -1,8 +1,20 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+
+
+/**
+ * Custom Components
+ */
 
 import { DisplayBold, DisplayText } from './AppText'
+
+
+/**
+ * Constants
+ */
+
 import { AppColors } from '../constants'
+
 
 /**
  * <Countdown />

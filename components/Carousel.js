@@ -1,17 +1,22 @@
 import React from 'react'
-import { 
-  ScrollView, 
-  View, 
-  StyleSheet, 
-  Image, 
-  Dimensions 
-} from 'react-native'
+import { ScrollView, StyleSheet, Dimensions } from 'react-native'
+
+/**
+ * Custom Components
+ */
 
 import { DisplayBold, DisplayText } from './AppText'
 import Card from './Card'
+
+
+/**
+ * Constants
+ */
+
 import { AppColors, AppLayout } from '../constants'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
+
 
 /**
  * <Carousel />

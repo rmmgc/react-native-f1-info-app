@@ -3,21 +3,26 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 
+/**
+ * Custom Components
+ */
+
 import { DisplayText, DisplayBold } from './AppText'
 import Card from './Card'
+
+
+/**
+ * Constants
+ */
+
 import { AppLayout } from '../constants'
+
 
 /**
  * <CardTouchable />
  */
 
 class CardTouchable extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    // this.onClickHandler = this.onClickHandler.bind(this)
-  }
 
   onClickHandler(e, id) {
     console.log("POZVAN IN CARD TOUCHABLE!")
@@ -27,7 +32,7 @@ class CardTouchable extends React.Component {
   render() {
     return (
       <TouchableOpacity 
-        style={{...styles.baseMargin, ...this.props.style}}
+        style={{ ...styles.baseMargin, ...this.props.style }}
         onPress={this.onClickHandler.bind(this, 100)}
       >
         <Card>
@@ -39,12 +44,15 @@ class CardTouchable extends React.Component {
                 color={this.props.iconColor} 
               />
             </View>
-            <View style={styles.headerTitle}>
+            <View style={{ marginLeft: AppLayout.baseMargin }}>
               <DisplayBold style={{textTransform: 'uppercase'}}>{this.props.cardTitle}</DisplayBold>
             </View>
           </View>
-          <View style={{...styles.description, marginLeft: AppLayout.baseMargin + this.props.iconSize - 4}}>
-            <DisplayText style={styles.descriptionText}>{this.props.cardDescription}</DisplayText>
+          <View style={{
+            marginTop: AppLayout.baseMargin/2, 
+            marginLeft: AppLayout.baseMargin + this.props.iconSize - 4
+          }}>
+            <DisplayText style={{ fontSize: 12 }}>{this.props.cardDescription}</DisplayText>
           </View>
         </Card>
       </TouchableOpacity>
@@ -66,15 +74,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row', 
     alignItems: 'center'
-  },
-  headerTitle: {
-    marginLeft: AppLayout.baseMargin
-  },
-  description: {
-    marginTop: AppLayout.baseMargin/2
-  },
-  descriptionText: {
-    fontSize: 12
   }
 })
 

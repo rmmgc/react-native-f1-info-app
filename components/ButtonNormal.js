@@ -1,12 +1,22 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
+
+/**
+ * Custom Components
+ */
 
 import { DisplayBold } from './AppText'
 import { AppColors } from '../constants'
 
+
+/**
+ * Constants
+ */
+
 const gradientColors = [AppColors.strongRed, AppColors.lightRed]
+
 
 /**
  * <ButtonNormal />

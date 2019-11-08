@@ -2,8 +2,20 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
+
+/**
+ * Custom Components
+ */
+
 import { DisplayBold } from './AppText'
+
+
+/**
+ * Constants
+ */
+
 import { AppColors, AppLayout } from '../constants'
+
 
 /**
  * <Card />
@@ -14,7 +26,7 @@ class Card extends React.Component {
   renderCardHeader() {
     return (    
       <View style={styles.cardHeader}>
-        <DisplayBold style={{lineHeight: 18, textTransform: 'uppercase'}}>
+        <DisplayBold style={{ lineHeight: 18, textTransform: 'uppercase' }}>
           {this.props.title}
         </DisplayBold>
       </View>
