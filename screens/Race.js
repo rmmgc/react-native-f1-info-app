@@ -142,7 +142,7 @@ class Race extends React.Component {
       <View style={styles.screen}>
         <ScrollView style={{flex: 1}} > 
                    
-          <View style={{marginHorizontal: AppLayout.screenMargin}}>
+          <View style={{marginHorizontal: AppLayout.baseMargin}}>
             <Image 
               source={trackLayoutImage[circuitData.circuitId]}
               resizeMode='contain'
@@ -158,7 +158,7 @@ class Race extends React.Component {
               </View>
             </View>
 
-            <Carousel snapToInterval={width - (80 - AppLayout.screenMargin)}>
+            <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
               {this.renderEventSchedule()}
             </Carousel>
 
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   raceInfoSection: {
     marginTop: 30,
-    marginHorizontal: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin
   },
   sectionTitleDesc: {
     marginTop: 4, 
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   },
   carouselItem: {
     width: width - 80,
-    marginHorizontal: AppLayout.screenMargin/2,
+    marginHorizontal: AppLayout.baseMargin/2,
     backgroundColor: AppColors.backgroundMain
   },
   raceInfo: {

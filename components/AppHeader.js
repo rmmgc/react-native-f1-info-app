@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    marginHorizontal: AppLayout.screenMargin,
+    marginHorizontal: AppLayout.baseMargin,
     paddingTop: AppLayout.heraderTopPadding
   },
   headerInfo: {

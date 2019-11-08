@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   baseMargin: {
     flex: 1,
-    marginHorizontal: AppLayout.screenMargin,
+    marginHorizontal: AppLayout.baseMargin,
     borderRadius: 100
   },
   standing: {

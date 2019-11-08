@@ -1,7 +1,15 @@
+/**
+ * Layout Spacing Definitions
+ * 
+ * Basic content spacing
+ */
+
 const LAYOUT_SIZES = {
-  screenMargin: 14,
-  heraderTopPadding: 30,
-  cardPadding: 14
+  baseMargin: 14, 
+  basePadding: 14,
+  sectionMargin: 30,
+  sectionPadding: 26,
+  heraderTopPadding: 30
 }
 
 export default {

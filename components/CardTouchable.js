@@ -43,7 +43,7 @@ class CardTouchable extends React.Component {
               <DisplayBold style={{textTransform: 'uppercase'}}>{this.props.cardTitle}</DisplayBold>
             </View>
           </View>
-          <View style={{...styles.description, marginLeft: AppLayout.screenMargin + this.props.iconSize - 4}}>
+          <View style={{...styles.description, marginLeft: AppLayout.baseMargin + this.props.iconSize - 4}}>
             <DisplayText style={styles.descriptionText}>{this.props.cardDescription}</DisplayText>
           </View>
         </Card>
@@ -61,17 +61,17 @@ class CardTouchable extends React.Component {
 const styles = StyleSheet.create({
   baseMargin: {
     flex: 1,
-    marginHorizontal: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin
   },
   header: {
     flexDirection: 'row', 
     alignItems: 'center'
   },
   headerTitle: {
-    marginLeft: AppLayout.screenMargin
+    marginLeft: AppLayout.baseMargin
   },
   description: {
-    marginTop: AppLayout.screenMargin/2
+    marginTop: AppLayout.baseMargin/2
   },
   descriptionText: {
     fontSize: 12

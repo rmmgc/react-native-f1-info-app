@@ -66,16 +66,16 @@ class Card extends React.Component {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    padding: AppLayout.cardPadding,
+    padding: AppLayout.basePadding,
     backgroundColor: AppColors.cardBackground,
     borderRadius: 12,
-    marginTop: AppLayout.screenMargin,
+    marginTop: AppLayout.baseMargin,
     overflow: 'hidden'
   },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: AppLayout.screenMargin
+    marginBottom: AppLayout.baseMargin
   },
   content: {
     flex: 1

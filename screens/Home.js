@@ -68,7 +68,7 @@ class Home extends React.Component {
             </Card>
           </TouchableOpacity>
 
-          <Carousel snapToInterval={width - (80 - AppLayout.screenMargin)}>
+          <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
             <TouchableOpacity onPress={this.onClickHandler}>
               <Card wrapperStyle={{...styles.carouselItem }}>
                 <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
@@ -172,7 +172,7 @@ class Home extends React.Component {
             cardDescription="Check out current liderboard status!"
           />
 
-          <Carousel snapToInterval={width - (80 - AppLayout.screenMargin)}>
+          <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
             <Card wrapperStyle={styles.carouselItem}>
               <View style={{position: 'absolute', height: 200, overflow: 'hidden', bottom: -20, left: -88}}>
                 <Image 
@@ -277,19 +277,19 @@ const styles = StyleSheet.create({
   },
   baseMargin: {
     flex: 1,
-    marginHorizontal: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin
   },
 
   carouselContainer: {
     flex: 1,
   },
   carouselInnerContainer: {
-    marginHorizontal: AppLayout.screenMargin/2, 
-    paddingRight: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin/2, 
+    paddingRight: AppLayout.baseMargin
   },
   carouselItem: {
     width: width - 80,
-    marginHorizontal: AppLayout.screenMargin/2,
+    marginHorizontal: AppLayout.baseMargin/2,
     height: 120
   },
   driverCard: {

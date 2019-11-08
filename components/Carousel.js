@@ -26,7 +26,7 @@ class Carousel extends React.Component {
         contentContainerStyle={styles.innerContainer}
         horizontal
         decelerationRate={0}
-        // snapToInterval={width - (80 - AppLayout.screenMargin)}
+        // snapToInterval={width - (80 - AppLayout.baseMargin)}
         snapToAlignment={"center"}
         showsHorizontalScrollIndicator={false}
         {...this.props}
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   innerContainer: {
-    marginHorizontal: AppLayout.screenMargin/2, 
-    paddingRight: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin/2, 
+    paddingRight: AppLayout.baseMargin
   }
 })
 

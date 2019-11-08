@@ -40,7 +40,7 @@ class Driver extends React.Component {
                 {driverData.Driver.givenName} {driverData.Driver.familyName}
               </DisplayBold>
             </View>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 14, marginHorizontal: AppLayout.screenMargin}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 14, marginHorizontal: AppLayout.baseMargin}}>
               <Card wrapperStyle={styles.driverStat}>
                 <View style={{flex: 1}}>
                   <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
@@ -67,7 +67,7 @@ class Driver extends React.Component {
                 <View
                   style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
                 >
-                  <View style={{flex: 1, marginRight: AppLayout.screenMargin}}>
+                  <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>4</DisplayBold>
                     <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
                   </View>
@@ -79,7 +79,7 @@ class Driver extends React.Component {
                 <View
                   style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
                 >
-                  <View style={{flex: 1, marginRight: AppLayout.screenMargin}}>
+                  <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       2003
                     </DisplayBold>
@@ -132,21 +132,21 @@ const styles = StyleSheet.create({
     marginTop: -40
   },
   driverStat: {
-    width: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
-    maxWidth: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
+    width: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+    maxWidth: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
     height: 120
   },
   driverData: {
     paddingTop: 26,
-    paddingHorizontal: AppLayout.screenMargin,
-    marginTop: AppLayout.screenMargin,
+    paddingHorizontal: AppLayout.baseMargin,
+    marginTop: AppLayout.baseMargin,
     flex: 1,
     backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30
   },
   driverInfoContent: {
-    marginVertical: AppLayout.screenMargin
+    marginVertical: AppLayout.baseMargin
   },
   sectionTitleDesc: {
     marginTop: 4, 

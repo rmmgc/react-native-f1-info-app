@@ -170,11 +170,11 @@ class Schedule extends React.Component {
           <Animated.ScrollView style={{...styles.mainContent, opacity: this.state.fadeIn}} >          
             {this.state.nextRaces.length > 0 && 
               <View style={{ ...styles.nextRaces }}>
-                <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.screenMargin }}>
+                <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.baseMargin }}>
                   <DisplayBold>2019 Up coming races</DisplayBold>
                   <DisplayText style={{marginTop: 4, fontSize: 12, color: AppColors.textCaption}}>Don't miss any rasce. Stay up to date</DisplayText>
                 </View>
-                <Carousel snapToInterval={width/2 - (30 - AppLayout.screenMargin)}>
+                <Carousel snapToInterval={width/2 - (30 - AppLayout.baseMargin)}>
                 {this.renderNextRacesList()}
                 </Carousel>
               </View>
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   },
   baseMargin: {
     flex: 1,
-    marginHorizontal: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin
   },
   sectionTitle: {
     marginTop: 26,
@@ -220,12 +220,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   carouselInnerContainer: {
-    marginHorizontal: AppLayout.screenMargin/2, 
-    paddingRight: AppLayout.screenMargin
+    marginHorizontal: AppLayout.baseMargin/2, 
+    paddingRight: AppLayout.baseMargin
   },
   carouselItem: {
     width: width/2 - 30,
-    marginHorizontal: AppLayout.screenMargin/2,
+    marginHorizontal: AppLayout.baseMargin/2,
     height: 200,
   },
   schedule: {
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
-    paddingHorizontal: AppLayout.screenMargin
+    paddingHorizontal: AppLayout.baseMargin
   },
   eventTitle: {
     textTransform: 'uppercase', 
@@ -246,9 +246,9 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase'
   },
   gridItem: {
-    width: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
-    maxWidth: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
-    marginTop: AppLayout.screenMargin,
+    width: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+    maxWidth: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+    marginTop: AppLayout.baseMargin,
     height: 200  
   }
 })
