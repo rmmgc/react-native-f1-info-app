@@ -1,5 +1,15 @@
 import React from 'react'
-import { StyleSheet, ActivityIndicator, Animated } from 'react-native'
+import { 
+  StyleSheet, 
+  ActivityIndicator, 
+  Animated 
+} from 'react-native'
+
+/**
+ * Constants
+ * 
+ * Import App Theme colors from constants
+ */
 
 import { AppColors } from '../constants'
 
@@ -9,23 +19,25 @@ import { AppColors } from '../constants'
 
 class AppActivityIndicator extends React.Component {
 
-  constructor(props) {
-    super(props)
+  /**
+   * Animated value
+   * 
+   * Take animated value from props and 
+   * save it in fadeOut property
+   */
 
-    this.state = {
-      fadeOut: this.props.fadeOut
-    }
-  }
+  fadeOut = this.props.fadeOut
+
 
   render() {
     return (
       <Animated.View
         style={{
-          ...styles.loadingScrren,
-          opacity: this.state.fadeOut,
+          ...styles.loadingScreen,
+          opacity: this.fadeOut,
           transform: [
             {perspective: 1000},
-            {scale: this.state.fadeOut.interpolate({
+            {scale: this.fadeOut.interpolate({
               inputRange: [0, 1],
               outputRange: [6, 1]
             })}
@@ -33,7 +45,7 @@ class AppActivityIndicator extends React.Component {
           ...this.props.style
         }}
       >
-        <ActivityIndicator size="large" color={AppColors.whiteFlash} />
+        <ActivityIndicator size="large" color={AppColors.white} />
       </Animated.View>
     )
   }
@@ -46,7 +58,7 @@ class AppActivityIndicator extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  loadingScrren: {
+  loadingScreen: {
     flex: 1,
     backgroundColor: AppColors.gunmetal,
     justifyContent: 'center',
