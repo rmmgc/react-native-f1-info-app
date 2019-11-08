@@ -45,7 +45,21 @@ const driverProfileImage = {
   'vettel': require('../assets/images/drivers/vettel/profile.jpg')
 }
 
+const constructorCarImage = {
+  'alfa': require('../assets/images/cars/alfaromeo.png'),
+  'ferrari': require('../assets/images/cars/ferrari.png'),
+  'haas': require('../assets/images/cars/haas.png'),
+  'mclaren': require('../assets/images/cars/mclaren.png'),
+  'mercedes': require('../assets/images/cars/mercedes.png'),
+  'racing_point': require('../assets/images/cars/racingpoint.png'),
+  'red_bull': require('../assets/images/cars/redbull.png'),
+  'renault': require('../assets/images/cars/renault.png'),
+  'toro_rosso': require('../assets/images/cars/tororosso.png'),
+  'williams': require('../assets/images/cars/williams.png'),
+}
+
 export {
   trackLayoutImage,
-  driverProfileImage
+  driverProfileImage,
+  constructorCarImage
 }

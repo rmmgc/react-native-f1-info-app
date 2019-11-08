@@ -3,7 +3,6 @@ import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
 
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
-import Carousel from '../components/Carousel'
 
 import { AppLayout, AppColors } from '../constants'
 import { driverProfileImage } from '../utils/imagesCollection'
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
     marginTop: 4, 
     fontSize: 12, 
     color: '#87939c'
-  },
+  }
 })
 
 

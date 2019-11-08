@@ -1,8 +1,12 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 
-import { BaseText } from './AppText'
+
+import { DisplayBold } from './AppText'
 import { AppColors } from '../constants'
+
+const gradientColors = [AppColors.redCandy, AppColors.redPhantone]
 
 /**
  * <ButtonNormal />
@@ -14,8 +18,13 @@ class ButtonNormal extends React.Component {
     const { style } = this.props
 
     return (
-      <TouchableOpacity {...this.props} style={[styles.button, style]}>
-        <BaseText>{this.props.title}</BaseText>
+      <TouchableOpacity {...this.props} >
+        <LinearGradient 
+          style={[styles.button, style]}
+          colors={gradientColors}
+        >
+          <DisplayBold>{this.props.name}</DisplayBold>
+        </LinearGradient>
       </TouchableOpacity>
     )
   }
@@ -32,9 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 12,
     borderRadius: 30,
-    backgroundColor: AppColors.gunmetal,
-    borderWidth: 1,
-    borderColor: AppColors.redPhantone
+    backgroundColor: AppColors.gunmetal
   }
 })
 

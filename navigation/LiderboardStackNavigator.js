@@ -26,7 +26,7 @@ const ScheduleStack = createStackNavigator(
     Team: {
       screen: Team,
       navigationOptions: ({ navigation }) => ({
-        headerTitle: <DisplayText>{navigation.state.params.name}</DisplayText>
+        headerTitle: <DisplayText>{navigation.state.params.constructorData.Constructor.name}</DisplayText>
       }),
     }
   },

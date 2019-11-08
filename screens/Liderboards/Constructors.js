@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Animated } from 'react-native'
+import { View, StyleSheet, Animated, TouchableOpacity } from 'react-native'
 
 import AppActivityIndicator from '../../components/AppActivityIndicator'
 import Card from '../../components/Card'
@@ -52,6 +52,12 @@ class Constructors extends React.Component {
     }
   }
 
+  onConstrucotrPressHandler(constructorData) {
+    this.props.navigation.navigate('Team', {
+      constructorData,
+    })
+  }
+
   renderConstructorsList() {
     return this.state.constructorStandings.map((constructor, index) => {
       const highlightColor = index < 3 ? AppColors.redCandy : AppColors.tabNavActiveItem
@@ -59,36 +65,40 @@ class Constructors extends React.Component {
       const marginBottom = this.state.constructorStandings.length - 1 === index ? 14 : 0
 
       return(
-        <Card 
+        <TouchableOpacity
           key={itemKey}
-          wrapperStyle={{ ...styles.baseMargin, marginBottom }} 
-          contentStyle={styles.cardContent}
+          onPress={this.onConstrucotrPressHandler.bind(this, constructor)}
         >
-          <View 
-            style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
-          ></View>
+          <Card 
+            wrapperStyle={{ ...styles.baseMargin, marginBottom }} 
+            contentStyle={styles.cardContent}
+          >
+            <View 
+              style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
+            ></View>
 
-          <View style={styles.standing}>
-            <DisplayBold style={{fontSize: 26}}>
-              {constructor.position}
-            </DisplayBold>
-          </View>
-          <View style={{flex: 1}}>
-            <DisplayBold>
-              {constructor.Constructor.name.toUpperCase()}
-            </DisplayBold>
-            <DisplayText style={{fontSize: 12, marginTop: 6}}>
-              Wins {constructor.wins}
-            </DisplayText>
-          </View>
-          <View style={{marginLeft: 14}}>
-            <DisplayBold 
-              style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
-            >
-              {constructor.points}
-            </DisplayBold>
-          </View>
-        </Card>
+            <View style={styles.standing}>
+              <DisplayBold style={{fontSize: 26}}>
+                {constructor.position}
+              </DisplayBold>
+            </View>
+            <View style={{flex: 1}}>
+              <DisplayBold>
+                {constructor.Constructor.name.toUpperCase()}
+              </DisplayBold>
+              <DisplayText style={{fontSize: 12, marginTop: 6}}>
+                Wins {constructor.wins}
+              </DisplayText>
+            </View>
+            <View style={{marginLeft: 14}}>
+              <DisplayBold 
+                style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
+              >
+                {constructor.points}
+              </DisplayBold>
+            </View>
+          </Card>
+        </TouchableOpacity>
       )
     })
   }
