@@ -72,6 +72,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   }
 })

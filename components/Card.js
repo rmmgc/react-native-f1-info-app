@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     padding: AppLayout.cardPadding,
-    backgroundColor: AppColors.grayBlue,
+    backgroundColor: AppColors.cardBackground,
     borderRadius: 12,
     marginTop: AppLayout.screenMargin,
     overflow: 'hidden'

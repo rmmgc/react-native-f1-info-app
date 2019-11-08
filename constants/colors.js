@@ -1,25 +1,31 @@
-const TEAM_COLORS = {
-  ferrari: '#DC1B00',
-  mercedes: '#57D2BE',
-  redBull: '#1E40FF',
-  renault: '#FFF502',
-  haas: '#828282',
-  mcLaren: '#F58604',
-  racingPoint: '#F296C8',
-  toroRoso: '#459BFF',
-  alfaRomeo: '#9B0F00',
-  williams: '#FFFFFF'
+/**
+ * Color Definitions
+ * 
+ * Every color used in this App
+ */
+
+const NAMED_COLORS = {
+  darkBlue: '#1D2329',
+  grayBlue: '#2C343A',
+  whiteFlash: '#EDF2F4',
+  lightRed: '#EF233C',
+  strongRed: '#DE1C16',
+  lightGrayBlue: '#3C454C',
+  lightGray: '#87939c',
+  white: '#FFFFFF',
 }
 
 const THEME_COLORS = {
-  gunmetal: '#1D2329',
-  grayBlue: '#2C343A',
-  whiteFlash: '#EDF2F4',
-  redPhantone: '#EF233C',
-  redCandy: '#de1c16',
-  tabNavActiveItem: '#3C454C',
-  white: '#FFFFFF',
-  ...TEAM_COLORS
+  ...NAMED_COLORS,
+
+  // alias the named colors by use-case
+  backgroundMain: NAMED_COLORS.darkBlue,
+  backgroundLight: NAMED_COLORS.grayBlue,
+  backgroundRed: NAMED_COLORS.strongRed,
+  cardBackground: NAMED_COLORS.grayBlue,
+  textTitle: NAMED_COLORS.white,
+  textCaption: NAMED_COLORS.lightGray,
+  textImportant: NAMED_COLORS.strongRed
 }
 
 export default {

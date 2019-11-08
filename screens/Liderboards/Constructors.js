@@ -60,7 +60,7 @@ class Constructors extends React.Component {
 
   renderConstructorsList() {
     return this.state.constructorStandings.map((constructor, index) => {
-      const highlightColor = index < 3 ? AppColors.redCandy : AppColors.tabNavActiveItem
+      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
       const itemKey = constructor.position
       const marginBottom = this.state.constructorStandings.length - 1 === index ? 14 : 0
 
@@ -92,7 +92,7 @@ class Constructors extends React.Component {
             </View>
             <View style={{marginLeft: 14}}>
               <DisplayBold 
-                style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
+                style={{fontSize: 18, color: AppColors.strongRed, marginRight: 10}}
               >
                 {constructor.points}
               </DisplayBold>

@@ -37,22 +37,22 @@ export function Heading1({ style, ...props }) {
 const styles = StyleSheet.create({
   text: {
     fontFamily: AppFonts.default,
-    color: AppColors.whiteFlash,
+    color: AppColors.textTitle,
     fontSize: 14
   },
   displayText: {
     fontFamily: AppFonts.display,
-    color: AppColors.whiteFlash,
+    color: AppColors.textTitle,
     fontSize: 14,
   },
   displayBold: {
     fontFamily: AppFonts.displayBold,
-    color: AppColors.whiteFlash,
+    color: AppColors.textTitle,
     fontSize: 14
   },
   h1: {
     fontFamily: AppFonts.display,
-    color: AppColors.whiteFlash,
+    color: AppColors.textTitle,
     fontSize: 26
   }
 })

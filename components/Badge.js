@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6, 
     paddingHorizontal: 14, 
     borderRadius: 50,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   badgeText: {
     fontSize: 12

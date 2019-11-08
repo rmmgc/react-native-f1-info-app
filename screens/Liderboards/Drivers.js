@@ -60,7 +60,7 @@ class Drivers extends React.Component {
 
   renderDriversList() {
     return this.state.driverStandings.map((driver, index) => {
-      const highlightColor = index < 3 ? AppColors.redCandy : AppColors.tabNavActiveItem
+      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
       const itemKey = driver.position
       const isLastItem = this.state.driverStandings.length - 1 === index ? true : false
 
@@ -92,7 +92,7 @@ class Drivers extends React.Component {
             </View>
             <View style={{marginLeft: 14}}>
               <DisplayBold 
-                style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
+                style={{fontSize: 18, color: AppColors.strongRed, marginRight: 10}}
               >
                 {driver.points}
               </DisplayBold>

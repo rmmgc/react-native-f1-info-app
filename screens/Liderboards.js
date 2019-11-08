@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     marginHorizontal: AppLayout.screenMargin
   },
   tabBar: {
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   }
 })
 

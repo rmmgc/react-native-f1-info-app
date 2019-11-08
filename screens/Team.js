@@ -49,7 +49,7 @@ class Team extends React.Component {
                   <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
                 </View>
                 <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.redCandy}}>{constructorData.position}</DisplayBold>
+                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.position}</DisplayBold>
                 </View>
               </Card>
               <Card wrapperStyle={styles.teamStat}>
@@ -57,7 +57,7 @@ class Team extends React.Component {
                   <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Points</DisplayText>
                 </View>
                 <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.redCandy}}>{constructorData.points}</DisplayBold>
+                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.points}</DisplayBold>
                 </View>
               </Card>
             </View>
@@ -72,11 +72,11 @@ class Team extends React.Component {
                 >
                   <View style={{flex: 1, marginRight: AppLayout.screenMargin}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>4</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Championships</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>132</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Total Podiums</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Podiums</DisplayText>
                   </View>
                 </View>
                 <View
@@ -86,13 +86,13 @@ class Team extends React.Component {
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       2003
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>First Grad Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grad Prix</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       189
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Total Grad Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Grad Prix</DisplayText>
                   </View>
                 </View>
                 <View
@@ -100,23 +100,23 @@ class Team extends React.Component {
                 >
                   <View style={{marginBottom: 14}}>
                     <DisplayText style={{marginBottom: 2}}>Sebastian Vettel</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Driver</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
                   </View>
                   <View style={{marginBottom: 14}}>
                     <DisplayText style={{marginBottom: 2}}>Charles Leclerc</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Driver</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
                   </View>
                   <View style={{marginBottom: 14}}>
                     <DisplayText style={{marginBottom: 2}}>Matia Bonnito</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Team Boss</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Team Boss</DisplayText>
                   </View>
                   <View style={{marginBottom: 14}}>
                     <DisplayText style={{marginBottom: 2}}>Hamburg, Germany</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Headquarters</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Headquarters</DisplayText>
                   </View>
                   <View>
                     <DisplayText style={{marginBottom: 2}}>46</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Staff members</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Staff members</DisplayText>
                   </View>
                 </View>
               </View>
@@ -137,7 +137,7 @@ class Team extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   cardBackground: {
     position: 'absolute',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },  
   constructorInfo: {
     flex: 1,
-    backgroundColor: AppColors.grayBlue,
+    backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30
   },
@@ -165,14 +165,14 @@ const styles = StyleSheet.create({
     width: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
     maxWidth: width/2 - AppLayout.screenMargin - AppLayout.screenMargin/2,
     height: 120,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   constructorData: {
     paddingTop: 26,
     paddingHorizontal: AppLayout.screenMargin,
     marginTop: AppLayout.screenMargin,
     flex: 1,
-    backgroundColor: AppColors.gunmetal,
+    backgroundColor: AppColors.backgroundMain,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30
   },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   sectionTitleDesc: {
     marginTop: 4, 
     fontSize: 12, 
-    color: '#87939c'
+    color: AppColors.textCaption
   }
 })
 

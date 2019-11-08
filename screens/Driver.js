@@ -46,7 +46,7 @@ class Driver extends React.Component {
                   <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
                 </View>
                 <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.redCandy}}>{driverData.position}</DisplayBold>
+                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{driverData.position}</DisplayBold>
                 </View>
               </Card>
               <Card wrapperStyle={styles.driverStat}>
@@ -54,7 +54,7 @@ class Driver extends React.Component {
                   <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Points</DisplayText>
                 </View>
                 <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.redCandy}}>{driverData.points}</DisplayBold>
+                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{driverData.points}</DisplayBold>
                 </View>
               </Card>
             </View>
@@ -69,11 +69,11 @@ class Driver extends React.Component {
                 >
                   <View style={{flex: 1, marginRight: AppLayout.screenMargin}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>4</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Championships</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>132</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Total Podiums</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Podiums</DisplayText>
                   </View>
                 </View>
                 <View
@@ -83,13 +83,13 @@ class Driver extends React.Component {
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       2003
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>First Grad Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grad Prix</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       189
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Total Grad Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Grad Prix</DisplayText>
                   </View>
                 </View>
                 <View
@@ -97,11 +97,11 @@ class Driver extends React.Component {
                 >
                   <View style={{marginBottom: 14}}>
                     <DisplayText style={{marginBottom: 2}}>Hamburg, Germany</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Place of Birth</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Place of Birth</DisplayText>
                   </View>
                   <View>
                     <DisplayText style={{marginBottom: 2}}>12.03.1992 (28 Age)</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Date of Birth</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Date of Birth</DisplayText>
                   </View>
                 </View>
               </View>
@@ -122,11 +122,11 @@ class Driver extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   driverInfo: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal,
+    backgroundColor: AppColors.backgroundMain,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     marginTop: -40
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: AppLayout.screenMargin,
     marginTop: AppLayout.screenMargin,
     flex: 1,
-    backgroundColor: AppColors.grayBlue,
+    backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30
   },
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   sectionTitleDesc: {
     marginTop: 4, 
     fontSize: 12, 
-    color: '#87939c'
+    color: AppColors.textCaption
   }
 })
 

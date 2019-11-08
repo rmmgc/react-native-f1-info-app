@@ -60,7 +60,7 @@ class AppActivityIndicator extends React.Component {
 const styles = StyleSheet.create({
   loadingScreen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal,
+    backgroundColor: AppColors.backgroundMain,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',

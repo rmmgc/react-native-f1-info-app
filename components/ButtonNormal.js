@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { DisplayBold } from './AppText'
 import { AppColors } from '../constants'
 
-const gradientColors = [AppColors.redCandy, AppColors.redPhantone]
+const gradientColors = [AppColors.strongRed, AppColors.lightRed]
 
 /**
  * <ButtonNormal />
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 12,
     borderRadius: 30,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   }
 })
 

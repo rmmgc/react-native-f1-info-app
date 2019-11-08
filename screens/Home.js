@@ -85,7 +85,7 @@ class Home extends React.Component {
                   <View>
                     <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Sebastian</DisplayBold>
                     <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>vettel</DisplayBold>
-                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>401 Points</DisplayText>
                   </View>
                 </View>
               </Card>
@@ -106,7 +106,7 @@ class Home extends React.Component {
                   <View style={{}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Lewis</DisplayBold>
                     <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>hamilton</DisplayBold>
-                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>401 Points</DisplayText>
                   </View>
                 </View>
               </Card>
@@ -124,10 +124,10 @@ class Home extends React.Component {
                   <View style={{marginBottom: 15}}> 
                     <DisplayBold style={{fontSize: 26,marginTop: 10, marginRight: 14}}>3</DisplayBold>
                   </View>
-                  <View style={{marginBottom: 15}}>
+                  <View style={{}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Valtteri</DisplayBold>
                     <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>bottas</DisplayBold>
-                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>401 Points</DisplayText>
                   </View>
                 </View>
               </Card>
@@ -148,7 +148,7 @@ class Home extends React.Component {
                   <View style={{}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 12}}>Charles</DisplayBold>
                     <DisplayBold style={{textTransform: 'uppercase', fontSize: 16}}>leclerc</DisplayBold>
-                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                    <DisplayText style={{marginTop: 8, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>401 Points</DisplayText>
                   </View>
                 </View>
               </Card>
@@ -158,7 +158,7 @@ class Home extends React.Component {
           <CardTouchable 
             iconName="md-calendar" 
             iconSize={22}
-            iconColor={AppColors.redCandy}
+            iconColor={AppColors.strongRed}
             cardTitle="Schedule"
             cardDescription="Don't miss any event!"
             onPress={this.onClickHandler}
@@ -167,17 +167,9 @@ class Home extends React.Component {
           <CardTouchable 
             iconName="md-trophy" 
             iconSize={22}
-            iconColor={AppColors.redCandy}
+            iconColor={AppColors.strongRed}
             cardTitle="Standings"
             cardDescription="Check out current liderboard status!"
-          />
-
-          <CardTouchable 
-            iconName="ios-stats" 
-            iconSize={22}
-            iconColor={AppColors.redCandy}
-            cardTitle="Results"
-            cardDescription="Check last race results!"
           />
 
           <Carousel snapToInterval={width - (80 - AppLayout.screenMargin)}>
@@ -190,8 +182,8 @@ class Home extends React.Component {
                 />
               </View>
               <View style={{alignItems: 'flex-end'}}>
-                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', color: AppColors.ferrari}}>1 Ferrari</DisplayBold>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>401 Points</DisplayText>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>1 Ferrari</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>401 Points</DisplayText>
               </View>
             </Card>
             <Card wrapperStyle={styles.carouselItem}>
@@ -203,8 +195,8 @@ class Home extends React.Component {
                 />
               </View>
               <View style={{alignItems: 'flex-end'}}>
-                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', color: AppColors.mercedes}}>2 Mercedes</DisplayBold>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>391 Points</DisplayText>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>2 Mercedes</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>391 Points</DisplayText>
               </View>
             </Card>
             <Card wrapperStyle={styles.carouselItem}>
@@ -216,8 +208,8 @@ class Home extends React.Component {
                 />
               </View>
               <View style={{alignItems: 'flex-end'}}>
-                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', color: AppColors.alfaRomeo}}>3 Alfa Romeo</DisplayBold>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>354 Points</DisplayText>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>3 Alfa Romeo</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>354 Points</DisplayText>
               </View>
             </Card>
             <Card wrapperStyle={styles.carouselItem}>
@@ -229,8 +221,8 @@ class Home extends React.Component {
                 />
               </View>
               <View style={{alignItems: 'flex-end'}}>
-                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', color: AppColors.redBull}}>4 Red Bull</DisplayBold>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>326 Points</DisplayText>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>4 Red Bull</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>326 Points</DisplayText>
               </View>
             </Card>
             <Card wrapperStyle={styles.carouselItem}>
@@ -242,16 +234,24 @@ class Home extends React.Component {
                 />
               </View>
               <View style={{alignItems: 'flex-end'}}>
-                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', color: AppColors.mcLaren}}>5 McLaren</DisplayBold>
-                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.redCandy}}>289 Points</DisplayText>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>5 McLaren</DisplayBold>
+                <DisplayText style={{marginTop: 6, fontSize: 12, textTransform: 'uppercase', color: AppColors.strongRed}}>289 Points</DisplayText>
               </View>
             </Card>
           </Carousel>
 
           <CardTouchable 
+            iconName="ios-stats" 
+            iconSize={22}
+            iconColor={AppColors.strongRed}
+            cardTitle="Results"
+            cardDescription="Check last race results!"
+          />
+
+          <CardTouchable 
             iconName="ios-paper" 
             iconSize={22}
-            iconColor={AppColors.redCandy}
+            iconColor={AppColors.strongRed}
             cardTitle="News"
             cardDescription="Check out latest news!"
           />

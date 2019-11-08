@@ -25,10 +25,10 @@ const ScheduleStack = createStackNavigator(
   },
   {
     initialRouteName: 'Schedule',
-    cardStyle: {backgroundColor: AppColors.gunmetal},
+    cardStyle: {backgroundColor: AppColors.backgroundMain},
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: AppColors.redCandy
+        backgroundColor: AppColors.backgroundRed
       },
       headerTintColor: AppColors.white
     }

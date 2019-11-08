@@ -173,11 +173,11 @@ class Race extends React.Component {
                 >
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1996</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>First Grand Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grand Prix</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>58</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Number of laps</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Number of laps</DisplayText>
                   </View>
                 </View>
                 <View
@@ -187,13 +187,13 @@ class Race extends React.Component {
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       5.303 <DisplayText>km</DisplayText>
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Circuit Length</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Circuit Length</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       307.574 <DisplayText>km</DisplayText>
                     </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Race Distance</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Race Distance</DisplayText>
                   </View>
                 </View>
                 <View
@@ -201,7 +201,7 @@ class Race extends React.Component {
                 >
                   <View style={{flex: 1}}>
                     <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1.24.125</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: '#87939c'}}>Fastest Lap</DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Fastest Lap</DisplayText>
                   </View>
                 </View>
               </View>
@@ -222,7 +222,7 @@ class Race extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   raceInfoSection: {
     marginTop: 30,
@@ -231,22 +231,22 @@ const styles = StyleSheet.create({
   sectionTitleDesc: {
     marginTop: 4, 
     fontSize: 12, 
-    color: '#87939c'
+    color: AppColors.textCaption
   },
   carouselItem: {
     width: width - 80,
     marginHorizontal: AppLayout.screenMargin/2,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   raceInfo: {
     flex: 1,
-    backgroundColor: AppColors.grayBlue,
+    backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
   },
   scheduleInfo: {
     fontSize: 36,
-    color: AppColors.redCandy
+    color: AppColors.strongRed
   },
   scheduleDesc: {
     fontSize: 10, 

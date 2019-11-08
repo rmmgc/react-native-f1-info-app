@@ -113,8 +113,8 @@ class Schedule extends React.Component {
                           ? styles.carouselItem 
                           : styles.gridItem
     const gradient      = carousel 
-                          ? [AppColors.gunmetal, AppColors.redCandy]  
-                          : [AppColors.grayBlue, AppColors.redCandy]
+                          ? [AppColors.darkBlue, AppColors.strongRed]  
+                          : [AppColors.grayBlue, AppColors.strongRed]
 
     return (
       <TouchableOpacity
@@ -172,7 +172,7 @@ class Schedule extends React.Component {
               <View style={{ ...styles.nextRaces }}>
                 <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.screenMargin }}>
                   <DisplayBold>2019 Up coming races</DisplayBold>
-                  <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Don't miss any rasce. Stay up to date</DisplayText>
+                  <DisplayText style={{marginTop: 4, fontSize: 12, color: AppColors.textCaption}}>Don't miss any rasce. Stay up to date</DisplayText>
                 </View>
                 <Carousel snapToInterval={width/2 - (30 - AppLayout.screenMargin)}>
                 {this.renderNextRacesList()}
@@ -183,7 +183,7 @@ class Schedule extends React.Component {
             <View style={{ ...styles.schedule }}>
               <View style={styles.sectionTitle}>
                 <DisplayBold>2019 Reaces Schedule</DisplayBold>
-                <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Check out season races schedule</DisplayText>
+                <DisplayText style={{marginTop: 4, fontSize: 12, color: AppColors.textCaption}}>Check out season races schedule</DisplayText>
               </View>
               {this.renderRacesList()}
             </View>
@@ -203,7 +203,7 @@ class Schedule extends React.Component {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: AppColors.gunmetal
+    backgroundColor: AppColors.backgroundMain
   },
   mainContent: {
     flex: 1
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
   schedule: {
     flex: 1,
     marginTop: 32,
-    backgroundColor: AppColors.grayBlue,
+    backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     paddingHorizontal: AppLayout.screenMargin

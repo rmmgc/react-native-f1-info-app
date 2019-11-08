@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   counterNumber: {
     fontSize: 36, 
-    color: AppColors.redCandy
+    color: AppColors.strongRed
   },
   counterLabel: {
     fontSize: 10, 
