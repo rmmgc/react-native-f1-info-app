@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Animated } from 'react-native'
+import { View, StyleSheet, Animated, TouchableOpacity } from 'react-native'
 
 import AppActivityIndicator from '../../components/AppActivityIndicator'
 import Card from '../../components/Card'
@@ -52,6 +52,12 @@ class Drivers extends React.Component {
     }
   }
 
+  onDriverPressHandler(driverData) {
+    this.props.navigation.navigate('Driver', {
+      driverData,
+    })
+  }
+
   renderDriversList() {
     return this.state.driverStandings.map((driver, index) => {
       const highlightColor = index < 3 ? AppColors.redCandy : AppColors.tabNavActiveItem
@@ -59,36 +65,40 @@ class Drivers extends React.Component {
       const isLastItem = this.state.driverStandings.length - 1 === index ? true : false
 
       return(
-        <Card 
+        <TouchableOpacity
           key={itemKey}
-          wrapperStyle={{ ...styles.baseMargin, marginBottom: isLastItem ? 14 : 0  }} 
-          contentStyle={styles.cardContent}
+          onPress={this.onDriverPressHandler.bind(this, driver)}
         >
-          <View 
-            style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
-          ></View>
+          <Card 
+            wrapperStyle={{ ...styles.baseMargin, marginBottom: isLastItem ? 14 : 0  }} 
+            contentStyle={styles.cardContent}
+          >
+            <View 
+              style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
+            ></View>
 
-          <View style={styles.standing}>
-            <DisplayBold style={{fontSize: 26}}>
-              {driver.position}
-            </DisplayBold>
-          </View>
-          <View style={{flex: 1}}>
-            <DisplayBold>
-              {driver.Driver.givenName} {driver.Driver.familyName.toUpperCase()}
-            </DisplayBold>
-            <DisplayText style={{fontSize: 12, marginTop: 6}}>
-              {driver.Constructors[0].name}
-            </DisplayText>
-          </View>
-          <View style={{marginLeft: 14}}>
-            <DisplayBold 
-              style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
-            >
-              {driver.points}
-            </DisplayBold>
-          </View>
-        </Card>
+            <View style={styles.standing}>
+              <DisplayBold style={{fontSize: 26}}>
+                {driver.position}
+              </DisplayBold>
+            </View>
+            <View style={{flex: 1}}>
+              <DisplayBold>
+                {driver.Driver.givenName} {driver.Driver.familyName.toUpperCase()}
+              </DisplayBold>
+              <DisplayText style={{fontSize: 12, marginTop: 6}}>
+                {driver.Constructors[0].name}
+              </DisplayText>
+            </View>
+            <View style={{marginLeft: 14}}>
+              <DisplayBold 
+                style={{fontSize: 18, color: AppColors.redCandy, marginRight: 10}}
+              >
+                {driver.points}
+              </DisplayBold>
+            </View>
+          </Card>
+        </TouchableOpacity>
       )
     })
   }

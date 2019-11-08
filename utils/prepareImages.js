@@ -9,7 +9,7 @@ let walk = function (dir, done) {
 			return done(error);
 		}
 
-		let i = 0
+		let i = 0;
 
 		(function next () {
 			let file = list[i++]

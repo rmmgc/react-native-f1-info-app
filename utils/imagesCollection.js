@@ -1,0 +1,51 @@
+const trackLayoutImage = {
+  'americas': require('../assets/images/tracks/austin.png'),
+  'bahrain': require('../assets/images/tracks/bahrain.png'),
+  'BAK': require('../assets/images/tracks/baku.png'),
+  'hungaroring': require('../assets/images/tracks/budapest.png'),
+  'catalunya': require('../assets/images/tracks/catalunya.png'),
+  'hockenheimring': require('../assets/images/tracks/hockenheim.png'),
+  'ricard': require('../assets/images/tracks/le_castellet.png'),
+  'albert_park': require('../assets/images/tracks/melbourne.png'),
+  'rodriguez': require('../assets/images/tracks/mexico_city.png'),
+  'monaco': require('../assets/images/tracks/monte_carlo.png'),
+  'villeneuve': require('../assets/images/tracks/montreal.png'),
+  'monza': require('../assets/images/tracks/monza.png'),
+  'interlagos': require('../assets/images/tracks/sao_paulo.png'),
+  'shanghai': require('../assets/images/tracks/shanghai.png'),
+  'silverstone': require('../assets/images/tracks/silverstone.png'),
+  'marina_bay': require('../assets/images/tracks/singapore.png'),
+  'sochi': require('../assets/images/tracks/sochi.png'),
+  'spa': require('../assets/images/tracks/spa_francorchamps.png'),
+  'red_bull_ring': require('../assets/images/tracks/spielberg.png'),
+  'suzuka': require('../assets/images/tracks/suzuka.png'),
+  'yas_marina': require('../assets/images/tracks/yas_island.png')
+}
+
+const driverProfileImage = {
+  'albon': require('../assets/images/drivers/albon/profile.jpg'),
+  'bottas': require('../assets/images/drivers/bottas/profile.jpg'),
+  'gasly': require('../assets/images/drivers/gasly/profile.jpg'),
+  'giovinazzi': require('../assets/images/drivers/giovinazzi/profile.jpg'),
+  'grosjean': require('../assets/images/drivers/grosjean/profile.jpg'),
+  'hamilton': require('../assets/images/drivers/hamilton/profile.jpg'),
+  'hulkenberg': require('../assets/images/drivers/hulkenberg/profile.jpg'),
+  'kubica': require('../assets/images/drivers/kubica/profile.jpg'),
+  'kvyat': require('../assets/images/drivers/kvyat/profile.jpg'),
+  'leclerc': require('../assets/images/drivers/leclerc/profile.jpg'),
+  'kevin_magnussen': require('../assets/images/drivers/magnussen/profile.jpg'),
+  'norris': require('../assets/images/drivers/norris/profile.jpg'),
+  'perez': require('../assets/images/drivers/perez/profile.jpg'),
+  'raikkonen': require('../assets/images/drivers/raikkonen/profile.jpg'),
+  'ricciardo': require('../assets/images/drivers/ricciardo/profile.jpg'),
+  'russell': require('../assets/images/drivers/russell/profile.jpg'),
+  'sainz': require('../assets/images/drivers/sainz/profile.jpg'),
+  'stroll': require('../assets/images/drivers/stroll/profile.jpg'),
+  'max_verstappen': require('../assets/images/drivers/verstappen/profile.jpg'),
+  'vettel': require('../assets/images/drivers/vettel/profile.jpg')
+}
+
+export {
+  trackLayoutImage,
+  driverProfileImage
+}

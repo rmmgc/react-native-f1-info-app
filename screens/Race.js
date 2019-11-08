@@ -6,7 +6,7 @@ import Card from '../components/Card'
 import Carousel from '../components/Carousel'
 
 import { AppLayout, AppColors } from '../constants'
-
+import { trackLayoutImage } from '../utils/imagesCollection'
 
 const { width } = Dimensions.get('window')
 
@@ -140,11 +140,11 @@ class Race extends React.Component {
     const circuitData = navigation.getParam('circuitData')
     return (
       <View style={styles.screen}>
-        <ScrollView style={styles.mainContent} > 
+        <ScrollView style={{flex: 1}} > 
                    
           <View style={{marginHorizontal: AppLayout.screenMargin}}>
             <Image 
-              source={require('../assets/images/tracks/austin.png')}
+              source={trackLayoutImage[circuitData.circuitId]}
               resizeMode='contain'
               style={{height: 280, flex: 1, width: null}}
             />
@@ -152,9 +152,9 @@ class Race extends React.Component {
 
           <View style={styles.raceInfo}>
             <View style={styles.raceInfoSection}>
-              <View style={styles.sectionTitle}>
+              <View style={{marginBottom: 6}}>
                 <DisplayBold>Race event schedule</DisplayBold>
-                <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Scheduled race weekend events</DisplayText>
+                <DisplayText style={styles.sectionTitleDesc}>Scheduled race weekend events</DisplayText>
               </View>
             </View>
 
@@ -163,20 +163,20 @@ class Race extends React.Component {
             </Carousel>
 
             <View style={styles.raceInfoSection}>
-              <View style={styles.sectionTitle}>
+              <View style={{marginBottom: 6}}>
                 <DisplayBold>{circuitData.circuitName}</DisplayBold>
-                <DisplayText style={{marginTop: 4, fontSize: 12, color: '#87939c'}}>Important circuit informations</DisplayText>
+                <DisplayText style={styles.sectionTitleDesc}>Important circuit informations</DisplayText>
               </View>
               <View style={styles.circuitInfoContent}>
                 <View
                   style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
                 >
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 28}}>1996</DisplayBold>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1996</DisplayBold>
                     <DisplayText style={{fontSize: 12, color: '#87939c'}}>First Grand Prix</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 28}}>58</DisplayBold>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>58</DisplayBold>
                     <DisplayText style={{fontSize: 12, color: '#87939c'}}>Number of laps</DisplayText>
                   </View>
                 </View>
@@ -184,13 +184,13 @@ class Race extends React.Component {
                   style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
                 >
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 28}}>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       5.303 <DisplayText>km</DisplayText>
                     </DisplayBold>
                     <DisplayText style={{fontSize: 12, color: '#87939c'}}>Circuit Length</DisplayText>
                   </View>
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 28}}>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                       307.574 <DisplayText>km</DisplayText>
                     </DisplayBold>
                     <DisplayText style={{fontSize: 12, color: '#87939c'}}>Race Distance</DisplayText>
@@ -200,7 +200,7 @@ class Race extends React.Component {
                   style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
                 >
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 28}}>1.24.125</DisplayBold>
+                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1.24.125</DisplayBold>
                     <DisplayText style={{fontSize: 12, color: '#87939c'}}>Fastest Lap</DisplayText>
                   </View>
                 </View>
@@ -224,26 +224,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.gunmetal
   },
-  mainContent: {
-    flex: 1
-  },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.screenMargin
-  },
   raceInfoSection: {
     marginTop: 30,
     marginHorizontal: AppLayout.screenMargin
   },
-  sectionTitle: {
-    marginBottom: 6
-  },
-  carouselContainer: {
-    flex: 1,
-  },
-  carouselInnerContainer: {
-    marginHorizontal: AppLayout.screenMargin/2, 
-    paddingRight: AppLayout.screenMargin
+  sectionTitleDesc: {
+    marginTop: 4, 
+    fontSize: 12, 
+    color: '#87939c'
   },
   carouselItem: {
     width: width - 80,

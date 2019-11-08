@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
-import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
+import { TabBar, TabView } from 'react-native-tab-view'
 
 import AppHeader from '../components/AppHeader'
 import { DisplayText } from '../components/AppText'
@@ -18,7 +18,6 @@ class Liderboards extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       index: 0,
       routes: [
@@ -28,7 +27,7 @@ class Liderboards extends React.Component {
     }
 
     this.changeTabIndexHandler = this.changeTabIndexHandler.bind(this)
-    this.renderTabPage = this.renderTabPage.bind(this)
+    this.renderScene = this.renderScene.bind(this)
   }
 
   changeTabIndexHandler(index) {
@@ -53,10 +52,16 @@ class Liderboards extends React.Component {
     )
   }
 
-  renderTabPage = SceneMap({
-    drivers: Drivers,
-    constructors: Constructors,
-  })
+  renderScene({ route }) {
+    switch (route.key) {
+      case 'drivers':
+        return <Drivers navigation={this.props.navigation} />;
+      case 'constructors':
+        return <Constructors navigation={this.props.navigation} />;
+      default:
+        return null;
+    }
+  }
 
   render() {
     return (
@@ -64,7 +69,7 @@ class Liderboards extends React.Component {
         <AppHeader screenTitle="Liderboards" />
         <TabView
           navigationState={this.state}
-          renderScene={this.renderTabPage}
+          renderScene={this.renderScene}
           renderTabBar={this.renderTabBar}
           onIndexChange={this.changeTabIndexHandler}
           initialLayout={{ width: Dimensions.get('window').width }}

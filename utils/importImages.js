@@ -69,13 +69,29 @@ const imagesImporter = [
   require('../assets/images/drivers/vettel/flag.png'),
   require('../assets/images/drivers/vettel/helmet.png'),
   require('../assets/images/drivers/vettel/profile.jpg'),
+  require('../assets/images/tracks/austin.png'),
   require('../assets/images/tracks/bahrain.png'),
   require('../assets/images/tracks/baku.png'),
+  require('../assets/images/tracks/budapest.png'),
+  require('../assets/images/tracks/catalunya.png'),
+  require('../assets/images/tracks/hockenheim.png'),
+  require('../assets/images/tracks/le_castellet.png'),
   require('../assets/images/tracks/melbourne.png'),
+  require('../assets/images/tracks/mexico_city.png'),
+  require('../assets/images/tracks/monte_carlo.png'),
+  require('../assets/images/tracks/montreal.png'),
+  require('../assets/images/tracks/monza.png'),
+  require('../assets/images/tracks/sao_paulo.png'),
   require('../assets/images/tracks/shanghai.png'),
-  require('../assets/images/tracks/silverstone.png')
+  require('../assets/images/tracks/silverstone.png'),
+  require('../assets/images/tracks/singapore.png'),
+  require('../assets/images/tracks/sochi.png'),
+  require('../assets/images/tracks/spa_francorchamps.png'),
+  require('../assets/images/tracks/spielberg.png'),
+  require('../assets/images/tracks/suzuka.png'),
+  require('../assets/images/tracks/yas_island.png')
 ] 
 
- export {
+export {
   imagesImporter
 }

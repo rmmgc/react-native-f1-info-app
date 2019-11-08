@@ -5,9 +5,9 @@ import { TabBar } from 'react-native-animated-nav-tab-bar'
 import { Ionicons } from '@expo/vector-icons'
 
 import Home from '../screens/Home'
-import News from '../screens/News'
-import Liderboards from '../screens/Liderboards'
 import ScheduleStack from './ScheduleStackNavigator'
+import LiderboardsStack from './LiderboardStackNavigator'
+import News from '../screens/News'
 
 import { AppColors } from '../constants'
 
@@ -15,7 +15,7 @@ const AppNavigator = createBottomTabNavigator(
   {
     Home,
     Schedule: ScheduleStack,
-    Liderboards,
+    Liderboards: LiderboardsStack,
     News
   }, 
   {

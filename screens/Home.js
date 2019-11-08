@@ -249,28 +249,11 @@ class Home extends React.Component {
           </Carousel>
 
           <CardTouchable 
-            iconName="ios-flask" 
-            iconSize={22}
-            iconColor={AppColors.redCandy}
-            cardTitle="Technology"
-            cardDescription="Formula 1 technology improvements!"
-          />
-
-          <CardTouchable 
             iconName="ios-paper" 
             iconSize={22}
             iconColor={AppColors.redCandy}
             cardTitle="News"
             cardDescription="Check out latest news!"
-          />
-
-          <CardTouchable 
-            style={{marginBottom: AppLayout.screenMargin}}
-            iconName="md-information-circle" 
-            iconSize={22}
-            iconColor={AppColors.redCandy}
-            cardTitle="Formula 1"
-            cardDescription="Learn more about Formula 1!"
           />
 
         </ScrollView>

@@ -3,10 +3,10 @@ import { View, StyleSheet } from 'react-native'
 
 
 /**
- * <Teams />
+ * <Team />
  */
 
-class Teams extends React.Component {
+class Team extends React.Component {
 
 }
 
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
  * Exports
  */
 
-export default Teams
+export default Team
