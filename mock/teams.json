@@ -1,5 +1,5 @@
-[
-  {
+{
+  "alfa": {
     "name": "Alfa Romeo Racing",
     "base": "Hinwil, Switzerland",
     "teamChief": "Frédéric Vasseur",
@@ -10,7 +10,7 @@
     "poles": "1",
     "fastestLaps": "5"
   },
-  {
+  "ferrari": {
     "name": "Scuderia Ferrari Mission Winnow",
     "base": "Maranello, Italy",
     "teamChief": "Mattia Binotto",
@@ -21,7 +21,7 @@
     "poles": "224",
     "fastestLaps": "253"
   },
-  {
+  "haas": {
     "name": "Haas F1 Team",
     "base": "Kannapolis, United States",
     "teamChief": "Guenther Steiner",
@@ -32,7 +32,7 @@
     "poles": "0",
     "fastestLaps": "2"
   },
-  {
+  "mclaren": {
     "name": "McLaren F1 Team",
     "base": "Woking, United Kingdom",
     "teamChief": "Andreas Seidl",
@@ -43,7 +43,7 @@
     "poles": "155",
     "fastestLaps": "155"
   },
-  {
+  "mercedes": {
     "name": "Mercedes AMG Petronas Motorsport",
     "base": "Brackley, United Kingdom",
     "teamChief": "Toto Wolff",
@@ -54,7 +54,7 @@
     "poles": "102",
     "fastestLaps": "64"
   },
-  {
+  "racing_point": {
     "name": "SportPesa Racing Point F1 Team",
     "base": "Silverstone, United Kingdom",
     "teamChief": "Otmar Szafnauer",
@@ -65,7 +65,7 @@
     "poles": "0",
     "fastestLaps": "0"
   },
-  {
+  "red_bull": {
     "name": "Aston Martin Red Bull Racing",
     "base": "Milton Keynes, United Kingdom",
     "teamChief": "Christian Horner",
@@ -76,7 +76,7 @@
     "poles": "61",
     "fastestLaps": "65"
   },
-  {
+  "renault": {
     "name": "Renault F1 Team",
     "base": "Enstone, United Kingdom",
     "teamChief": "Cyril Abiteboul",
@@ -87,7 +87,7 @@
     "poles": "20",
     "fastestLaps": "13"
   },
-  {
+  "toro_rosso": {
     "name": "Red Bull Toro Rosso Honda",
     "base": "Faenza, Italy",
     "teamChief": "Franz Tost",
@@ -98,7 +98,7 @@
     "poles": "1",
     "fastestLaps": "1"
   },
-  {
+  "williams": {
     "name": "ROKiT Williams Racing",
     "base": "Grove, United Kingdom",
     "teamChief": "Frank Williams",
@@ -109,4 +109,4 @@
     "poles": "129",
     "fastestLaps": "133"
   }
-]
+}
