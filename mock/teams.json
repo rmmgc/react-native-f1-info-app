@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Alfa Romeo Racing",
+    "base": "Hinwil, Switzerland",
+    "teamChief": "Frédéric Vasseur",
+    "drivers": ["Kimi Räikkönen", "Antonio Giovinazzi"],
+    "powerUnit": "Ferrari",
+    "firstEntry": "1993",
+    "championships": "0",
+    "poles": "1",
+    "fastestLaps": "5"
+  },
+  {
+    "name": "Scuderia Ferrari Mission Winnow",
+    "base": "Maranello, Italy",
+    "teamChief": "Mattia Binotto",
+    "drivers": ["Sebastian Vettel", "Charles Leclerc"],
+    "powerUnit": "Ferrari",
+    "firstEntry": "1950",
+    "championships": "16",
+    "poles": "224",
+    "fastestLaps": "253"
+  },
+  {
+    "name": "Haas F1 Team",
+    "base": "Kannapolis, United States",
+    "teamChief": "Guenther Steiner",
+    "drivers": ["Roman Grosjean", "Kevin Magnussen"],
+    "powerUnit": "Ferrari",
+    "firstEntry": "2016",
+    "championships": "0",
+    "poles": "0",
+    "fastestLaps": "2"
+  },
+  {
+    "name": "McLaren F1 Team",
+    "base": "Woking, United Kingdom",
+    "teamChief": "Andreas Seidl",
+    "drivers": ["Carlos Sainz", "Lando Norris"],
+    "powerUnit": "Renault",
+    "firstEntry": "1966",
+    "championships": "8",
+    "poles": "155",
+    "fastestLaps": "155"
+  },
+  {
+    "name": "Mercedes AMG Petronas Motorsport",
+    "base": "Brackley, United Kingdom",
+    "teamChief": "Toto Wolff",
+    "drivers": ["Lewis Hamilton", "Valtteri Bottas"],
+    "powerUnit": "Mercedes",
+    "firstEntry": "1970",
+    "championships": "6",
+    "poles": "102",
+    "fastestLaps": "64"
+  },
+  {
+    "name": "SportPesa Racing Point F1 Team",
+    "base": "Silverstone, United Kingdom",
+    "teamChief": "Otmar Szafnauer",
+    "drivers": ["Sergio Perez", "Lance Stroll"],
+    "powerUnit": "BWT Mercedes",
+    "firstEntry": "N/A",
+    "championships": "0",
+    "poles": "0",
+    "fastestLaps": "0"
+  },
+  {
+    "name": "Aston Martin Red Bull Racing",
+    "base": "Milton Keynes, United Kingdom",
+    "teamChief": "Christian Horner",
+    "drivers": ["Max Verstappen", "Alexandar Albon"],
+    "powerUnit": "Honda",
+    "firstEntry": "1997",
+    "championships": "4",
+    "poles": "61",
+    "fastestLaps": "65"
+  },
+  {
+    "name": "Renault F1 Team",
+    "base": "Enstone, United Kingdom",
+    "teamChief": "Cyril Abiteboul",
+    "drivers": ["Nico Hulkenberg", "Daniel Ricciardo"],
+    "powerUnit": "Ranult",
+    "firstEntry": "1986",
+    "championships": "2",
+    "poles": "20",
+    "fastestLaps": "13"
+  },
+  {
+    "name": "Red Bull Toro Rosso Honda",
+    "base": "Faenza, Italy",
+    "teamChief": "Franz Tost",
+    "drivers": ["Danii Kvyat", "Pierre Gasly"],
+    "powerUnit": "Honda",
+    "firstEntry": "1985",
+    "championships": "0",
+    "poles": "1",
+    "fastestLaps": "1"
+  },
+  {
+    "name": "ROKiT Williams Racing",
+    "base": "Grove, United Kingdom",
+    "teamChief": "Frank Williams",
+    "drivers": ["Robert Kubica", "George Russel"],
+    "powerUnit": "Mercedes",
+    "firstEntry": "1978",
+    "championships": "9",
+    "poles": "129",
+    "fastestLaps": "133"
+  }
+]

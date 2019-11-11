@@ -22,7 +22,7 @@ class Drivers extends React.Component {
 
   async componentDidMount() {
     try {
-      let response = await fetch('https://ergast.com/api/f1/2019/driverStandings.json')
+      let response = await fetch('https://ergast.com/api/f1/current/driverStandings.json')
       response = await response.json()
 
       // Extract data from response
