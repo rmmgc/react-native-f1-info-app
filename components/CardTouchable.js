@@ -24,16 +24,17 @@ import { AppLayout } from '../constants'
 
 class CardTouchable extends React.Component {
 
-  onClickHandler(e, id) {
+  onPressHandler(rounteName) {
+    console.log(rounteName)
     console.log("POZVAN IN CARD TOUCHABLE!")
-    this.props.onPress(e, id)
+    this.props.onPress(rounteName)
   }
 
   render() {
     return (
       <TouchableOpacity 
         style={{ ...styles.baseMargin, ...this.props.style }}
-        onPress={this.onClickHandler.bind(this, 100)}
+        onPress={this.onPressHandler.bind(this, this.props.routeName)}
       >
         <Card>
           <View style={styles.header}>

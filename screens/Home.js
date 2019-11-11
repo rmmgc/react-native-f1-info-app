@@ -39,13 +39,13 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
 
-    this.onClickHandler = this.onClickHandler.bind(this)
+    this.navigationHandler = this.navigationHandler.bind(this)
   }
 
-  onClickHandler(e, id) {
-    console.log(e)
+  navigationHandler(routeName) {
     console.log("KLIKNUTOOO!")
-    console.log(id)
+    console.log(routeName)
+    this.props.navigation.navigate(routeName)
   }
 
   render() {
@@ -69,7 +69,7 @@ class Home extends React.Component {
           </TouchableOpacity>
 
           <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
-            <TouchableOpacity onPress={this.onClickHandler}>
+            <TouchableOpacity onPress={this.navigationHandler}>
               <Card wrapperStyle={{...styles.carouselItem }}>
                 <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
                   <Image 
@@ -90,7 +90,7 @@ class Home extends React.Component {
                 </View>
               </Card>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.onClickHandler}>
+            <TouchableOpacity onPress={this.navigationHandler}>
               <Card wrapperStyle={{...styles.carouselItem }}>
                 <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
                   <Image 
@@ -111,7 +111,7 @@ class Home extends React.Component {
                 </View>
               </Card>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.onClickHandler}>
+            <TouchableOpacity onPress={this.navigationHandler}>
               <Card wrapperStyle={{...styles.carouselItem }}>
                 <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
                   <Image 
@@ -132,7 +132,7 @@ class Home extends React.Component {
                 </View>
               </Card>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.onClickHandler}>
+            <TouchableOpacity onPress={this.navigationHandler}>
               <Card wrapperStyle={{...styles.carouselItem }}>
                 <View style={{position: 'absolute', height: 250, width: 250, overflow: 'hidden', top: -76, left: -90}}>
                   <Image 
@@ -159,17 +159,20 @@ class Home extends React.Component {
             iconName="md-calendar" 
             iconSize={22}
             iconColor={AppColors.strongRed}
+            routeName="Schedule"
             cardTitle="Schedule"
             cardDescription="Don't miss any event!"
-            onPress={this.onClickHandler}
+            onPress={this.navigationHandler}
           />
 
           <CardTouchable 
             iconName="md-trophy" 
             iconSize={22}
             iconColor={AppColors.strongRed}
+            routeName="Liderboards"
             cardTitle="Standings"
             cardDescription="Check out current liderboard status!"
+            onPress={this.navigationHandler}
           />
 
           <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
@@ -244,16 +247,20 @@ class Home extends React.Component {
             iconName="ios-stats" 
             iconSize={22}
             iconColor={AppColors.strongRed}
+            routeName="Results"
             cardTitle="Results"
             cardDescription="Check last race results!"
+            onPress={this.navigationHandler}
           />
 
           <CardTouchable 
             iconName="ios-paper" 
             iconSize={22}
             iconColor={AppColors.strongRed}
+            routeName="News"
             cardTitle="News"
             cardDescription="Check out latest news!"
+            onPress={this.navigationHandler}
           />
 
         </ScrollView>
