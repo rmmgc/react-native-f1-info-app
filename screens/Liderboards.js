@@ -53,11 +53,23 @@ class Liderboards extends React.Component {
   }
 
   renderScene({ route }) {
+    const { screenProps } = this.props
+
     switch (route.key) {
       case 'drivers':
-        return <Drivers navigation={this.props.navigation} />;
+        return (
+          <Drivers 
+            driversStandings={screenProps.driversStandings} 
+            navigation={this.props.navigation} 
+          />
+        )
       case 'constructors':
-        return <Constructors navigation={this.props.navigation} />;
+        return (
+          <Constructors 
+            constructorsStandings={screenProps.constructorsStandings} 
+            navigation={this.props.navigation} 
+          />
+        )
       default:
         return null;
     }

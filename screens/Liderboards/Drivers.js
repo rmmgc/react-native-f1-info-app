@@ -14,42 +14,30 @@ import { AppLayout, AppColors } from '../../constants'
 class Drivers extends React.Component {
 
   state = {
-    driverStandings: [],
     isAnimationOver: false,
     fadeOut: new Animated.Value(1),
     fadeIn: new Animated.Value(0)
   }
 
-  async componentDidMount() {
-    try {
-      let response = await fetch('https://ergast.com/api/f1/current/driverStandings.json')
-      response = await response.json()
+  driversStandings = this.props.driversStandings
 
-      // Extract data from response
-      response = response.MRData.StandingsTable.StandingsLists[0].DriverStandings
-
-      this.setState({ driverStandings: response })
-
-      Animated.parallel([
-        Animated.timing(this.state.fadeOut, {
-            toValue: 0,
-            duration: 300,
-            useNativeDriver: true
-          }
-        ),
-        Animated.timing(this.state.fadeIn, {
-            toValue: 1,
-            duration: 800,
-            useNativeDriver: true
-          }
-        ),
-      ]).start(() => {
-        this.setState({ isAnimationOver: true })
-      })
-    } 
-    catch (error) {
-      console.error(error);
-    }
+  componentDidMount() {
+    Animated.parallel([
+      Animated.timing(this.state.fadeOut, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true
+        }
+      ),
+      Animated.timing(this.state.fadeIn, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true
+        }
+      ),
+    ]).start(() => {
+      this.setState({ isAnimationOver: true })
+    })
   }
 
   onDriverPressHandler(driverData) {
@@ -59,10 +47,10 @@ class Drivers extends React.Component {
   }
 
   renderDriversList() {
-    return this.state.driverStandings.map((driver, index) => {
+    return this.driversStandings.map((driver, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
       const itemKey = driver.position
-      const isLastItem = this.state.driverStandings.length - 1 === index ? true : false
+      const isLastItem = this.driversStandings.length - 1 === index ? true : false
 
       return(
         <TouchableOpacity
@@ -108,7 +96,7 @@ class Drivers extends React.Component {
       <View style={{flex: 1}}>
         {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
 
-        {this.state.driverStandings.length > 0 && 
+        {this.driversStandings.length > 0 && 
           <Animated.ScrollView style={{ ...styles.screen, opacity: this.state.fadeIn }} >
             {this.renderDriversList()}
           </Animated.ScrollView>

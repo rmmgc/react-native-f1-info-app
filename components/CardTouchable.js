@@ -25,8 +25,6 @@ import { AppLayout } from '../constants'
 class CardTouchable extends React.Component {
 
   onPressHandler(rounteName) {
-    console.log(rounteName)
-    console.log("POZVAN IN CARD TOUCHABLE!")
     this.props.onPress(rounteName)
   }
 

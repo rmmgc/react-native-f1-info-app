@@ -14,42 +14,30 @@ import { AppLayout, AppColors } from '../../constants'
 class Constructors extends React.Component {
 
   state = {
-    constructorStandings: [],
     isAnimationOver: false,
     fadeOut: new Animated.Value(1),
     fadeIn: new Animated.Value(0)
   }
 
-  async componentDidMount() {
-    try {
-      let response = await fetch('https://ergast.com/api/f1/2019/constructorStandings.json')
-      response = await response.json()
+  constructorsStandings = this.props.constructorsStandings
 
-      // Extract data from response
-      response = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-
-      this.setState({ constructorStandings: response })
-
-      Animated.parallel([
-        Animated.timing(this.state.fadeOut, {
-            toValue: 0,
-            duration: 300,
-            useNativeDriver: true
-          }
-        ),
-        Animated.timing(this.state.fadeIn, {
-            toValue: 1,
-            duration: 800,
-            useNativeDriver: true
-          }
-        ),
-      ]).start(() => {
-        this.setState({ isAnimationOver: true })
-      })
-    } 
-    catch (error) {
-      console.error(error);
-    }
+  componentDidMount() {
+    Animated.parallel([
+      Animated.timing(this.state.fadeOut, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true
+        }
+      ),
+      Animated.timing(this.state.fadeIn, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true
+        }
+      ),
+    ]).start(() => {
+      this.setState({ isAnimationOver: true })
+    })
   }
 
   onConstrucotrPressHandler(constructorData) {
@@ -59,10 +47,10 @@ class Constructors extends React.Component {
   }
 
   renderConstructorsList() {
-    return this.state.constructorStandings.map((constructor, index) => {
+    return this.constructorsStandings.map((constructor, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
       const itemKey = constructor.position
-      const marginBottom = this.state.constructorStandings.length - 1 === index ? 14 : 0
+      const marginBottom = this.constructorsStandings.length - 1 === index ? 14 : 0
 
       return(
         <TouchableOpacity
@@ -108,7 +96,7 @@ class Constructors extends React.Component {
       <View style={{flex: 1}}>
         {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
 
-        {this.state.constructorStandings.length > 0 && 
+        {this.constructorsStandings.length > 0 && 
           <Animated.ScrollView style={{ ...styles.screen, opacity: this.state.fadeIn }} >
             {this.renderConstructorsList()}
           </Animated.ScrollView>

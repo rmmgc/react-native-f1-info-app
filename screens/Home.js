@@ -42,9 +42,16 @@ class Home extends React.Component {
     this.navigationHandler = this.navigationHandler.bind(this)
   }
 
+  componentDidMount() {
+    console.log("HOME SCREEN MOUNTED!")
+    const { screenProps, navigation } = this.props
+  }
+
+  componentWillUnmount() {
+    console.log("HOME SCREEN UNMOUNTED!")
+  }
+
   navigationHandler(routeName) {
-    console.log("KLIKNUTOOO!")
-    console.log(routeName)
     this.props.navigation.navigate(routeName)
   }
 

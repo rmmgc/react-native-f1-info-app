@@ -19,6 +19,8 @@ export default class App extends React.Component {
     this.state = {
       isLoadingComplete: false,
       hideLoadingScreen: false,
+      driverStandings: [],
+      constructorStandings: []
     }
   }
 
@@ -32,24 +34,46 @@ export default class App extends React.Component {
     })
     await Asset.loadAsync(imagesImporter)
 
-    this.setState({ isLoadingComplete: true })
-
-    Animated.parallel([
-      Animated.timing(this.fadeOut, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true
-        }
-      ),
-      Animated.timing(this.fadeIn, {
-          toValue: 1,
-          duration: 800,
-          useNativeDriver: true
-        }
-      ),
+    Promise.all([
+      fetch('https://ergast.com/api/f1/current/driverStandings.json'),
+      fetch('https://ergast.com/api/f1/2019/constructorStandings.json')
     ])
-    .start(() => {
-      this.setState({ hideLoadingScreen: true })
+    .then( async ([response1, response2]) => {
+      response1 = await response1.json()
+      response2 = await response2.json()
+      return [response1, response2]
+    })
+    .then(([jsonResponse1, jsonResponse2]) => {
+      this.setState({ 
+        driverStandings: jsonResponse1.MRData.StandingsTable.StandingsLists[0].DriverStandings
+      })
+
+      this.setState({ 
+        constructorStandings: jsonResponse2.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
+      })
+
+      this.setState({ isLoadingComplete: true })
+
+      Animated.parallel([
+        Animated.timing(this.fadeOut, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true
+          }
+        ),
+        Animated.timing(this.fadeIn, {
+            toValue: 1,
+            duration: 800,
+            useNativeDriver: true
+          }
+        ),
+      ])
+      .start(() => {
+        this.setState({ hideLoadingScreen: true })
+      })
+    })
+    .catch(err => {
+        console.log(err)
     })
   }
   
@@ -60,7 +84,12 @@ export default class App extends React.Component {
 
         {this.state.isLoadingComplete && 
           <Animated.View style={{flex: 1, opacity: this.fadeIn}}>
-            <AppContainer />
+            <AppContainer
+              screenProps={{
+                driversStandings: this.state.driverStandings,
+                constructorsStandings: this.state.constructorStandings
+              }}
+            />
           </Animated.View>
         }
       </View>
