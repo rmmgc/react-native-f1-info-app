@@ -43,12 +43,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log("HOME SCREEN MOUNTED!")
     const { screenProps, navigation } = this.props
-  }
-
-  componentWillUnmount() {
-    console.log("HOME SCREEN UNMOUNTED!")
   }
 
   navigationHandler(routeName) {

@@ -1,9 +1,19 @@
 import React from 'react'
 import { View, StyleSheet, Animated, TouchableOpacity } from 'react-native'
 
-import AppActivityIndicator from '../../components/AppActivityIndicator'
+
+/**
+ * Custom Components
+ */
+
 import Card from '../../components/Card'
 import { DisplayBold, DisplayText } from '../../components/AppText'
+
+
+/**
+ * Constants
+ */
+
 import { AppLayout, AppColors } from '../../constants'
 
 
@@ -13,42 +23,44 @@ import { AppLayout, AppColors } from '../../constants'
 
 class Drivers extends React.Component {
 
-  state = {
-    isAnimationOver: false,
-    fadeOut: new Animated.Value(1),
-    fadeIn: new Animated.Value(0)
-  }
+  // Animated value for screen animation
+  screenAnimatedValue = new Animated.Value(0)
 
+  // Save drivers data passed via props
   driversStandings = this.props.driversStandings
 
   componentDidMount() {
-    Animated.parallel([
-      Animated.timing(this.state.fadeOut, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true
-        }
-      ),
-      Animated.timing(this.state.fadeIn, {
-          toValue: 1,
-          duration: 800,
-          useNativeDriver: true
-        }
-      ),
-    ]).start(() => {
-      this.setState({ isAnimationOver: true })
-    })
+    // Define animation when Component is mounted
+    Animated.timing(this.screenAnimatedValue, 
+      {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true
+      }
+    ).start()
   }
 
+
+  /**
+   * Event Handlers
+   */
+
+  // Navigate to Driver screen
   onDriverPressHandler(driverData) {
     this.props.navigation.navigate('Driver', {
       driverData,
     })
   }
 
+
+  /**
+   * Render Functions
+   */
+
+  // Render drivers list
   renderDriversList() {
     return this.driversStandings.map((driver, index) => {
-      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
+      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = driver.position
       const isLastItem = this.driversStandings.length - 1 === index ? true : false
 
@@ -94,10 +106,20 @@ class Drivers extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
-
         {this.driversStandings.length > 0 && 
-          <Animated.ScrollView style={{ ...styles.screen, opacity: this.state.fadeIn }} >
+          <Animated.ScrollView 
+            style={{ 
+              ...styles.screen, 
+              opacity: this.screenAnimatedValue,
+              transform: [
+                {perspective: 1000},
+                {translateY: this.screenAnimatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [30, 0]
+                })}
+              ],
+            }} 
+          >
             {this.renderDriversList()}
           </Animated.ScrollView>
         }

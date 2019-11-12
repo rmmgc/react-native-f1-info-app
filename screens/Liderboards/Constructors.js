@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, StyleSheet, Animated, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
-import AppActivityIndicator from '../../components/AppActivityIndicator'
 import Card from '../../components/Card'
 import { DisplayBold, DisplayText } from '../../components/AppText'
 import { AppLayout, AppColors } from '../../constants'
@@ -13,32 +12,7 @@ import { AppLayout, AppColors } from '../../constants'
 
 class Constructors extends React.Component {
 
-  state = {
-    isAnimationOver: false,
-    fadeOut: new Animated.Value(1),
-    fadeIn: new Animated.Value(0)
-  }
-
   constructorsStandings = this.props.constructorsStandings
-
-  componentDidMount() {
-    Animated.parallel([
-      Animated.timing(this.state.fadeOut, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true
-        }
-      ),
-      Animated.timing(this.state.fadeIn, {
-          toValue: 1,
-          duration: 800,
-          useNativeDriver: true
-        }
-      ),
-    ]).start(() => {
-      this.setState({ isAnimationOver: true })
-    })
-  }
 
   onConstrucotrPressHandler(constructorData) {
     this.props.navigation.navigate('Team', {
@@ -48,7 +22,7 @@ class Constructors extends React.Component {
 
   renderConstructorsList() {
     return this.constructorsStandings.map((constructor, index) => {
-      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGray
+      const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = constructor.position
       const marginBottom = this.constructorsStandings.length - 1 === index ? 14 : 0
 
@@ -94,12 +68,10 @@ class Constructors extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.state.fadeOut} /> }
-
         {this.constructorsStandings.length > 0 && 
-          <Animated.ScrollView style={{ ...styles.screen, opacity: this.state.fadeIn }} >
+          <ScrollView style={styles.screen} >
             {this.renderConstructorsList()}
-          </Animated.ScrollView>
+          </ScrollView>
         }
       </View>
     )

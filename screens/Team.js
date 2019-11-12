@@ -1,11 +1,13 @@
 import React from 'react'
-import { ScrollView, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Dimensions, Image, Animated } from 'react-native'
 
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
+import AppActivityIndicator from '../components/AppActivityIndicator'
 
 import { AppLayout, AppColors } from '../constants'
 import { constructorCarImage } from '../utils/imagesCollection'
+import { simulateServerResponse } from '../mock/index'
 
 const { width } = Dimensions.get('window')
 
@@ -16,9 +18,37 @@ const { width } = Dimensions.get('window')
 
 class Team extends React.Component {
 
-  onDriverPressHandler(driverData) {
-    this.props.navigation.navigate('Driver', {
-      driverData,
+  state = {
+    isAnimationOver: false,
+    teamInfo: null
+  }
+
+  fadeOut = new Animated.Value(1)
+  fadeIn = new Animated.Value(0)
+
+  async componentDidMount() {
+    const { navigation } = this.props
+    const constructorData = navigation.getParam('constructorData')
+
+    let response = await simulateServerResponse('teams', constructorData.Constructor.constructorId)
+
+    this.setState({ teamInfo: response })
+
+    Animated.parallel([
+      Animated.timing(this.fadeOut, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true
+        }
+      ),
+      Animated.timing(this.fadeIn, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true
+        }
+      ),
+    ]).start(() => {
+      this.setState({ isAnimationOver: true })
     })
   }
 
@@ -28,101 +58,113 @@ class Team extends React.Component {
 
     return (
       <View style={styles.screen}>
-        <ScrollView>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Image 
-              source={constructorCarImage[constructorData.Constructor.constructorId]}
-              resizeMode='contain'
-              style={{ width: width-80, height: width/2 }}
-            />
-          </View>
+        {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.fadeOut} />}
 
-          <View style={styles.constructorInfo}>
-            <View style={{marginTop: 26, justifyContent: 'center', alignItems: 'center'}}>
-              <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>
-                {constructorData.Constructor.name}
-              </DisplayBold>
+        {this.state.teamInfo &&
+          <Animated.ScrollView style={{opacity: this.fadeIn}}>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <Image 
+                source={constructorCarImage[constructorData.Constructor.constructorId]}
+                resizeMode='contain'
+                style={{ width: width-80, height: width/2 }}
+              />
             </View>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 14, marginHorizontal: AppLayout.baseMargin}}>
-              <Card wrapperStyle={styles.teamStat}>
-                <View style={{flex: 1}}>
-                  <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
-                </View>
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.position}</DisplayBold>
-                </View>
-              </Card>
-              <Card wrapperStyle={styles.teamStat}>
-                <View style={{flex: 1}}>
-                  <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Points</DisplayText>
-                </View>
-                <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                  <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.points}</DisplayBold>
-                </View>
-              </Card>
-            </View>
-            <View style={styles.constructorData}>
-              <View style={{marginBottom: 6}}>
-                <DisplayBold>Team informations</DisplayBold>
-                <DisplayText style={styles.sectionTitleDesc}>Interesting facts about team</DisplayText>
+
+            <View style={styles.constructorInfo}>
+              <View style={{marginTop: 26, justifyContent: 'center', alignItems: 'center'}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase', lineHeight: 22, paddingHorizontal: 30, textAlign: 'center'}}>
+                  {this.state.teamInfo.name}
+                </DisplayBold>
               </View>
-              <View style={styles.teamInfoContent}>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                >
-                  <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>4</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
-                  </View>
+              <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 14, marginHorizontal: AppLayout.baseMargin}}>
+                <Card wrapperStyle={styles.teamStat}>
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>132</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Podiums</DisplayText>
+                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
                   </View>
-                </View>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                >
-                  <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
-                      2003
-                    </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grad Prix</DisplayText>
+                  <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.position}</DisplayBold>
                   </View>
+                </Card>
+                <Card wrapperStyle={styles.teamStat}>
                   <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
-                      189
-                    </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Grad Prix</DisplayText>
+                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Points</DisplayText>
                   </View>
+                  <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{constructorData.points}</DisplayBold>
+                  </View>
+                </Card>
+              </View>
+              <View style={styles.constructorData}>
+                <View style={{marginBottom: 6}}>
+                  <DisplayBold>Team informations</DisplayBold>
+                  <DisplayText style={styles.sectionTitleDesc}>Interesting facts about team</DisplayText>
                 </View>
-                <View
-                  style={{marginTop: 30, marginBottom: 14 }}
-                >
-                  <View style={{marginBottom: 14}}>
-                    <DisplayText style={{marginBottom: 2}}>Sebastian Vettel</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
+                <View style={styles.teamInfoContent}>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
+                  >
+                    <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.teamInfo.championships}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
+                    </View>
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.teamInfo.firstEntry}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Entry</DisplayText>
+                    </View>
                   </View>
-                  <View style={{marginBottom: 14}}>
-                    <DisplayText style={{marginBottom: 2}}>Charles Leclerc</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
+                  >
+                    <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.teamInfo.poles}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Pole Positions</DisplayText>
+                    </View>
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.teamInfo.fastestLaps}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Fastest Laps</DisplayText>
+                    </View>
                   </View>
-                  <View style={{marginBottom: 14}}>
-                    <DisplayText style={{marginBottom: 2}}>Matia Bonnito</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Team Boss</DisplayText>
-                  </View>
-                  <View style={{marginBottom: 14}}>
-                    <DisplayText style={{marginBottom: 2}}>Hamburg, Germany</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Headquarters</DisplayText>
-                  </View>
-                  <View>
-                    <DisplayText style={{marginBottom: 2}}>46</DisplayText>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Staff members</DisplayText>
+                  <View
+                    style={{marginTop: 30, marginBottom: 14 }}
+                  >
+                    <View style={{marginBottom: 14}}>
+                      <DisplayText style={{marginBottom: 2}}>
+                        {this.state.teamInfo.drivers[0]}
+                      </DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
+                    </View>
+                    <View style={{marginBottom: 14}}>
+                      <DisplayText style={{marginBottom: 2}}>
+                        {this.state.teamInfo.drivers[1]}
+                      </DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Driver</DisplayText>
+                    </View>
+                    <View style={{marginBottom: 14}}>
+                      <DisplayText style={{marginBottom: 2}}>
+                        {this.state.teamInfo.teamChief}
+                      </DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Team Boss</DisplayText>
+                    </View>
+                    <View style={{marginBottom: 14}}>
+                      <DisplayText style={{marginBottom: 2}}>
+                        {this.state.teamInfo.base}
+                      </DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Headquarters</DisplayText>
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-          </View>
-        </ScrollView>
+          </Animated.ScrollView>
+        }
       </View>
     )
   }
