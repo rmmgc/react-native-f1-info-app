@@ -31,7 +31,7 @@ class CardTouchable extends React.Component {
   render() {
     return (
       <TouchableOpacity 
-        style={{ ...styles.baseMargin, ...this.props.style }}
+        style={{ flex: 1, ...this.props.style }}
         onPress={this.onPressHandler.bind(this, this.props.routeName)}
       >
         <Card>
@@ -66,10 +66,6 @@ class CardTouchable extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin
-  },
   header: {
     flexDirection: 'row', 
     alignItems: 'center'

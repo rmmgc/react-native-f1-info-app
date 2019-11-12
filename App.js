@@ -20,7 +20,8 @@ export default class App extends React.Component {
       isLoadingComplete: false,
       hideLoadingScreen: false,
       driverStandings: [],
-      constructorStandings: []
+      constructorStandings: [],
+      seasonRaces: []
     }
   }
 
@@ -36,23 +37,22 @@ export default class App extends React.Component {
 
     Promise.all([
       fetch('https://ergast.com/api/f1/current/driverStandings.json'),
-      fetch('https://ergast.com/api/f1/2019/constructorStandings.json')
+      fetch('https://ergast.com/api/f1/2019/constructorStandings.json'),
+      fetch('https://ergast.com/api/f1/current.json')
     ])
-    .then( async ([response1, response2]) => {
+    .then( async ([response1, response2, response3]) => {
       response1 = await response1.json()
       response2 = await response2.json()
-      return [response1, response2]
+      response3 = await response3.json()
+      return [response1, response2, response3]
     })
-    .then(([jsonResponse1, jsonResponse2]) => {
+    .then(([jsonResponse1, jsonResponse2, jsonResponse3]) => {
       this.setState({ 
-        driverStandings: jsonResponse1.MRData.StandingsTable.StandingsLists[0].DriverStandings
+        driverStandings: jsonResponse1.MRData.StandingsTable.StandingsLists[0].DriverStandings,
+        constructorStandings: jsonResponse2.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+        seasonRaces: jsonResponse3.MRData.RaceTable.Races,
+        isLoadingComplete: true
       })
-
-      this.setState({ 
-        constructorStandings: jsonResponse2.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-      })
-
-      this.setState({ isLoadingComplete: true })
 
       Animated.parallel([
         Animated.timing(this.fadeOut, {
@@ -87,7 +87,8 @@ export default class App extends React.Component {
             <AppContainer
               screenProps={{
                 driversStandings: this.state.driverStandings,
-                constructorsStandings: this.state.constructorStandings
+                constructorsStandings: this.state.constructorStandings,
+                seasonRaces: this.state.seasonRaces
               }}
             />
           </Animated.View>

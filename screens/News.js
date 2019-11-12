@@ -13,7 +13,6 @@ import {
 import AppHeader from '../components/AppHeader'
 import { DisplayText } from '../components/AppText'
 import Card from '../components/Card'
-import Countdown from '../components/Countdown'
 import Badge from '../components/Badge'
 
 /**
@@ -35,20 +34,6 @@ class News extends React.Component {
         <AppHeader screenTitle="News" />
 
         <ScrollView style={styles.mainContent} >
-          <TouchableOpacity style={styles.baseMargin}>
-            <Card 
-              title="Mexico GP - 2019"
-              contentStyle={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <Countdown 
-                days="02"
-                hours="10"
-                minutes="35"
-              />
-              <Badge data="27.11" />
-            </Card>
-          </TouchableOpacity>
-
           <Card
             title="WINNERS AND LOSERS - Russian Grand Priex edition"
             wrapperStyle={styles.baseMargin}

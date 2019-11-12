@@ -45,6 +45,29 @@ const driverProfileImage = {
   'vettel': require('../assets/images/drivers/vettel/profile.jpg')
 }
 
+const driverHelmetImage = {
+  'albon': require('../assets/images/drivers/albon/helmet.png'),
+  'bottas': require('../assets/images/drivers/bottas/helmet.png'),
+  'gasly': require('../assets/images/drivers/gasly/helmet.png'),
+  'giovinazzi': require('../assets/images/drivers/giovinazzi/helmet.png'),
+  'grosjean': require('../assets/images/drivers/grosjean/helmet.png'),
+  'hamilton': require('../assets/images/drivers/hamilton/helmet.png'),
+  'hulkenberg': require('../assets/images/drivers/hulkenberg/helmet.png'),
+  'kubica': require('../assets/images/drivers/kubica/helmet.png'),
+  'kvyat': require('../assets/images/drivers/kvyat/helmet.png'),
+  'leclerc': require('../assets/images/drivers/leclerc/helmet.png'),
+  'kevin_magnussen': require('../assets/images/drivers/magnussen/helmet.png'),
+  'norris': require('../assets/images/drivers/norris/helmet.png'),
+  'perez': require('../assets/images/drivers/perez/helmet.png'),
+  'raikkonen': require('../assets/images/drivers/raikkonen/helmet.png'),
+  'ricciardo': require('../assets/images/drivers/ricciardo/helmet.png'),
+  'russell': require('../assets/images/drivers/russell/helmet.png'),
+  'sainz': require('../assets/images/drivers/sainz/helmet.png'),
+  'stroll': require('../assets/images/drivers/stroll/helmet.png'),
+  'max_verstappen': require('../assets/images/drivers/verstappen/helmet.png'),
+  'vettel': require('../assets/images/drivers/vettel/helmet.png')
+}
+
 const constructorCarImage = {
   'alfa': require('../assets/images/cars/alfaromeo.png'),
   'ferrari': require('../assets/images/cars/ferrari.png'),
@@ -61,5 +84,6 @@ const constructorCarImage = {
 export {
   trackLayoutImage,
   driverProfileImage,
+  driverHelmetImage,
   constructorCarImage
 }

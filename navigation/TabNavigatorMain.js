@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { TabBar } from 'react-native-animated-nav-tab-bar'
 import { Ionicons } from '@expo/vector-icons'
 
-import Home from '../screens/Home'
+import HomeStack from './HomeStackNavigator'
 import ScheduleStack from './ScheduleStackNavigator'
 import LiderboardsStack from './LiderboardStackNavigator'
 import News from '../screens/News'
@@ -13,7 +13,7 @@ import { AppColors } from '../constants'
 
 const AppNavigator = createBottomTabNavigator(
   {
-    Home,
+    Home: HomeStack,
     Schedule: ScheduleStack,
     Liderboards: LiderboardsStack,
     News

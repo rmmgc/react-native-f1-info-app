@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     padding: AppLayout.basePadding,
     backgroundColor: AppColors.cardBackground,
     borderRadius: 12,
-    marginTop: AppLayout.baseMargin,
     overflow: 'hidden'
   },
   cardHeader: {
