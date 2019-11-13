@@ -27,10 +27,10 @@ class Drivers extends React.Component {
   screenAnimatedValue = new Animated.Value(0)
 
   // Save drivers data passed via props
-  driversStandings = this.props.driversStandings
+  driverStandings = this.props.driverStandings
 
   componentDidMount() {
-    // Define animation when Component is mounted
+    // Start animation when Component is mounted
     Animated.timing(this.screenAnimatedValue, 
       {
         toValue: 1,
@@ -59,10 +59,10 @@ class Drivers extends React.Component {
 
   // Render drivers list
   renderDriversList() {
-    return this.driversStandings.map((driver, index) => {
+    return this.driverStandings.map((driver, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = driver.position
-      const isLastItem = this.driversStandings.length - 1 === index ? true : false
+      const isLastItem = this.driverStandings.length - 1 === index ? true : false
 
       return(
         <TouchableOpacity
@@ -106,7 +106,7 @@ class Drivers extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        {this.driversStandings.length > 0 && 
+        {this.driverStandings.length > 0 && 
           <Animated.ScrollView 
             style={{ 
               ...styles.screen, 
@@ -117,7 +117,7 @@ class Drivers extends React.Component {
                   inputRange: [0, 1],
                   outputRange: [30, 0]
                 })}
-              ],
+              ]
             }} 
           >
             {this.renderDriversList()}

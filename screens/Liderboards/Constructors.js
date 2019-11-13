@@ -12,7 +12,7 @@ import { AppLayout, AppColors } from '../../constants'
 
 class Constructors extends React.Component {
 
-  constructorsStandings = this.props.constructorsStandings
+  constructorStandings = this.props.constructorStandings
 
   onConstrucotrPressHandler(constructorData) {
     this.props.navigation.navigate('Team', {
@@ -21,10 +21,10 @@ class Constructors extends React.Component {
   }
 
   renderConstructorsList() {
-    return this.constructorsStandings.map((constructor, index) => {
+    return this.constructorStandings.map((constructor, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = constructor.position
-      const marginBottom = this.constructorsStandings.length - 1 === index ? 14 : 0
+      const marginBottom = this.constructorStandings.length - 1 === index ? 14 : 0
 
       return(
         <TouchableOpacity
@@ -68,7 +68,7 @@ class Constructors extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        {this.constructorsStandings.length > 0 && 
+        {this.constructorStandings.length > 0 && 
           <ScrollView style={styles.screen} >
             {this.renderConstructorsList()}
           </ScrollView>

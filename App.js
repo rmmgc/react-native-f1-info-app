@@ -29,31 +29,28 @@ export default class App extends React.Component {
   fadeIn = new Animated.Value(0)
 
   async componentDidMount() {
-    await Font.loadAsync({
-      ...fontsImporter,
-      ...Ionicons.font
-    })
-    await Asset.loadAsync(imagesImporter)
-
-    Promise.all([
-      fetch('https://ergast.com/api/f1/current/driverStandings.json'),
-      fetch('https://ergast.com/api/f1/2019/constructorStandings.json'),
-      fetch('https://ergast.com/api/f1/current.json')
-    ])
-    .then( async ([response1, response2, response3]) => {
+    try {
+      await Font.loadAsync({
+        ...fontsImporter,
+        ...Ionicons.font
+      })
+      await Asset.loadAsync(imagesImporter)
+  
+      let response1 = await fetch('https://ergast.com/api/f1/current/driverStandings.json')
+      let response2 = await fetch('https://ergast.com/api/f1/2019/constructorStandings.json')
+      let response3 = await fetch('https://ergast.com/api/f1/current.json')
+  
       response1 = await response1.json()
       response2 = await response2.json()
       response3 = await response3.json()
-      return [response1, response2, response3]
-    })
-    .then(([jsonResponse1, jsonResponse2, jsonResponse3]) => {
+  
       this.setState({ 
-        driverStandings: jsonResponse1.MRData.StandingsTable.StandingsLists[0].DriverStandings,
-        constructorStandings: jsonResponse2.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
-        seasonRaces: jsonResponse3.MRData.RaceTable.Races,
+        driverStandings: response1.MRData.StandingsTable.StandingsLists[0].DriverStandings,
+        constructorStandings: response2.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+        seasonRaces: response3.MRData.RaceTable.Races,
         isLoadingComplete: true
       })
-
+  
       Animated.parallel([
         Animated.timing(this.fadeOut, {
             toValue: 0,
@@ -67,14 +64,13 @@ export default class App extends React.Component {
             useNativeDriver: true
           }
         ),
-      ])
-      .start(() => {
+      ]).start(() => {
         this.setState({ hideLoadingScreen: true })
       })
-    })
-    .catch(err => {
-        console.log(err)
-    })
+    }
+    catch(error) {
+      console.log(`Error occured: ${error}`)
+    }
   }
   
   render() {
@@ -86,8 +82,8 @@ export default class App extends React.Component {
           <Animated.View style={{flex: 1, opacity: this.fadeIn}}>
             <AppContainer
               screenProps={{
-                driversStandings: this.state.driverStandings,
-                constructorsStandings: this.state.constructorStandings,
+                driverStandings: this.state.driverStandings,
+                constructorStandings: this.state.constructorStandings,
                 seasonRaces: this.state.seasonRaces
               }}
             />

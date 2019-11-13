@@ -59,14 +59,14 @@ class Liderboards extends React.Component {
       case 'drivers':
         return (
           <Drivers 
-            driversStandings={screenProps.driversStandings} 
+            driverStandings={screenProps.driverStandings} 
             navigation={this.props.navigation} 
           />
         )
       case 'constructors':
         return (
           <Constructors 
-            constructorsStandings={screenProps.constructorsStandings} 
+            constructorStandings={screenProps.constructorStandings} 
             navigation={this.props.navigation} 
           />
         )

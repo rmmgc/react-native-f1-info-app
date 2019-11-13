@@ -46,8 +46,8 @@ class Home extends React.Component {
   }
 
   // Drivers and constructors data
-  driversStandings      = this.props.screenProps.driversStandings
-  constructorsStandings = this.props.screenProps.constructorsStandings
+  driverStandings      = this.props.screenProps.driverStandings
+  constructorStandings = this.props.screenProps.constructorStandings
 
 
   /**
@@ -106,7 +106,7 @@ class Home extends React.Component {
   }
 
   renderDrivers() {
-    return this.driversStandings.map((driverData, index) => {
+    return this.driverStandings.map((driverData, index) => {
       
       // Render first 5 items
       if(index < 5) {
@@ -149,7 +149,7 @@ class Home extends React.Component {
   }
 
   renderConstructors() {
-    return this.constructorsStandings.map((constructorData, index) => {
+    return this.constructorStandings.map((constructorData, index) => {
 
       // Render first 5 items
       if(index < 5) {

@@ -12,7 +12,6 @@ import dayjs from 'dayjs'
  * Custom components
  */
 
-import AppActivityIndicator from '../components/AppActivityIndicator'
 import AppHeader from '../components/AppHeader'
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
@@ -35,62 +34,45 @@ class Schedule extends React.Component {
 
   state = {
     nextRaces: [],
-    races: [],
-    isAnimationOver: false,
-    fadeOut: new Animated.Value(1),
-    fadeIn: new Animated.Value(0)
+    races: []
   }
 
-  async componentDidMount() {
-    try {
-      let response = await fetch('https://ergast.com/api/f1/current.json')
-      response = await response.json()
+  // Animated value for screen animation
+  screenAnimatedValue = new Animated.Value(0)
 
-      // Extract data from response
-      response = response.MRData.RaceTable.Races
+  componentDidMount() {
+    const { screenProps } = this.props
 
-      let chunkedResponse = []
-      let scheduledRaces = []
-      let singleChunk = []
-      response.forEach((race, index) => {
-        if(singleChunk.length < 2)
-          singleChunk.push(race)
-        else {
+    let chunkedResponse = []
+    let scheduledRaces = []
+    let singleChunk = []
+    screenProps.seasonRaces.forEach((race, index) => {
+      if(singleChunk.length < 2)
+        singleChunk.push(race)
+      else {
+        chunkedResponse.push(singleChunk)
+        singleChunk = []
+        singleChunk.push(race)
+
+        if(screenProps.seasonRaces.length - 1 === index)
           chunkedResponse.push(singleChunk)
-          singleChunk = []
-          singleChunk.push(race)
+      }
 
-          if(response.length - 1 === index)
-            chunkedResponse.push(singleChunk)
-        }
+      if(dayjs(race.date).isAfter(dayjs()))
+        scheduledRaces.push(race)
+    })
 
-        if(dayjs(race.date).isAfter(dayjs()))
-          scheduledRaces.push(race)
-      })
+    this.setState({ races: chunkedResponse })
+    this.setState({ nextRaces: scheduledRaces })
 
-      this.setState({ races: chunkedResponse })
-      this.setState({ nextRaces: scheduledRaces })
-
-      Animated.parallel([
-        Animated.timing(this.state.fadeOut, {
-            toValue: 0,
-            duration: 300,
-            useNativeDriver: true
-          }
-        ),
-        Animated.timing(this.state.fadeIn, {
-            toValue: 1,
-            duration: 800,
-            useNativeDriver: true
-          }
-        ),
-      ]).start(() => {
-        this.setState({ isAnimationOver: true })
-      })
-    } 
-    catch (error) {
-      console.error(error);
-    }
+    // Start animation when Component is mounted
+    Animated.timing(this.screenAnimatedValue, 
+      {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true
+      }
+    ).start()
   }
 
   onRacePressHandler(circuitData, raceName) {
@@ -164,10 +146,20 @@ class Schedule extends React.Component {
       <View style={styles.screen}>
         <AppHeader screenTitle="Schedule" />
 
-        {!this.state.isAnimationOver && <AppActivityIndicator style={{top: 80}} fadeOut={this.state.fadeOut} />}
-
         {this.state.races.length > 0 &&
-          <Animated.ScrollView style={{...styles.mainContent, opacity: this.state.fadeIn}} >          
+          <Animated.ScrollView 
+            style={{
+              ...styles.mainContent, 
+              opacity: this.screenAnimatedValue,
+              transform: [
+                {perspective: 1000},
+                {translateY: this.screenAnimatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [30, 0]
+                })}
+              ]
+            }} 
+          >          
             {this.state.nextRaces.length > 0 && 
               <View style={{ ...styles.nextRaces }}>
                 <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.baseMargin }}>
