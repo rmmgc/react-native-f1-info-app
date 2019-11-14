@@ -13,7 +13,7 @@ function simulateServerResponse(file, key, delay = 500) {
           resolve(teamsData[key])
           break
         default: 
-          resolve(racesData)
+          resolve(racesData[key])
           break
       }
     }, delay)

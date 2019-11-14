@@ -1,7 +1,17 @@
+/**
+ * NOTE
+ * 
+ * Run this script when new images are added. 
+ * This script will go through every image in '../assets/images'
+ * folder and it will generate require statment for every image
+ * 
+ * At the end, generated require statements will be saved into './importImages.js'
+ */
+
 const fs = require('fs');
 
 let imagesImporter = 'const imagesImporter = [\n'
-let walkPath = './assets/images'
+let walkPath = '../assets/images'
 
 let walk = function (dir, done) {
 	fs.readdir(dir, function (error, list) {

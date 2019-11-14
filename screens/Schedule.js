@@ -24,7 +24,6 @@ import Carousel from '../components/Carousel'
 
 import { AppLayout, AppColors } from '../constants'
 
-const { width } = Dimensions.get('window')
 
 /**
  * <Schedule />
@@ -37,43 +36,52 @@ class Schedule extends React.Component {
     races: []
   }
 
-  // Animated value for screen animation
+  /* Animated value for screen animation */
   screenAnimatedValue = new Animated.Value(0)
+
 
   componentDidMount() {
     const { screenProps } = this.props
 
-    let chunkedResponse = []
-    let scheduledRaces = []
+    let chunkedData = []
     let singleChunk = []
+    let scheduledRaces = []
+
+    /* Manipulate data source */
     screenProps.seasonRaces.forEach((race, index) => {
       if(singleChunk.length < 2)
         singleChunk.push(race)
       else {
-        chunkedResponse.push(singleChunk)
+        chunkedData.push(singleChunk)
         singleChunk = []
         singleChunk.push(race)
 
         if(screenProps.seasonRaces.length - 1 === index)
-          chunkedResponse.push(singleChunk)
+          chunkedData.push(singleChunk)
       }
 
+      /* Check if there is next scheduled races */
       if(dayjs(race.date).isAfter(dayjs()))
         scheduledRaces.push(race)
     })
 
-    this.setState({ races: chunkedResponse })
-    this.setState({ nextRaces: scheduledRaces })
+    this.setState({ 
+      races: chunkedData,
+      nextRaces: scheduledRaces
+    })
 
-    // Start animation when Component is mounted
-    Animated.timing(this.screenAnimatedValue, 
-      {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true
-      }
-    ).start()
+    /* Start animation when Component is mounted */
+    Animated.timing(this.screenAnimatedValue, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true
+    }).start()
   }
+
+
+  /**
+   * Event Handlers
+   */
 
   onRacePressHandler(circuitData, raceName) {
     this.props.navigation.navigate('Race', {
@@ -82,21 +90,28 @@ class Schedule extends React.Component {
     })
   }
 
+
+  /**
+   * Render Functions
+   */
+
+  /* Render single race */ 
   renderRacesListItem(race, carousel = false) {
-    if(!race)
+    if(!race) 
       return
     
-    const circuitData   = race.Circuit
-    const raceName      = race.raceName
+    const circuitData = race.Circuit
+    const raceName = race.raceName
     const eventStartDay = dayjs(race.date).subtract(2, 'days').format('DD')
-    const eventEndDay   = dayjs(race.date).format('DD')
-    const eventMonth    = dayjs(race.date).format('MMM').toUpperCase()
-    const cardStyle     = carousel 
-                          ? styles.carouselItem 
-                          : styles.gridItem
-    const gradient      = carousel 
-                          ? [AppColors.darkBlue, AppColors.strongRed]  
-                          : [AppColors.grayBlue, AppColors.strongRed]
+    const eventEndDay = dayjs(race.date).format('DD')
+    const eventMonth = dayjs(race.date).format('MMM').toUpperCase()
+
+    const cardStyle = carousel 
+                      ? styles.carouselItem 
+                      : styles.gridItem
+    const gradient =  carousel 
+                      ? [AppColors.darkBlue, AppColors.strongRed]  
+                      : [AppColors.grayBlue, AppColors.strongRed]
 
     return (
       <TouchableOpacity
@@ -120,18 +135,22 @@ class Schedule extends React.Component {
     )
   }
 
+  /* Render next scheduled races */ 
   renderNextRacesList() {
     return this.state.nextRaces.map(race => {
       return this.renderRacesListItem(race, true)
     })
   }
 
+  /* Render season race list */ 
   renderRacesList() {
     return this.state.races.map((singleChunk, index) => {
+      let marginValue = index > 0 ? AppLayout.baseMargin : 0
+
       return (
         <View 
           key={index}
-          style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+          style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: marginValue}}
         >
           {singleChunk.map(race => {
             return this.renderRacesListItem(race)
@@ -149,7 +168,6 @@ class Schedule extends React.Component {
         {this.state.races.length > 0 &&
           <Animated.ScrollView 
             style={{
-              ...styles.mainContent, 
               opacity: this.screenAnimatedValue,
               transform: [
                 {perspective: 1000},
@@ -161,23 +179,32 @@ class Schedule extends React.Component {
             }} 
           >          
             {this.state.nextRaces.length > 0 && 
-              <View style={{ ...styles.nextRaces }}>
-                <View style={{ ...styles.sectionTitle, marginHorizontal: AppLayout.baseMargin }}>
+              <View style={{...styles.viewSection, paddingTop: 0}}>
+                <View style={{marginHorizontal: AppLayout.baseMargin}}>
                   <DisplayBold>2019 Up coming races</DisplayBold>
-                  <DisplayText style={{marginTop: 4, fontSize: 12, color: AppColors.textCaption}}>Don't miss any rasce. Stay up to date</DisplayText>
+                  <DisplayText style={styles.sectionCaptionText}>
+                    Don't miss any rasce. Stay up to date
+                  </DisplayText>
                 </View>
-                <Carousel snapToInterval={width/2 - (30 - AppLayout.baseMargin)}>
-                {this.renderNextRacesList()}
+                <Carousel 
+                  style={{marginTop: AppLayout.baseMargin}}
+                  snapToInterval={AppLayout.deviceWidth/2 - (30 - AppLayout.baseMargin)}
+                >
+                  {this.renderNextRacesList()}
                 </Carousel>
               </View>
             }
 
-            <View style={{ ...styles.schedule }}>
-              <View style={styles.sectionTitle}>
+            <View style={{ ...styles.viewSection, ...styles.schedule }}>
+              <View>
                 <DisplayBold>2019 Reaces Schedule</DisplayBold>
-                <DisplayText style={{marginTop: 4, fontSize: 12, color: AppColors.textCaption}}>Check out season races schedule</DisplayText>
+                <DisplayText style={styles.sectionCaptionText}>
+                  Check out season races schedule
+                </DisplayText>
               </View>
-              {this.renderRacesList()}
+              <View style={{marginVertical: AppLayout.baseMargin}}>
+                {this.renderRacesList()}
+              </View>
             </View>
           </Animated.ScrollView>
         }
@@ -197,32 +224,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.backgroundMain
   },
-  mainContent: {
-    flex: 1
+  viewSection: {
+    marginTop: AppLayout.baseMargin * 2,
+    paddingTop: AppLayout.basePadding * 2
   },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin
-  },
-  sectionTitle: {
-    marginTop: 26,
-    marginBottom: 6
-  },
-  carouselContainer: {
-    flex: 1,
-  },
-  carouselInnerContainer: {
-    marginHorizontal: AppLayout.baseMargin/2, 
-    paddingRight: AppLayout.baseMargin
+  sectionCaptionText: {
+    marginTop: 4, 
+    fontSize: 12, 
+    color: AppColors.textCaption
   },
   carouselItem: {
-    width: width/2 - 30,
+    width: AppLayout.deviceWidth/2 - 30,
     marginHorizontal: AppLayout.baseMargin/2,
     height: 200,
   },
   schedule: {
     flex: 1,
-    marginTop: 32,
     backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
@@ -238,9 +255,8 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase'
   },
   gridItem: {
-    width: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
-    maxWidth: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
-    marginTop: AppLayout.baseMargin,
+    width: AppLayout.deviceWidth/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+    maxWidth: AppLayout.deviceWidth/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
     height: 200  
   }
 })

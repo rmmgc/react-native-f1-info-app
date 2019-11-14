@@ -2,12 +2,27 @@ import React from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
 import { TabBar, TabView } from 'react-native-tab-view'
 
+
+/**
+ * Custom Components
+ */
+
 import AppHeader from '../components/AppHeader'
 import { DisplayText } from '../components/AppText'
+
+
+/**
+ * Screen Components
+ */
+
 import Drivers from './Liderboards/Drivers'
 import Constructors from './Liderboards/Constructors'
 
-import { AppLayout, AppColors } from '../constants'
+
+/**
+ * Constants
+ */
+import { AppColors } from '../constants'
 
 
 /**
@@ -18,11 +33,18 @@ class Liderboards extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
       index: 0,
       routes: [
-        {key: 'drivers', title: 'Drivers'},
-        {key: 'constructors', title: 'Constructors'}
+        {
+          key: 'drivers', 
+          title: 'Drivers'
+        },
+        {
+          key: 'constructors', 
+          title: 'Constructors'
+        }
       ]
     }
 
@@ -39,16 +61,14 @@ class Liderboards extends React.Component {
       <TabBar
         {...props}
         style={styles.tabBar}
-        renderLabel={({ route, focused, color }) => (
+        renderLabel={({ route }) => (
           <DisplayText style={{ fontSize: 12 }}>
             {route.title}
           </DisplayText>
         )}
         pressColor="transparent"
-        indicatorStyle={{ backgroundColor: AppColors.grayBlue }}
-      >
-
-      </TabBar>
+        indicatorStyle={{backgroundColor: AppColors.grayBlue}}
+      ></TabBar>
     )
   }
 
@@ -77,7 +97,7 @@ class Liderboards extends React.Component {
 
   render() {
     return (
-      <View style={styles.screen}>
+      <View style={{flex: 1}}>
         <AppHeader screenTitle="Liderboards" />
         <TabView
           navigationState={this.state}
@@ -89,7 +109,6 @@ class Liderboards extends React.Component {
       </View>
     )
   }
-
 }
 
 
@@ -98,16 +117,6 @@ class Liderboards extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  mainContent: {
-    flex: 1
-  },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin
-  },
   tabBar: {
     backgroundColor: AppColors.backgroundMain
   }

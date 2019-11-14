@@ -1,15 +1,34 @@
 import React from 'react'
-import { View, StyleSheet, Dimensions, Image, Animated } from 'react-native'
+import { 
+  View, 
+  StyleSheet, 
+  Image, 
+  Animated 
+} from 'react-native'
+
+
+/**
+ * Custom Components
+ */
 
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
 import AppActivityIndicator from '../components/AppActivityIndicator'
 
+
+/**
+ * Constants
+ */
+
 import { AppLayout, AppColors } from '../constants'
+
+
+/**
+ * Utils and Mock data
+ */
+
 import { driverProfileImage } from '../utils/imagesCollection'
 import { simulateServerResponse } from '../mock/index'
-
-const { width } = Dimensions.get('window')
 
 
 /**
@@ -23,6 +42,7 @@ class Driver extends React.Component {
     driverInfo: null
   }
 
+  /* Animated values */
   fadeOut = new Animated.Value(1)
   fadeIn = new Animated.Value(0)
 
@@ -30,10 +50,12 @@ class Driver extends React.Component {
     const { navigation } = this.props
     const driverData = navigation.getParam('driverData')
 
+    /* Simulated server response */
     let response = await simulateServerResponse('drivers', driverData.Driver.driverId)
 
     this.setState({ driverInfo: response })
 
+    /* Start animation when Component is mounted */
     Animated.parallel([
       Animated.timing(this.fadeOut, {
           toValue: 0,
@@ -62,97 +84,134 @@ class Driver extends React.Component {
 
         {this.state.driverInfo &&
           <Animated.ScrollView style={{opacity: this.fadeIn}}>
-            <View>
-              <Image 
-                source={driverProfileImage[driverData.Driver.driverId]}
-                resizeMode='contain'
-                style={{ width: width, height: width }}
-              />
-            </View>
+            {/* PROFILE IMAGE */}
+            <Image 
+              source={driverProfileImage[driverData.Driver.driverId]}
+              resizeMode='contain'
+              style={{width: AppLayout.deviceWidth, height: AppLayout.deviceWidth}}
+            />
+            {/* ----- */}
 
-            <View style={styles.driverInfo}>
-              <View style={{marginTop: 26, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={styles.driverInfoContainer}>
+              {/* NUMBER AND NAME */}
+              <View style={styles.nameBox}>
                 <DisplayBold style={{fontSize: 26, marginBottom: 4}}>
                   {this.state.driverInfo.permanentNumber}
                 </DisplayBold>
-                <DisplayBold style={{fontSize: 18}}>
+                <DisplayBold style={{fontSize: 18, textTransform: 'uppercase'}}>
                   {this.state.driverInfo.firstName} {this.state.driverInfo.lastName}
                 </DisplayBold>
               </View>
-              <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 14, marginHorizontal: AppLayout.baseMargin}}>
-                <Card wrapperStyle={styles.driverStat}>
+              {/* -----*/}
+
+              {/* CHAMPIONSHIP STANDINGS */}
+              <View style={styles.championshipStandings}>
+                <Card wrapperStyle={styles.championshipStat}>
                   <View style={{flex: 1}}>
-                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Position</DisplayText>
+                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>
+                      Championship Position
+                    </DisplayText>
                   </View>
                   <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{driverData.position}</DisplayBold>
+                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>
+                      {driverData.position}
+                    </DisplayBold>
                   </View>
                 </Card>
-                <Card wrapperStyle={styles.driverStat}>
+                <Card wrapperStyle={styles.championshipStat}>
                   <View style={{flex: 1}}>
-                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>Championship Points</DisplayText>
+                    <DisplayText style={{fontSize: 12, lineHeight: 16}}>
+                      Championship Points
+                    </DisplayText>
                   </View>
                   <View style={{flex: 1, justifyContent: 'flex-end'}}>
-                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>{driverData.points}</DisplayBold>
+                    <DisplayBold style={{fontSize: 36, color: AppColors.strongRed}}>
+                      {driverData.points}
+                    </DisplayBold>
                   </View>
                 </Card>
               </View>
-              <View style={styles.driverData}>
-                <View style={{marginBottom: 6}}>
-                  <DisplayBold>Driver informations</DisplayBold>
-                  <DisplayText style={styles.sectionTitleDesc}>Interesting facts about driver</DisplayText>
+              {/* ----- */}
+
+              {/* ADDITIONAL INFORMATIONS */}
+              <View style={styles.additionalInfo}>
+                {/* Title */}
+                <View style={{marginTop: AppLayout.baseMargin * 2}}>
+                  <DisplayBold>Statistic</DisplayBold>
+                  <DisplayText style={styles.sectionTitleDesc}>
+                    Some interesting facts
+                  </DisplayText>
                 </View>
-                <View style={styles.driverInfoContent}>
-                  <View
-                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                  >
+                {/* -----*/}
+
+                {/* Data */}
+                <View style={{marginTop: AppLayout.baseMargin * 1.5}}>
+                  <View style={styles.additionalInfoRow} >
                     <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
                       <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                        {this.state.driverInfo.championships}
                       </DisplayBold>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Championships</DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>
+                        Championships
+                      </DisplayText>
                     </View>
                     <View style={{flex: 1}}>
                       <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                         {this.state.driverInfo.podiums}
                       </DisplayBold>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Podiums</DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>
+                        Total Podiums
+                      </DisplayText>
                     </View>
                   </View>
-                  <View
-                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                  >
+                  <View style={styles.additionalInfoRow} >
                     <View style={{flex: 1, marginRight: AppLayout.baseMargin}}>
                       <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                         {this.state.driverInfo.grandPrix}
                       </DisplayBold>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Grad Prix</DisplayText>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>
+                        Total Grad Prix
+                      </DisplayText>
                     </View>
                     <View style={{flex: 1}}>
                       <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
                         {this.state.driverInfo.points}
                       </DisplayBold>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Total Points</DisplayText>
-                    </View>
-                  </View>
-                  <View
-                    style={{marginTop: 30, marginBottom: 14 }}
-                  >
-                    <View style={{marginBottom: 14}}>
-                      <DisplayText style={{marginBottom: 2}}>
-                        {this.state.driverInfo.birthPlace}
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>
+                        Total Points
                       </DisplayText>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Place of Birth</DisplayText>
-                    </View>
-                    <View>
-                      <DisplayText style={{marginBottom: 2}}>
-                        {this.state.driverInfo.birthDate}
-                      </DisplayText>
-                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Date of Birth</DisplayText>
                     </View>
                   </View>
                 </View>
+                {/* ----- */}
+
+                {/* Title */}
+                <View style={{marginTop: AppLayout.baseMargin * 2}}>
+                  <DisplayBold>Additional informations</DisplayBold>
+                  <DisplayText style={styles.sectionTitleDesc}>
+                    Other infromations about driver
+                  </DisplayText>
+                </View>
+                {/* -----*/}
+              
+                {/* Data */}
+                <View style={{marginVertical: AppLayout.baseMargin * 1.5}} >
+                  <View style={{marginBottom: 14}}>
+                    <DisplayText style={{marginBottom: 2}}>
+                      {this.state.driverInfo.birthPlace}
+                    </DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Place of Birth</DisplayText>
+                  </View>
+                  <View>
+                    <DisplayText style={{marginBottom: 2}}>
+                      {this.state.driverInfo.birthDate}
+                    </DisplayText>
+                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Date of Birth</DisplayText>
+                  </View>
+                </View>
+                {/* ----- */}
               </View>
+              {/* ----- */}
             </View>
           </Animated.ScrollView>
         }
@@ -172,29 +231,41 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.backgroundMain
   },
-  driverInfo: {
+  driverInfoContainer: {
     flex: 1,
     backgroundColor: AppColors.backgroundMain,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     marginTop: -40
   },
-  driverStat: {
-    width: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
-    maxWidth: width/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+  nameBox: {
+    marginTop: AppLayout.baseMargin * 2, 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  championshipStandings: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginTop: AppLayout.baseMargin * 2, 
+    marginHorizontal: AppLayout.baseMargin
+  },
+  championshipStat: {
+    width: AppLayout.deviceWidth/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
+    maxWidth: AppLayout.deviceWidth/2 - AppLayout.baseMargin - AppLayout.baseMargin/2,
     height: 120
   },
-  driverData: {
-    paddingTop: 26,
-    paddingHorizontal: AppLayout.baseMargin,
+  additionalInfo: {
+    paddingHorizontal: AppLayout.basePadding,
     marginTop: AppLayout.baseMargin,
     flex: 1,
     backgroundColor: AppColors.backgroundLight,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30
   },
-  driverInfoContent: {
-    marginVertical: AppLayout.baseMargin
+  additionalInfoRow: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginBottom: AppLayout.baseMargin
   },
   sectionTitleDesc: {
     marginTop: 4, 

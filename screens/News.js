@@ -6,6 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+
 /**
  * Custom components
  */
@@ -13,7 +14,7 @@ import {
 import AppHeader from '../components/AppHeader'
 import { DisplayText } from '../components/AppText'
 import Card from '../components/Card'
-import Badge from '../components/Badge'
+
 
 /**
  * Constants
@@ -28,47 +29,61 @@ import { AppLayout, AppColors } from '../constants'
 
 class News extends React.Component {
 
+  /**
+   * NOTE
+   * 
+   * This is just static screen.
+   * There is no real data sources included!
+   */
+
+
   render() {
     return (
-      <View style={styles.screen}>
-        <AppHeader screenTitle="News" />
+      <View style={{flex: 1}}>
+        <AppHeader screenTitle="F1 News" />
 
-        <ScrollView style={styles.mainContent} >
-          <Card
-            title="WINNERS AND LOSERS - Russian Grand Priex edition"
-            wrapperStyle={styles.baseMargin}
-          >
-            <DisplayText style={{fontSize: 12, lineHeight: 16}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
-            </DisplayText>
-          </Card>
+        <ScrollView style={{flex: 1}}>
+          <View style={{flex: 1, margin: AppLayout.baseMargin}}>
+            <TouchableOpacity style={{marginBottom: AppLayout.baseMargin}}>
+              <Card
+                title="WINNERS AND LOSERS - Russian Grand Priex edition"
+              >
+                <DisplayText style={styles.contentText}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
+                </DisplayText>
+              </Card>
+            </TouchableOpacity>
 
-          <Card
-            title="Gasly hails strength of F1 helmet after debris incident in Russia"
-            wrapperStyle={styles.baseMargin}
-          >
-            <DisplayText style={{fontSize: 12, lineHeight: 16}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
-            </DisplayText>
-          </Card>
+            <TouchableOpacity style={{marginBottom: AppLayout.baseMargin}}>
+              <Card
+                title="Gasly hails strength of F1 helmet after debris incident in Russia"
+              >
+                <DisplayText style={styles.contentText}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
+                </DisplayText>
+              </Card>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={{marginBottom: AppLayout.baseMargin}}>
+              <Card
+                title="Hulkenberg - Renault package not competitive enough at the moment"
+              >
+                <DisplayText style={styles.contentText}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
+                </DisplayText>
+              </Card>
+            </TouchableOpacity>
 
-          <Card
-            title="Hulkenberg - Renault package not competitive enough at the moment"
-            wrapperStyle={styles.baseMargin}
-          >
-            <DisplayText style={{fontSize: 12, lineHeight: 16}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
-            </DisplayText>
-          </Card>
-
-          <Card
-            title="Merceders position switch 'no-brainer' - Vettel"
-            wrapperStyle={styles.baseMargin}
-          >
-            <DisplayText style={{fontSize: 12, lineHeight: 16}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
-            </DisplayText>
-          </Card>
+            <TouchableOpacity>
+              <Card
+                title="Merceders position switch 'no-brainer' - Vettel"
+              >
+                <DisplayText style={styles.contentText}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt sollicitudin orci, ac suscipit lorem euismod ac. Ut aliquam libero in velit varius venenatis. Quisque cursus fermentum ...
+                </DisplayText>
+              </Card>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </View>
     )
@@ -82,16 +97,10 @@ class News extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
-  mainContent: {
-    flex: 1
-  },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin
-  },
+  contentText: {
+    fontSize: 12, 
+    lineHeight: 16
+  }
 })
 
 

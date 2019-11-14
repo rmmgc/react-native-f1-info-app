@@ -1,8 +1,24 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
+import { 
+  View,
+  StyleSheet, 
+  TouchableOpacity, 
+  ScrollView 
+} from 'react-native'
+
+
+/**
+ * Custom Components
+ */
 
 import Card from '../../components/Card'
 import { DisplayBold, DisplayText } from '../../components/AppText'
+
+
+/**
+ * Constants
+ */
+
 import { AppLayout, AppColors } from '../../constants'
 
 
@@ -12,7 +28,15 @@ import { AppLayout, AppColors } from '../../constants'
 
 class Constructors extends React.Component {
 
+  /* Save constructors data passed via props */
   constructorStandings = this.props.constructorStandings
+
+
+  /**
+   * Event Handlers
+   */
+
+  /* Navigate to Team screen */
 
   onConstrucotrPressHandler(constructorData) {
     this.props.navigation.navigate('Team', {
@@ -20,11 +44,17 @@ class Constructors extends React.Component {
     })
   }
 
+
+  /**
+   * Render Functions
+   */
+
+  /* Render constructors list */
   renderConstructorsList() {
     return this.constructorStandings.map((constructor, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = constructor.position
-      const marginBottom = this.constructorStandings.length - 1 === index ? 14 : 0
+      const marginBottom = this.constructorStandings.length - 1 === index ? 0 : 14
 
       return(
         <TouchableOpacity
@@ -32,11 +62,11 @@ class Constructors extends React.Component {
           onPress={this.onConstrucotrPressHandler.bind(this, constructor)}
         >
           <Card 
-            wrapperStyle={{ ...styles.baseMargin, marginBottom }} 
+            wrapperStyle={{borderRadius: 100, marginBottom}} 
             contentStyle={styles.cardContent}
           >
             <View 
-              style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
+              style={{...styles.cardBackground, backgroundColor: highlightColor}}
             ></View>
 
             <View style={styles.standing}>
@@ -70,7 +100,9 @@ class Constructors extends React.Component {
       <View style={{flex: 1}}>
         {this.constructorStandings.length > 0 && 
           <ScrollView style={styles.screen} >
-            {this.renderConstructorsList()}
+            <View style={{flex: 1, margin: AppLayout.baseMargin}}>
+              {this.renderConstructorsList()}
+            </View>
           </ScrollView>
         }
       </View>
@@ -84,14 +116,6 @@ class Constructors extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin,
-    borderRadius: 100
-  },
   standing: {
     width: 40, 
     marginRight: 10, 

@@ -1,102 +1,17 @@
 import React from 'react'
-import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image, Animated } from 'react-native'
+import dayjs from 'dayjs'
 
 import { DisplayBold, DisplayText } from '../components/AppText'
 import Card from '../components/Card'
 import Carousel from '../components/Carousel'
+import AppActivityIndicator from '../components/AppActivityIndicator'
 
 import { AppLayout, AppColors } from '../constants'
 import { trackLayoutImage } from '../utils/imagesCollection'
+import { simulateServerResponse } from '../mock/index'
 
 const { width } = Dimensions.get('window')
-
-const MOCK_DATA = [
-  {
-    name: "Free Practice 1",
-    date: {
-      day: '15',
-      month: 'March',
-    },
-    time: {
-      hours: {
-        value: '11',
-        unit: 'hours'
-      },
-      minutes: {
-        value: '00',
-        unit: 'minutes'
-      }
-    }
-  },
-  {
-    name: "Free Practice 2",
-    date: {
-      day: '15',
-      month: 'March',
-    },
-    time: {
-      hours: {
-        value: '16',
-        unit: 'hours'
-      },
-      minutes: {
-        value: '00',
-        unit: 'minutes'
-      }
-    }
-  },
-  {
-    name: "Free Practice 3",
-    date: {
-      day: '16',
-      month: 'March',
-    },
-    time: {
-      hours: {
-        value: '12',
-        unit: 'hours'
-      },
-      minutes: {
-        value: '00',
-        unit: 'minutes'
-      }
-    }
-  },
-  {
-    name: "Qualifying session",
-    date: {
-      day: '15',
-      month: 'March',
-    },
-    time: {
-      hours: {
-        value: '15',
-        unit: 'hours'
-      },
-      minutes: {
-        value: '00',
-        unit: 'minutes'
-      }
-    }
-  },
-  {
-    name: "Race",
-    date: {
-      day: '17',
-      month: 'March',
-    },
-    time: {
-      hours: {
-        value: '15',
-        unit: 'hours'
-      },
-      minutes: {
-        value: '10',
-        unit: 'minutes'
-      }
-    }
-  }
-]
 
 /**
  * <Race />
@@ -104,31 +19,68 @@ const MOCK_DATA = [
 
 class Race extends React.Component {
 
+  state = {
+    isAnimationOver: false,
+    raceInfo: null
+  }
+
+  fadeOut = new Animated.Value(1)
+  fadeIn = new Animated.Value(0)
+
+  async componentDidMount() {
+    const { navigation } = this.props
+    const circuitData = navigation.getParam('circuitData')
+
+    let response = await simulateServerResponse('races', circuitData.circuitId)
+
+    this.setState({ raceInfo: response })
+
+    Animated.parallel([
+      Animated.timing(this.fadeOut, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true
+        }
+      ),
+      Animated.timing(this.fadeIn, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true
+        }
+      ),
+    ]).start(() => {
+      this.setState({ isAnimationOver: true })
+    })
+  }
+
   renderEventSchedule() {
-    return MOCK_DATA.map(event => {
+    return this.state.raceInfo.schedule.map(event => {
+      dateISO = event.date.split('.').reverse().join('-')
+      const eventDate = dayjs(`${dateISO}T${event.time}`)
+      
       return (
         <Card 
-          key={event.name}
+          key={event.eventName}
           wrapperStyle={styles.carouselItem} 
         >
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <View style={{marginRight: 20, alignItems: 'center'}}>
-              <DisplayBold style={styles.scheduleInfo}>{event.date.day}</DisplayBold>
-              <DisplayText style={styles.scheduleDesc}>{event.date.month}</DisplayText>
+              <DisplayBold style={styles.scheduleInfo}>{eventDate.format('DD')}</DisplayBold>
+              <DisplayText style={styles.scheduleDesc}>{eventDate.format('MMMM')}</DisplayText>
             </View>
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}>
               <View style={{marginRight: 10, alignItems: 'center'}}>
-                <DisplayBold style={styles.scheduleInfo}>{event.time.hours.value}</DisplayBold>
-                <DisplayText style={styles.scheduleDesc}>{event.time.hours.unit}</DisplayText>
+                <DisplayBold style={styles.scheduleInfo}>{eventDate.format('HH')}</DisplayBold>
+                <DisplayText style={styles.scheduleDesc}>Hours</DisplayText>
               </View>
               <View style={{alignItems: 'center'}}>
-                <DisplayBold style={styles.scheduleInfo}>{event.time.minutes.value}</DisplayBold>
-                <DisplayText style={styles.scheduleDesc}>{event.time.minutes.unit}</DisplayText>
+                <DisplayBold style={styles.scheduleInfo}>{eventDate.format('mm')}</DisplayBold>
+                <DisplayText style={styles.scheduleDesc}>Minutes</DisplayText>
               </View>
             </View>
           </View>
           <View style={{marginTop: 14}}>
-            <DisplayBold style={{textTransform: 'uppercase'}}>{event.name}</DisplayBold>
+            <DisplayBold style={{textTransform: 'uppercase'}}>{event.eventName}</DisplayBold>
           </View>
         </Card>
       )
@@ -140,74 +92,95 @@ class Race extends React.Component {
     const circuitData = navigation.getParam('circuitData')
     return (
       <View style={styles.screen}>
-        <ScrollView style={{flex: 1}} > 
-                   
-          <View style={{marginHorizontal: AppLayout.baseMargin}}>
-            <Image 
-              source={trackLayoutImage[circuitData.circuitId]}
-              resizeMode='contain'
-              style={{height: 280, flex: 1, width: null}}
-            />
-          </View>
+        {!this.state.isAnimationOver && <AppActivityIndicator fadeOut={this.fadeOut} />}
 
-          <View style={styles.raceInfo}>
-            <View style={styles.raceInfoSection}>
-              <View style={{marginBottom: 6}}>
-                <DisplayBold>Race event schedule</DisplayBold>
-                <DisplayText style={styles.sectionTitleDesc}>Scheduled race weekend events</DisplayText>
-              </View>
+        {this.state.raceInfo &&
+          <Animated.ScrollView style={{flex: 1, opacity: this.fadeIn}}> 
+            <View style={{marginHorizontal: AppLayout.baseMargin}}>
+              <Image 
+                source={trackLayoutImage[circuitData.circuitId]}
+                resizeMode='contain'
+                style={{height: 280, flex: 1, width: null}}
+              />
             </View>
 
-            <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
-              {this.renderEventSchedule()}
-            </Carousel>
-
-            <View style={styles.raceInfoSection}>
-              <View style={{marginBottom: 6}}>
-                <DisplayBold>{circuitData.circuitName}</DisplayBold>
-                <DisplayText style={styles.sectionTitleDesc}>Important circuit informations</DisplayText>
+            <View style={styles.raceInfo}>
+              <View style={styles.raceInfoSection}>
+                <View style={{marginBottom: 6}}>
+                  <DisplayBold>Race event schedule</DisplayBold>
+                  <DisplayText style={styles.sectionTitleDesc}>Scheduled race weekend events</DisplayText>
+                </View>
               </View>
-              <View style={styles.circuitInfoContent}>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                >
-                  <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1996</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grand Prix</DisplayText>
-                  </View>
-                  <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>58</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Number of laps</DisplayText>
-                  </View>
+
+              <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
+                {this.renderEventSchedule()}
+              </Carousel>
+
+              <View style={styles.raceInfoSection}>
+                <View style={{marginBottom: 6}}>
+                  <DisplayBold>{circuitData.circuitName}</DisplayBold>
+                  <DisplayText style={styles.sectionTitleDesc}>Important circuit informations</DisplayText>
                 </View>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                >
-                  <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
-                      5.303 <DisplayText>km</DisplayText>
-                    </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Circuit Length</DisplayText>
+                <View style={styles.circuitInfoContent}>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
+                  >
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.raceInfo.firstGradPrix}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>First Grand Prix</DisplayText>
+                    </View>
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.raceInfo.numberOfLaps}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Number of laps</DisplayText>
+                    </View>
                   </View>
-                  <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
-                      307.574 <DisplayText>km</DisplayText>
-                    </DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Race Distance</DisplayText>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
+                  >
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.raceInfo.circuitLength} <DisplayText>km</DisplayText>
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Circuit Length</DisplayText>
+                    </View>
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.raceInfo.raceDistance} <DisplayText>km</DisplayText>
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Race Distance</DisplayText>
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
-                >
-                  <View style={{flex: 1}}>
-                    <DisplayBold style={{marginBottom: 2, fontSize: 22}}>1.24.125</DisplayBold>
-                    <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Fastest Lap</DisplayText>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}
+                  >
+                    <View style={{flex: 1}}>
+                      <DisplayBold style={{marginBottom: 2, fontSize: 22}}>
+                        {this.state.raceInfo.fastestLap.time}
+                      </DisplayBold>
+                      <DisplayText style={{fontSize: 12, color: AppColors.textCaption}}>Fastest Lap</DisplayText>
+                    </View>
+                  </View>
+
+                  <View style={{marginTop: 20, marginBottom: 14}}>
+                    <DisplayBold>About Circuit</DisplayBold>
+                    <DisplayText style={styles.sectionTitleDesc}>How the circuit feels like</DisplayText>
+                  </View>
+                  <View style={{ marginBottom: 14 }} >
+                    <View>
+                      <DisplayText style={{fontSize: 12, lineHeight: 16}}>
+                        {this.state.raceInfo.circuitInfo}
+                      </DisplayText>
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-          </View>
-        </ScrollView>
+          </Animated.ScrollView> 
+        }
       </View>
     )
   }

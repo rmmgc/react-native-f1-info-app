@@ -1,21 +1,13 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Dimensions } from 'react-native'
 
-/**
- * Custom Components
- */
-
-import { DisplayBold, DisplayText } from './AppText'
-import Card from './Card'
-
 
 /**
  * Constants
  */
 
-import { AppColors, AppLayout } from '../constants'
+import { AppLayout } from '../constants'
 
-const SCREEN_WIDTH = Dimensions.get('window').width
 
 
 /**
@@ -25,22 +17,23 @@ const SCREEN_WIDTH = Dimensions.get('window').width
 class Carousel extends React.Component {
 
   render() {
+    const { style, ...props } = this.props
+
     return (
       <ScrollView 
-        style={styles.container}
+        style={{...styles.container, ...style}}
         contentContainerStyle={styles.innerContainer}
         horizontal
         decelerationRate={0}
-        // snapToInterval={width - (80 - AppLayout.baseMargin)}
         snapToAlignment={"center"}
         showsHorizontalScrollIndicator={false}
-        {...this.props}
+        {...props}
       >
-        {this.props.children}
+        {props.children}
       </ScrollView>
     )
   }
-
+  
 }
 
 

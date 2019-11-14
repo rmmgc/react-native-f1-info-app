@@ -1,13 +1,29 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 
+
+/**
+ * Custom Components
+ */
+
 import { DisplayText } from '../components/AppText'
+
+
+/**
+ * Screen Components
+ */
 
 import Home from '../screens/Home'
 import Driver from '../screens/Driver'
 import Team from '../screens/Team'
 
+
+/**
+ * Constants
+ */
+
 import { AppColors } from '../constants'
+
 
 const HomeStack = createStackNavigator(
   {

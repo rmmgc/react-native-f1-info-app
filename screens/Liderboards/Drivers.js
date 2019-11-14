@@ -1,5 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, Animated, TouchableOpacity } from 'react-native'
+import { 
+  View, 
+  StyleSheet, 
+  Animated, 
+  TouchableOpacity 
+} from 'react-native'
 
 
 /**
@@ -23,14 +28,14 @@ import { AppLayout, AppColors } from '../../constants'
 
 class Drivers extends React.Component {
 
-  // Animated value for screen animation
+  /* Animated value for screen animation */
   screenAnimatedValue = new Animated.Value(0)
 
-  // Save drivers data passed via props
+  /* Save drivers data passed via props */
   driverStandings = this.props.driverStandings
 
   componentDidMount() {
-    // Start animation when Component is mounted
+    /* Start animation when Component is mounted */
     Animated.timing(this.screenAnimatedValue, 
       {
         toValue: 1,
@@ -45,7 +50,7 @@ class Drivers extends React.Component {
    * Event Handlers
    */
 
-  // Navigate to Driver screen
+  /* Navigate to Driver screen */
   onDriverPressHandler(driverData) {
     this.props.navigation.navigate('Driver', {
       driverData,
@@ -57,12 +62,12 @@ class Drivers extends React.Component {
    * Render Functions
    */
 
-  // Render drivers list
+  /* Render drivers list */
   renderDriversList() {
     return this.driverStandings.map((driver, index) => {
       const highlightColor = index < 3 ? AppColors.strongRed : AppColors.lightGrayBlue
       const itemKey = driver.position
-      const isLastItem = this.driverStandings.length - 1 === index ? true : false
+      const marginBottom = this.driverStandings.length - 1 === index ? 0 : 14
 
       return(
         <TouchableOpacity
@@ -70,11 +75,11 @@ class Drivers extends React.Component {
           onPress={this.onDriverPressHandler.bind(this, driver)}
         >
           <Card 
-            wrapperStyle={{ ...styles.baseMargin, marginBottom: isLastItem ? 14 : 0  }} 
+            wrapperStyle={{borderRadius: 100, marginBottom}} 
             contentStyle={styles.cardContent}
           >
             <View 
-              style={{ ...styles.cardBackground, backgroundColor: highlightColor }}
+              style={{...styles.cardBackground, backgroundColor: highlightColor}}
             ></View>
 
             <View style={styles.standing}>
@@ -109,7 +114,7 @@ class Drivers extends React.Component {
         {this.driverStandings.length > 0 && 
           <Animated.ScrollView 
             style={{ 
-              ...styles.screen, 
+              flex: 1, 
               opacity: this.screenAnimatedValue,
               transform: [
                 {perspective: 1000},
@@ -120,7 +125,9 @@ class Drivers extends React.Component {
               ]
             }} 
           >
-            {this.renderDriversList()}
+            <View style={{flex: 1, margin: AppLayout.baseMargin}}>
+              {this.renderDriversList()}
+            </View>
           </Animated.ScrollView>
         }
       </View>
@@ -134,14 +141,6 @@ class Drivers extends React.Component {
  */
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  baseMargin: {
-    flex: 1,
-    marginHorizontal: AppLayout.baseMargin,
-    borderRadius: 100
-  },
   standing: {
     width: 40, 
     marginRight: 10, 

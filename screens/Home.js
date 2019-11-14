@@ -4,14 +4,13 @@ import {
   View, 
   StyleSheet, 
   TouchableOpacity, 
-  Image,
-  Dimensions
+  Image
 } from 'react-native'
 import dayjs from 'dayjs'
 
 
 /**
- * Custom components
+ * Custom Components
  */
 
 import AppHeader from '../components/AppHeader'
@@ -30,8 +29,6 @@ import Carousel from '../components/Carousel'
 import { AppLayout, AppColors } from '../constants'
 import { driverHelmetImage, constructorCarImage } from '../utils/imagesCollection'
 
-const { width } = Dimensions.get('window')
-
 
 /**
  * <Home />
@@ -45,8 +42,8 @@ class Home extends React.Component {
     this.navigationHandler = this.navigationHandler.bind(this)
   }
 
-  // Drivers and constructors data
-  driverStandings      = this.props.screenProps.driverStandings
+  /* Drivers and constructors data */
+  driverStandings = this.props.screenProps.driverStandings
   constructorStandings = this.props.screenProps.constructorStandings
 
 
@@ -59,15 +56,11 @@ class Home extends React.Component {
   }
 
   onDriverPressHandler(driverData) {
-    this.props.navigation.navigate('Driver', {
-      driverData,
-    })
+    this.props.navigation.navigate('Driver', {driverData})
   }
 
   onConstructorPressHandler(constructorData) {
-    this.props.navigation.navigate('Team', {
-      constructorData,
-    })
+    this.props.navigation.navigate('Team', {constructorData})
   }
 
 
@@ -80,12 +73,15 @@ class Home extends React.Component {
 
     let endDate = null
     let badgeData = null
+    let raceName = ''
 
     screenProps.seasonRaces.some(race => {
       var raceDate = dayjs(`${race.date}T${race.time}`)
       if(raceDate.isAfter(dayjs())) {
+        raceName = race.raceName
         endDate = raceDate
         badgeData = raceDate.format('DD.MM')
+
         return true
       }
     })
@@ -93,12 +89,10 @@ class Home extends React.Component {
     return (
       <TouchableOpacity style={{margin: AppLayout.baseMargin}}>
         <Card 
-          title="Mexico GP - 2019"
-          contentStyle={{ flexDirection: 'row', alignItems: 'center' }}
+          title={raceName}
+          contentStyle={{flexDirection: 'row', alignItems: 'center'}}
         >
-          <Countdown 
-            endDate={endDate}
-          />
+          <Countdown endDate={endDate} />
           <Badge data={badgeData} />
         </Card>
       </TouchableOpacity>
@@ -107,15 +101,14 @@ class Home extends React.Component {
 
   renderDrivers() {
     return this.driverStandings.map((driverData, index) => {
-      
-      // Render first 5 items
+      /* Render first 5 items */
       if(index < 5) {
         return (
           <TouchableOpacity 
             key={driverData.Driver.driverId}
             onPress={this.onDriverPressHandler.bind(this, driverData)}
           >
-            <Card wrapperStyle={{ ...styles.carouselItem }}>
+            <Card wrapperStyle={styles.carouselItem}>
               <View style={styles.driverHelmet}>
                 <Image 
                   style={{flex: 1, width: undefined, height: undefined}}
@@ -150,8 +143,7 @@ class Home extends React.Component {
 
   renderConstructors() {
     return this.constructorStandings.map((constructorData, index) => {
-
-      // Render first 5 items
+      /* Render first 5 items */
       if(index < 5) {
         return (
           <TouchableOpacity 
@@ -178,7 +170,6 @@ class Home extends React.Component {
           </TouchableOpacity>
         )
       }
-
     })
   }
 
@@ -187,10 +178,10 @@ class Home extends React.Component {
       <View style={{flex: 1}}>
         <AppHeader screenTitle="Home" />
 
-        <ScrollView style={{flex: 1}} >
+        <ScrollView>
           {this.renderCountdownTimer()}
 
-          <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
+          <Carousel snapToInterval={AppLayout.deviceWidth - (80 - AppLayout.baseMargin)}>
             {this.renderDrivers()}
           </Carousel>
 
@@ -217,21 +208,11 @@ class Home extends React.Component {
             />
           </View>
 
-          <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
+          <Carousel snapToInterval={AppLayout.deviceWidth - (80 - AppLayout.baseMargin)}>
             {this.renderConstructors()}
           </Carousel>
 
           <View style={{margin: AppLayout.baseMargin}}>
-            <CardTouchable 
-              style={{marginBottom: AppLayout.baseMargin}}
-              iconName="ios-stats" 
-              iconSize={22}
-              iconColor={AppColors.strongRed}
-              routeName="Results"
-              cardTitle="Results"
-              cardDescription="Check last race results!"
-              onPress={this.navigationHandler}
-            />
 
             <CardTouchable 
               iconName="ios-paper" 
@@ -258,7 +239,7 @@ class Home extends React.Component {
 
 const styles = StyleSheet.create({
   carouselItem: {
-    width: width - 80,
+    width: AppLayout.deviceWidth - 80,
     marginHorizontal: AppLayout.baseMargin/2,
     height: 120
   },

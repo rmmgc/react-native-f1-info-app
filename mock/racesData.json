@@ -1,5 +1,5 @@
-[
-  {
+{
+  "albert_park": {
     "season": "2019",
     "round": "1",
     "raceName": "Australian Grand Prix",
@@ -16,33 +16,33 @@
     "circuitInfo": "As a temporary facility, Albert Park can be quite bumpy, while the circuit at the start of the weekend is often slippery, rubbering in as the sessions progress. It’s also a circuit that requires a well-sorted chassis, with several spots on the track where the drivers require a reactive front end to allow them to chuck it into a corner – the main one being the rapid Turn 11-12 chicane. Melbourne is also one of the faster tracks on the calendar, with Lewis Hamilton’s 2018 pole lap set at an average of 235km/h.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "15.03.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "15.03.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "16.03.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "16.03.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "17.03.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "bahrain": {
     "season": "2019",
     "round": "2",
     "raceName": "Bahrain Grand Prix",
@@ -59,33 +59,33 @@
     "circuitInfo": "You can usually expect great racing and decent amounts of overtaking in Bahrain, while the drivers have to contend with wind, racing under floodlights and the difficulty of finding a decent set-up with the wide temperature fluctuations between sessions. The track’s most challenging point is the tight, downhill, off-camber Turn 10 left-hander, while the fast run through Turn 12 is another highlight, allowing the racers to really feel their cars coming alive.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "29.03.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "29.03.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "30.03.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "30.03.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "31.03.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "shanghai": {
     "season": "2019",
     "round": "3",
     "raceName": "Chinese Grand Prix",
@@ -102,33 +102,33 @@
     "circuitInfo": "The circuit’s pleasing form when seen from the air – it’s designed to look like the Chinese symbol for ‘shang’, meaning upwards – is equally pleasing to the drivers on terra firma. There’s a unique start to the lap as the drivers fly into the ever-tightening Turns 1 and 2, before they dart left through 3 and 4. The super-high g force Turns 7 and 8 are loved by the drivers, while the circuit also features one of the longest straights on the calendar, the 1.2km stretch that separates Turns 13-14.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "12.04.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "12.04.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "13.04.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "13.04.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "14.04.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "BAK": {
     "season": "2019",
     "round": "4",
     "raceName": "Azerbaijan Grand Prix",
@@ -145,33 +145,33 @@
     "circuitInfo": "A mixture of wide and open and tight and twisty. The lonnnnng main straight along the Baku shoreline is a slipstreaming mecca, and with cars able to run three abreast into Turn 1, the action often looks more IndyCar than F1. However from there, the track loops around into the city’s narrow, winding Icheri Sheher old town, dramatically wending past Baku’s medieval city walls. As in Monaco, slightest mistakes are punished quickly and severely, while set-up wise, the teams are forced to choose between downforce for the twisty bits and less drag for the straight.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "26.04.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "26.04.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "27.04.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "27.04.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "28.04.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "catalunya": {
     "season": "2019",
     "round": "5",
     "raceName": "Spanish Grand Prix",
@@ -188,33 +188,33 @@
     "circuitInfo": "The drivers love the Circuit de Barcelona-Catalunya, which is just as well, because they spend huge amounts of time pounding around it during winter testing. The track is a good mix of high- and low-speed corners, with the challenging Turn 3 right-hander a great chance to evaluate the balance of the car your team’s designers have given you to fight with for the season.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "10.05.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "10.05.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "11.05.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "11.05.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "12.05.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "monaco": {
     "season": "2019",
     "round": "6",
     "raceName": "Monaco Grand Prix",
@@ -231,33 +231,33 @@
     "circuitInfo": "Incredibly narrow and totally iconic. Nelson Piquet memorably described driving around Monaco as “like riding a bicycle around your living room”… which is fair. Despite that, it’s a challenge that nearly all drivers love, forcing them to put their skills on the line and rewarding millimetric accuracy. Overtaking on the tight streets is harder, however, with the 2003 Grand Prix witnessing a grand total of zero passing moves!",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "23.05.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "23.05.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "24.05.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "24.05.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "25.05.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "villeneuve": {
     "season": "2019",
     "round": "7",
     "raceName": "Canadian Grand Prix",
@@ -274,33 +274,33 @@
     "circuitInfo": "The fast, low-downforce circuit is one of the drivers’ favourites. The track is quite stop-start, with lots of heavy-braking chicanes and the famous hairpin to get the anchors working hard. Out of the corners, though, the track is quick and flowing, while the most iconic piece of the circuit comes right at the end of the lap: the Wall of Champions, so-called after excursions into it from Damon Hill, Jacques Villeneuve and Michael Schumacher during the 1999 Canadian Grand Prix weekend.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "07.06.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "07.06.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "08.06.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "08.06.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "09.06.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "ricard": {
     "season": "2019",
     "round": "8",
     "raceName": "French Grand Prix",
@@ -317,33 +317,33 @@
     "circuitInfo": "The Circuit Paul Ricard’s even distribution of high-, medium- and low-speed corners is a key reason why it’s one of the most used test circuits in the world (the typically good weather is another). F1 drivers love the 290km/h right-hander at Signes and the 5g joyride of the following Beausset bend, while the circuit’s 2018 return to the F1 calendar showed that the French Grand Prix track is a bit of an overtaking gem.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "21.06.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "21.06.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "22.06.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "22.06.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "23.06.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "red_bull_ring": {
     "season": "2019",
     "round": "9",
     "raceName": "Austrian Grand Prix",
@@ -360,33 +360,33 @@
     "circuitInfo": "It’s only wee, bless it, but the Red Bull Ring packs a lot into a short lap. The first half rewards power, as the cars blast along three straights separated by a pair of uphill right-handers. But then as the drivers work their way downhill, the circuit becomes a regular toboggan ride, as the cars canyon through a series of quick corners, including the exhilarating Rindt right-hander, named for Austria’s first F1 champio.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "28.06.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "28.06.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "29.06.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "29.06.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "30.06.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "silverstone": {
     "season": "2019",
     "round": "10",
     "raceName": "British Grand Prix",
@@ -403,33 +403,33 @@
     "circuitInfo": "At the 2018 British Grand Prix, Lewis Hamilton compared a flat-out lap around Silverstone to flying a fighter jet, which should tell you all you need to know about the Northamptonshire circuit. Despite numerous layout changes over the years, Silverstone has always maintained its essential character as one of the fastest tracks on the F1 calendar, while historic corners like Maggotts, Becketts and Abbey provide some of the biggest challenges for racing drivers anywhere in the world.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "12.07.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "12.07.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "13.07.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "13.07.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "14.07.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "hockenheimring": {
     "season": "2019",
     "round": "11",
     "raceName": "German Grand Prix",
@@ -446,33 +446,33 @@
     "circuitInfo": "Up until 2002, Hockenheim’s design saw the cars roar out into the forest before looping around the Ostkurve and steaming back into the stadium. In 2002, the track was truncated, with the cars now turning right shortly after Turn 1 and bisecting the original track. Hockenheim is still a fast track, though, with Sebastian Vettel recording a 231km/h average during his 2018 pole lap.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "26.07.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "26.07.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "27.07.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "27.07.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "28.07.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "hungaroring": {
     "season": "2019",
     "round": "12",
     "raceName": "Hungarian Grand Prix",
@@ -489,33 +489,33 @@
     "circuitInfo": "The lack of straights at the Hungaroring often sees it compared to a karting circuit – and it’s true, the resemblance is uncanny. With several series of corners to string together, teams opt for Monaco levels of downforce, with a well-sorted chassis tending to be rewarded over horsepower given the short straights on offer. It’s a challenge many of the drivers relish, however, with finding a good rhythm key to setting fast lap times.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "02.08.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "02.08.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "03.08.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "03.08.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "04.08.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "spa": {
     "season": "2019",
     "round": "13",
     "raceName": "Belgian Grand Prix",
@@ -532,33 +532,33 @@
     "circuitInfo": "Spa is among Formula 1 drivers’ most loved tracks, with its mix of long straights and challenging fast corners allowing them to push their cars to the edge of their capabilities – if it’s dry, that is. The size of the track and the nature of Belgian weather means it can sometimes be raining on one part of the track and dry on another, meaning grip can vary from one corner to the next. Keep an eye on the thrilling Eau Rouge, arguably the most famous sequence of corners in the world, as the drivers flick left, right and then up the hill through Raidillon.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "30.08.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "30.08.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "31.08.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "31.08.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "01.09.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "monza": {
     "season": "2019",
     "round": "14",
     "raceName": "Italian Grand Prix",
@@ -575,33 +575,33 @@
     "circuitInfo": "Rapido! Formula 1’s fastest ever lap was set at Monza – Williams driver Juan Pablo Montoya’s 260.6km/h effort during practice for the 2004 Grand Prix – which should give you some idea of the nature of the track the locals call ‘La Pista Magica’. Cars are on full throttle for 80% of the lap, and hit their Vmax on the circuit’s 1.1km start/finish straight. From there, they roar off into the historic park section, where a series of big stops into tight chicanes give the brakes a good workout.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "06.09.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "06.09.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "07.09.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "07.09.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "08.09.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "marina_bay": {
     "season": "2019",
     "round": "15",
     "raceName": "Singapore Grand Prix",
@@ -618,33 +618,33 @@
     "circuitInfo": "The 5.063km Marina Bay Circuit is one of the most physically demanding on the calendar, its bumpy street surface coupled with humid conditions giving the drivers plenty to think about. With 23 corners, they are working the wheel a lot, too, around the high-speed lap – the physical stress causing them to lose as much as 3kg over the course of a race. The circuit also boasts some of the most unique features of any track on the F1 calendar, including Turn 18, which actually sees the drivers pass underneath a grandstand.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "20.09.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "20.09.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "21.09.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "21.09.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "22.09.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "sochi": {
     "season": "2019",
     "round": "16",
     "raceName": "Russian Grand Prix",
@@ -661,33 +661,33 @@
     "circuitInfo": "Looking at a map of the track, your eye can’t help but be drawn to the epic Turn 3, a 750m constant-radius left-hander taking the drivers around the outside of the dramatic Poyushchiye fountain. The rest of the track is characterised by a series of 90-degree bends coupled to some rapid, flowing straights-that-aren’t-straight.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "27.09.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "27.09.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "28.09.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "28.09.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "29.09.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "suzuka": {
     "season": "2019",
     "round": "17",
     "raceName": "Japanese Grand Prix",
@@ -704,33 +704,33 @@
     "circuitInfo": "Show us a racing a driver who doesn’t love Suzuka, and we’ll show you a liar. The high-speed track remains one of the ultimate driving challenges, with the snaking ‘S’ Curves, the two commitment-rewarding Degners and the white-knuckle ride of 130R all highlights in a series of highlights at what is one of F1’s seminal tracks. And hey, it’s got a crossover, which is always cool, right?",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "11.10.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "11.10.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "12.10.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "12.10.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "13.10.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "rodriguez": {
     "season": "2019",
     "round": "18",
     "raceName": "Mexican Grand Prix",
@@ -747,33 +747,33 @@
     "circuitInfo": "High up! The Autodromo Hermanos Rodriguez sits over 2km above sea level, making the 4.3km lap a breathless experience. The track still largely follows the outline of the original 1959 circuit, the main difference being that the spectacular – and spectacularly scary – Peralta corner is now bisected, with the circuit instead winding through the old Foro Sol baseball stadium, providing one F1’s most unique vistas.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "25.10.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "25.10.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "26.10.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "26.10.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "27.10.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "americas": {
     "season": "2019",
     "round": "19",
     "raceName": "United States Grand Prix",
@@ -790,33 +790,33 @@
     "circuitInfo": "If the corners at COTA seem familiar, they should be. Turns 3 through 6 look not dissimilar to Silverstone's high-speed run through Maggotts/Becketts or the S Curves at Suzuka, while Turns 12 through 15 mimic Hockenheim's stadium section. Meanwhile, the uphill run into wide, wide Turn 1 – hey, everything’s bigger in Texas, right? – has provided some fine overtaking action in the track’s short life.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "01.11.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "01.11.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "02.11.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "02.11.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "03.11.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "interlagos": {
     "season": "2019",
     "round": "20",
     "raceName": "Brazilian Grand Prix",
@@ -833,33 +833,33 @@
     "circuitInfo": "Like many pre-World War II tracks, Interlagos features banked corners, with the drivers beginning their lap on a sort of half oval – in fact, between 1957 and the track’s return to the F1 calendar in 1990, Interlagos could be run as a giant oval. After wiggling through the Senna S and down to Turn 4, the drivers then go through a snaking in-field section with some challenging camber changes, before slinging back up the hill and through the banked final turn.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "16.11.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "16.11.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "17.11.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "17.11.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "18.11.2019",
         "time": "15:10:00"
       }
     ]
   },
-  {
+  "yas_marina": {
     "season": "2019",
     "round": "21",
     "raceName": "Abu Dhabi Grand Prix",
@@ -876,30 +876,30 @@
     "circuitInfo": "The Hermann Tilke-designed track is dominated by its 1.2km straight between Turns 7 and 8 – which, with slow-speed corners marking its beginning and end, makes it a honeypot for overtaking moves. Other highlights include the tricky run through Turns 15 and 16 into 17, which forces the drivers to brake hard with bags of lateral load still on the car.",
     "schedule": [
       {
-        "event": "Free Practice 1",
+        "eventName": "Free Practice 1",
         "date": "29.11.2019",
         "time": "11:00:00"
       },
       {
-        "event": "Free Practice 2",
+        "eventName": "Free Practice 2",
         "date": "29.11.2019",
         "time": "16:00:00"
       },
       {
-        "event": "Free Practice 3",
+        "eventName": "Free Practice 3",
         "date": "30.11.2019",
         "time": "12:00:00"
       },
       {
-        "event": "Qualifaying session",
+        "eventName": "Qualifaying session",
         "date": "30.11.2019",
         "time": "15:00:00"
       },
       {
-        "event": "Race",
+        "eventName": "Race",
         "date": "01.12.2019",
         "time": "15:10:00"
       }
     ]
   }
-]
+}

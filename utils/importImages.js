@@ -1,3 +1,7 @@
+/**
+ * APP images
+ */
+
 const imagesImporter = [
   require('../assets/images/cars/alfaromeo.png'),
   require('../assets/images/cars/ferrari.png'),

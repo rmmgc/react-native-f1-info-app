@@ -1,3 +1,7 @@
+/**
+ * APP images with keys
+ */
+
 const trackLayoutImage = {
   'americas': require('../assets/images/tracks/austin.png'),
   'bahrain': require('../assets/images/tracks/bahrain.png'),
