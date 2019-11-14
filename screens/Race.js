@@ -112,7 +112,10 @@ class Race extends React.Component {
                 </View>
               </View>
 
-              <Carousel snapToInterval={width - (80 - AppLayout.baseMargin)}>
+              <Carousel 
+                style={{marginTop: AppLayout.baseMargin}}
+                snapToInterval={width - (80 - AppLayout.baseMargin)}
+              >
                 {this.renderEventSchedule()}
               </Carousel>
 
